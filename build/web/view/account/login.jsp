@@ -6,24 +6,30 @@
         <title>Login Page</title> 
     </head>
     <body>
-        <h1>Login Page</h1> 
+        <h1>Login</h1> 
+
         <form action="Auth" method="POST">
+            <fieldset>
+                <legend>Login Credentials</legend>
 
-            <label>Username: </label>
-            <input type="text" name="username">
+                <label>Username:</label>
+                <input type="text" name="username" required>
+                <br><br>
 
-            <br>
-
-            <label>Password: </label>
-            <input type="password" name="password">
+                <label>Password:</label>
+                <input type="password" name="password" required>
+            </fieldset>
 
             <br>
 
             <input type="hidden" name="action" value="login">
             <input type="submit" value="Login">
         </form>
-        
-        <form action="Register" method="GET">
+
+        <br>
+
+        <form action="Auth" method="GET" style="display:inline;">
+            <input type="hidden" name="action" value="register">
             <input type="submit" value="Register">
         </form>
     </body>

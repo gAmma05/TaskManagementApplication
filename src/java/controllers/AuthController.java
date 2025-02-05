@@ -17,6 +17,7 @@ public class AuthController extends HttpServlet {
     private final String AUTH = "Auth";
     private final String DASHBOARD = "view/dashboard/dashboard.jsp";
     private final String LOGIN_VIEW = "view/account/login.jsp";
+    private final String REGISTER_VIEW = "view/account/register.jsp";
     //private final String REGISTER_VIEW = "view/account/register.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -30,6 +31,7 @@ public class AuthController extends HttpServlet {
                     break;
                     
                 case "register":
+                    request.getRequestDispatcher(REGISTER_VIEW).forward(request, response);
                     break;
                     
                 case "logout":
