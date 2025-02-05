@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,34 +8,62 @@
     </head>
     <body>
         <h1>Register</h1>
+
         <form action="Register" method="POST">
-            <label>Username: </label>
-            <input type="text" name="username" required>
+            <fieldset>
+                <legend>Account Information</legend>
+                <label>Username:</label>
+                <input type="text" name="username" required>
+                <br><br>
 
-            <label>Password: </label>
-            <input type="password" name="password" required>
+                <label>Password:</label>
+                <input type="password" name="password" required>
+                <br><br>
 
-            <label>Confirm password</label>
-            <input type="password" name="confirm-password" required>
+                <label>Confirm Password:</label>
+                <input type="password" name="confirm-password" required>
+            </fieldset>
+
+            <br>
+
+            <fieldset>
+                <legend>Personal Information</legend>
+                <label>First Name:</label>
+                <input type="text" name="firstName">
+                <br><br>
+
+                <label>Last Name:</label>
+                <input type="text" name="lastName">
+                <br><br>
+
+                <label>Email:</label>
+                <input type="email" name="email">
+                <br><br>
+
+                <label>Phone Number:</label>
+                <input type="tel" name="phone">
+            </fieldset>
+
+            <br>
 
             <input type="hidden" name="action" value="confirm-register">
             <input type="submit" value="Register">
         </form>
 
         <br>
+
         <form action="Auth" method="GET" style="display:inline;">
             <button type="submit">Back</button>
         </form>
 
+        <br><br>
 
-        <!--JSTL time!!!-->
-        <c:set var="password" value="${param.password}" ></c:set>
+        <!--JSTL Validation Message-->
+        <c:set var="password" value="${param.password}"></c:set>
         <c:set var="confirmPassword" value="${param['confirm-password']}"></c:set>
 
-        <c:choose>
-            <c:when test="${password != confirmPassword}">
-                The passwords do not match. Try again
-            </c:when>
-        </c:choose>
+        <c:if test="${not empty password and not empty confirmPassword and password != confirmPassword}">
+            <p style="color: red;">The passwords do not match. Try again.</p>
+        </c:if>
     </body>
 </html>
