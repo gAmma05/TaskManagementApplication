@@ -1,4 +1,4 @@
-CREATE DATABASE TMA
+CREATE DATABASE TMA;
 
 -- Department Table
 CREATE TABLE Department (
