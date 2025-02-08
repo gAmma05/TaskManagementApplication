@@ -82,7 +82,7 @@ CREATE TABLE Task (
     updated_at DATETIME2 DEFAULT SYSUTCDATETIME(),
     FOREIGN KEY (project_id) REFERENCES Project(project_id) ON DELETE CASCADE,
     FOREIGN KEY (assignee_id) REFERENCES [User](user_id) ON DELETE SET NULL,
-    FOREIGN KEY (parent_task_id) REFERENCES Task(task_id) ON DELETE SET NULL
+    FOREIGN KEY (parent_task_id) REFERENCES Task(task_id) ON DELETE NO ACTION
 );
 
 -- Assignee Table (User-Task Relationship)
