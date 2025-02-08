@@ -44,7 +44,7 @@ CREATE TABLE Project (
     manager_id BIGINT NOT NULL,
     created_at DATETIME2 DEFAULT SYSUTCDATETIME(),
     updated_at DATETIME2 DEFAULT SYSUTCDATETIME(),
-    FOREIGN KEY (manager_id) REFERENCES [User](user_id) ON DELETE SET NULL
+    FOREIGN KEY (manager_id) REFERENCES [User](user_id) ON DELETE NO ACTION
 );
 
 -- Enrollment Table (User-Project Relationship)
@@ -126,4 +126,20 @@ CREATE TABLE Attachment (
     uploaded_at DATETIME2 DEFAULT SYSUTCDATETIME(),
     FOREIGN KEY (task_id) REFERENCES Task(task_id) ON DELETE CASCADE,
     FOREIGN KEY (uploaded_by) REFERENCES [User](user_id) ON DELETE CASCADE
+)
+
+-- Add Project_Label
+CREATE TABLE Project_Label (
+	project_label_id BIGINT IDENTITY(1,1) PRIMARY KEY,
+	project_id BIGINT NOT NULL,
+	label_name NVARCHAR(255) NOT NULL,
+	FOREIGN KEY (project_id) REFERENCES Project(project_id) ON DELETE CASCADE
+)
+
+-- Add Task_Label
+CREATE TABLE Task_Label (
+	task_label_id BIGINT IDENTITY(1,1) PRIMARY KEY,
+	task_id BIGINT NOT NULL,
+	label_name NVARCHAR(255) NOT NULL,
+	FOREIGN KEY (task_id) REFERENCES Task(task_id) ON DELETE CASCADE
 );
