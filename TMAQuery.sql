@@ -17,7 +17,7 @@ CREATE TABLE [User] (
     password NVARCHAR(255) NOT NULL, -- Hashed password
     email NVARCHAR(100) UNIQUE NOT NULL,
     phone NVARCHAR(20) NOT NULL,
-    role NVARCHAR(50) NOT NULL,
+    role INT NOT NULL,
     department_id BIGINT NULL,
     created_at DATETIME2 DEFAULT SYSUTCDATETIME(),
     updated_at DATETIME2 DEFAULT SYSUTCDATETIME()
