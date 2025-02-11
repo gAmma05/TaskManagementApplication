@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -6,25 +7,43 @@
         <title>Login Page</title> 
     </head>
     <body>
-        <h1>Login Page</h1> 
-        <form action="Auth" method="POST">
+        <h1>Login</h1> 
 
-            <label>Username: </label>
-            <input type="text" name="username">
+        <c:if test="${not empty loginGood}">
+            <p style="color: greenyellow;">${loginGood}</p>
+        </c:if>
+
+        <c:if test="${not empty loginBad}">
+            <p style="color: red;">${loginBad}</p>
+        </c:if>
+
+            <form action="Auth" method="POST">
+                <fieldset>
+                    <legend>Login Credentials</legend>
+
+                    <label>Username:</label>
+                    <input type="text" name="username" required>
+                    <br><br>
+
+                    <label>Password:</label>
+                    <input type="password" name="password" required>
+                </fieldset>
+
+                <br>
+
+                <input type="hidden" name="action" value="login">
+                <input type="submit" value="Login">
+            </form>
 
             <br>
 
-            <label>Password: </label>
-            <input type="password" name="password">
+            <form action="Auth" method="GET" style="display:inline;">
+                <input type="hidden" name="action" value="register">
+                <input type="submit" value="Register">
+            </form>
 
-            <br>
-
-            <input type="hidden" name="action" value="login">
-            <input type="submit" value="Login">
-        </form>
-        
-        <form action="Register" method="GET">
-            <input type="submit" value="Register">
-        </form>
-    </body>
-</html>
+            <c:if test="${not empty error}">
+                <p style="color: red;">${error}</p>
+            </c:if>
+        </body>
+    </html>
