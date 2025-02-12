@@ -9,6 +9,7 @@ package model;
  *
  * @author gAmma
  */
+import enums.UserRole;
 import java.time.LocalDateTime;
 
 public class User {
@@ -20,7 +21,7 @@ public class User {
     private String password;
     private String email;
     private String phone;
-    private String role;
+    private UserRole role;
     private int departmentId;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
@@ -30,15 +31,12 @@ public class User {
         this.updatedAt = LocalDateTime.now();
     }
     
-    public User(int userId, String username, String password, String role){
-        this.userId = userId;
+    public User(String username, String password){
         this.username = username;
         this.password = password;
-        this.role = role;
     }
 
-    public User(int userId, String firstName, String lastName, String username, String password, String email, String phone, String role, int departmentId) {
-        this.userId = userId;
+    public User(String firstName, String lastName, String username, String password, String email, String phone, UserRole role, int departmentId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -107,11 +105,11 @@ public class User {
         this.phone = phone;
     }
 
-    public String getRole() {
+    public UserRole getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(UserRole role) {
         this.role = role;
     }
 
