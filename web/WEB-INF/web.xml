@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <!-- Auth Servlet Configuration -->
     <servlet>
         <servlet-name>AuthController</servlet-name>
         <servlet-class>controllers.AuthController</servlet-class>
@@ -8,14 +9,18 @@
         <servlet-name>AuthController</servlet-name>
         <url-pattern>/Auth</url-pattern>
     </servlet-mapping>
+
+    <!-- Project Servlet Configuration -->
     <servlet>
         <servlet-name>ProjectController</servlet-name>
         <servlet-class>controllers.ProjectController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ProjectController</servlet-name>
-        <url-pattern>/Project</url-pattern>
+        <url-pattern>/projects/*</url-pattern>
     </servlet-mapping>
+
+    <!-- Task Servlet Configuration -->
     <servlet>
         <servlet-name>TaskController</servlet-name>
         <servlet-class>controllers.TaskController</servlet-class>
@@ -24,6 +29,16 @@
         <servlet-name>TaskController</servlet-name>
         <url-pattern>/Task</url-pattern>
     </servlet-mapping>
+
+    <!-- Session Configuration -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <!-- Welcome File Configuration -->
+    <welcome-file-list>
+        <welcome-file>Auth</welcome-file>
+    </welcome-file-list>
     <welcome-file-list>
         <welcome-file>Auth</welcome-file>
     </welcome-file-list>
