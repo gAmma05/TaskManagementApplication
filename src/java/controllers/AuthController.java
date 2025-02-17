@@ -120,26 +120,34 @@ public class AuthController extends HttpServlet {
         String password = req.getParameter("password");
         String confirmPassword = req.getParameter("confirm-password");
 
-        if (!password.equals(confirmPassword)) {
-            req.setAttribute("passDup", "Passwords do not match. Try again!");
-            req.getRequestDispatcher(REGISTER_VIEW).forward(req, resp);
-            return;
-        }
         String username = req.getParameter("username");
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
         String email = req.getParameter("email");
         String phone = req.getParameter("phone");
 
-        req.setAttribute("username", username);
-        req.setAttribute("password", password);
-        req.setAttribute("firstName", firstName);
-        req.setAttribute("lastName", lastName);
-        req.setAttribute("email", email);
-        req.setAttribute("phone", phone);
+        UserDAO udao = new UserDAO();
+        User checkU = udao.getUser(username);
+        if (checkU != null) {
+            if (checkU.getUsername().equals(username)) {
+                req.setAttribute("dupUser", "This username already exists, try another username");
+                req.getRequestDispatcher(REGISTER_VIEW).forward(req, resp);
+            }
+        } else {
+            if (!password.equals(confirmPassword)) {
+                req.setAttribute("passDup", "Passwords do not match. Try again!");
+                req.getRequestDispatcher(REGISTER_VIEW).forward(req, resp);
+            } else {
+                req.setAttribute("username", username);
+                req.setAttribute("password", password);
+                req.setAttribute("firstName", firstName);
+                req.setAttribute("lastName", lastName);
+                req.setAttribute("email", email);
+                req.setAttribute("phone", phone);
 
-        req.getRequestDispatcher(ROLE_SELECT_VIEW).forward(req, resp);
-
+                req.getRequestDispatcher(ROLE_SELECT_VIEW).forward(req, resp);
+            }
+        }
     }
 
     private void register(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
@@ -164,19 +172,14 @@ public class AuthController extends HttpServlet {
         }
 
         UserDAO udao = new UserDAO();
-        User checkU = udao.getUser(username, password);
-        if (checkU != null) {
-            req.setAttribute("error", "This username already exists, try another username");
-            req.getRequestDispatcher(REGISTER_VIEW).forward(req, resp);
+
+        User u = new User(firstName, lastName, username, password, email, phone, role == 1 ? UserRole.MANAGER : UserRole.MEMBER, 0);
+        if (udao.create(u)) {
+            req.setAttribute("loginGood", "Login successfully");
         } else {
-            User u = new User(firstName, lastName, username, password, email, phone, role == 1 ? UserRole.MANAGER : UserRole.MEMBER, 0);
-            if (udao.create(u)) {
-                req.setAttribute("loginGood", "Login successfully");
-            } else {
-                req.setAttribute("loginBad", "Failed to login");
-            }
-            req.getRequestDispatcher(LOGIN_VIEW).forward(req, resp);
+            req.setAttribute("loginBad", "Failed to login");
         }
+        req.getRequestDispatcher(LOGIN_VIEW).forward(req, resp);
 
 //        User u = new User(username, password, firstName, lastName, email, role)
     }
