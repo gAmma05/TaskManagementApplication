@@ -17,33 +17,39 @@
             <p style="color: red;">${loginBad}</p>
         </c:if>
 
-            <form action="Auth" method="POST">
-                <fieldset>
-                    <legend>Login Credentials</legend>
+        <c:if test="${not empty error}">
+            <p style="color: red;">${error}</p>
+        </c:if>
 
-                    <label>Username:</label>
-                    <input type="text" name="username" required>
-                    <br><br>
+        <form action="Auth" method="POST">
+            <fieldset>
+                <legend>Login Credentials</legend>
 
-                    <label>Password:</label>
-                    <input type="password" name="password" required>
-                </fieldset>
+                <label>Username:</label>
+                <input type="text" name="username" required>
+                <br><br>
 
-                <br>
-
-                <input type="hidden" name="action" value="login">
-                <input type="submit" value="Login">
-            </form>
+                <label>Password:</label>
+                <input type="password" name="password" required>
+            </fieldset>
 
             <br>
 
-            <form action="Auth" method="GET" style="display:inline;">
-                <input type="hidden" name="action" value="register">
-                <input type="submit" value="Register">
-            </form>
+            <input type="hidden" name="action" value="login">
+            <input type="submit" value="Login">
+        </form>
 
-            <c:if test="${not empty error}">
-                <p style="color: red;">${error}</p>
-            </c:if>
-        </body>
-    </html>
+        <br>
+
+        <form action="Auth" method="GET" style="display:inline;">
+            <input type="hidden" name="action" value="register">
+            <input type="submit" value="Register">
+        </form>
+        
+        <form action="Auth" method="GET" style="display:inline;">
+            <input type="hidden" name="action" value="forget-password">
+            <input type="submit" value="Forget password">
+        </form>
+
+    </body>
+</html>

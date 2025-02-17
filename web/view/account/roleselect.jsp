@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,9 +15,7 @@
     <body>
         <h1>Before getting to main page!</h1>
 
-
-
-        <form action="Auth" method="POST">
+        <form action="${pageContext.request.contextPath}/Auth" method="POST">
             <fieldset>
                 <legend>Choose a role to get access to projects list</legend>
 
