@@ -16,6 +16,8 @@ public class AuthController extends HttpServlet {
     private final String AUTH = "Auth";
     private final String DASHBOARD = "view/dashboard/dashboard.jsp";
     private final String LOGIN_VIEW = "view/account/login.jsp";
+    private final String FORGET_PASSWORD_VIEW = "view/account/forgetpassword.jsp";
+    private final String SET_NEW_PASSWORD_VIEW = "view/account/setnewpassword.jsp";
     private final String REGISTER_VIEW = "view/account/register.jsp";
     private final String ROLE_SELECT_VIEW = "view/account/roleselect.jsp";
 
@@ -29,8 +31,20 @@ public class AuthController extends HttpServlet {
                     login(request, response);
                     break;
 
+                case "forget-password":
+                    response.sendRedirect(FORGET_PASSWORD_VIEW);
+                    break;
+
+                case "fp-confirm-email":
+                    confirmEmail(request, response);
+                    break;
+
+                case "confirm-forget-password":
+                    forgetPassword(request, response);
+                    break;
+
                 case "register":
-                    request.getRequestDispatcher(REGISTER_VIEW).forward(request, response);
+                    response.sendRedirect(REGISTER_VIEW);
                     break;
 
                 case "role-selection":
@@ -84,9 +98,9 @@ public class AuthController extends HttpServlet {
             session.setAttribute("username", username);
             session.setAttribute("isLoggedIn", true);
             session.setAttribute("role", ulog.getRole());
-            
+
             req.getRequestDispatcher(DASHBOARD).forward(req, resp);
-            
+
         } else {
             req.setAttribute("error", "Wrong username or password");
             req.getRequestDispatcher(LOGIN_VIEW).forward(req, resp);
@@ -165,5 +179,51 @@ public class AuthController extends HttpServlet {
         }
 
 //        User u = new User(username, password, firstName, lastName, email, role)
+    }
+
+    private void confirmEmail(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        String email = req.getParameter("email");
+
+        UserDAO udao = new UserDAO();
+        User u = udao.getUserByEmail(email);
+
+        if (u != null) {
+            req.setAttribute("email", email);
+            req.setAttribute("username", u.getUsername());
+
+            req.getRequestDispatcher(SET_NEW_PASSWORD_VIEW).forward(req, resp);
+        } else {
+            req.setAttribute("error", "Account not found by email. Try again!");
+            resp.sendRedirect(FORGET_PASSWORD_VIEW);
+        }
+    }
+
+    private void forgetPassword(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        String email = req.getParameter("email");
+        String username = req.getParameter("username");
+        String newPassword = req.getParameter("new-password");
+        String confirmNewPassword = req.getParameter("confirm-new-password");
+
+        UserDAO udao = new UserDAO();
+        User u = udao.getUserByEmail(email);
+
+        if (newPassword.equals(confirmNewPassword) && newPassword.equals(u.getPassword())) {
+            req.setAttribute("email", email);
+            req.setAttribute("username", username);
+            req.setAttribute("dupPass", "You are using the old password. Try again");
+            req.getRequestDispatcher(SET_NEW_PASSWORD_VIEW).forward(req, resp);
+        } else if (!newPassword.equals(confirmNewPassword)) {
+            req.setAttribute("email", email);
+            req.setAttribute("username", username);
+            req.setAttribute("dupPass", "Passwords do not match. Try again");
+            req.getRequestDispatcher(SET_NEW_PASSWORD_VIEW).forward(req, resp);
+        } else {
+            if (udao.setNewPass(username, newPassword)) {
+                req.setAttribute("loginGood", "New password has been set successfully");
+            } else {
+                req.setAttribute("loginBad", "Failed to set new password");
+            }
+            req.getRequestDispatcher(LOGIN_VIEW).forward(req, resp);
+        }
     }
 }

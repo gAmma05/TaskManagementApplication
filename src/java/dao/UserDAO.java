@@ -41,6 +41,7 @@ public class UserDAO {
             if (rows > 0) {
                 status = true;
             }
+            con.close();
         } catch (ClassNotFoundException ex) {
             System.out.println("DBUtils not found.");
         } catch (SQLException ex) {
@@ -72,6 +73,65 @@ public class UserDAO {
                     u.setRole(rs.getInt("role") == 1 ? UserRole.MANAGER : UserRole.MEMBER);
                 }
             }
+            con.close();
+        } catch (ClassNotFoundException ex) {
+            System.out.println("DBUtils not found.");
+        } catch (SQLException ex) {
+            System.out.println("SQL Exception. Details: ");
+            ex.printStackTrace();
+        }
+        return u;
+    }
+    
+    
+    public boolean setNewPass(String username, String newPassword){
+        boolean status = false;
+        String sql = "UPDATE [User] SET password = ? WHERE username = ?";
+        try{
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setString(1, newPassword);
+            ps.setString(2, username);
+            
+            int rows = ps.executeUpdate();
+            
+            if(rows > 0){
+                status = true;
+            }
+            
+            con.close();
+        }catch (ClassNotFoundException ex) {
+            System.out.println("DBUtils not found.");
+        } catch (SQLException ex) {
+            System.out.println("SQL Exception. Details: ");
+            ex.printStackTrace();
+        }
+        return status;
+    }
+    
+    public User getUserByEmail(String email) {
+        User u = null;
+        String sql = "SELECT user_id, username, password "
+                + "FROM [User] u "
+                + "WHERE email = ?";
+        try {
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, email);
+            
+
+            ResultSet rs = ps.executeQuery();
+            if (rs != null) {
+                if (rs.next()) {
+                    u = new User();
+                    u.setUserId(rs.getInt("user_id"));
+                    u.setUsername(rs.getString("username"));
+                    u.setPassword(rs.getString("password"));
+                    
+                }
+            }
+            con.close();
         } catch (ClassNotFoundException ex) {
             System.out.println("DBUtils not found.");
         } catch (SQLException ex) {
