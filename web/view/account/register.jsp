@@ -13,6 +13,10 @@
             <p style="color: red;">${passDup}</p>
         </c:if>
 
+        <c:if test="${not empty dupUser}">
+            <p style="color: red;">${dupUser}</p>
+        </c:if>
+
         <form action="Auth" method="POST">
             <fieldset>
                 <legend>Account Information</legend>
