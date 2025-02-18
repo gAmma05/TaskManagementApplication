@@ -9,16 +9,17 @@ package enums;
  *
  * @author gAmma
  */
-public enum UserRole{
+public enum UserRole {
     MANAGER(1),
     MEMBER(0);
-    
+
     private final int value;
-    
-    UserRole(int value){
+
+    UserRole(int value) {
         this.value = value;
     }
-    
-    public int getValue(){
+
+    public int getValue() {
         return value;
+    }
 }
