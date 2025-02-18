@@ -127,7 +127,7 @@ public class AuthController extends HttpServlet {
         String phone = req.getParameter("phone");
 
         UserDAO udao = new UserDAO();
-        User checkU = udao.getUser(username);
+        User checkU = udao.getUserByEmail(username);
         if (checkU != null) {
             if (checkU.getUsername().equals(username)) {
                 req.setAttribute("dupUser", "This username already exists, try another username");
