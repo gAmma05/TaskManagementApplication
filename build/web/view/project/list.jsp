@@ -29,8 +29,8 @@
                             <p>Start Date: <fmt:formatDate value="${project.start_date}" pattern="dd/MM/yyyy"/></p>
                             <p>End Date: <fmt:formatDate value="${project.end_date}" pattern="dd/MM/yyyy"/></p>
                             <p>Budget: $${project.budget}</p>
-                            <a href="${pageContext.request.contextPath}/projects/tasks/${project.project_id}" 
-                               class="btn btn-info">View Tasks</a>
+                            <a href="${pageContext.request.contextPath}/projects/tasks/${project.project_id}" class="btn btn-info">View Tasks</a>
+                            <a href="${pageContext.request.contextPath}/projects/new" class="btn btn-primary mb-3">Create New Project</a>
                         </div>
                     </div>
                 </div>
