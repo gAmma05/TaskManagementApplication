@@ -9,15 +9,16 @@
     <body>
         <h1>Register</h1>
         
-        <c:if test="${not empty passDup}">
+<c:if test="${not empty passDup}">
             <p style="color: red;">${passDup}</p>
-        </c:if>
+</c:if>
 
-        <c:if test="${not empty dupUser}">
+<c:if test="${not empty dupUser}">
             <p style="color: red;">${dupUser}</p>
-        </c:if>
+</c:if>
 
-        <form action="Auth" method="POST">
+        <!--<form action="Auth" method="POST">-->
+        <form action="${pageContext.request.contextPath}/Auth" method="POST">
             <fieldset>
                 <legend>Account Information</legend>
                 <label>Username:</label>
@@ -61,13 +62,11 @@
 
         <br>
 
-        <form action="Auth" method="GET" style="display:inline;">
-            <button type="submit">Back</button>
-        </form>
-
+    <form action="${pageContext.request.contextPath}/Auth" method="GET" style="display:inline;">
+        <button type="submit">Back</button>
+    </form>
         <br><br>
 
-        <!--JSTL Validation Message-->
 
     </body>
 </html>

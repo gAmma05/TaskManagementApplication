@@ -22,7 +22,7 @@ public class UserDAO {
 
     public boolean create(User u) {
         boolean status = false;
-        String sql = "INSERT INTO [User] (first_name, last_name, username, password, email, phone, role, created_at, updated_at)"
+        String sql = "INSERT INTO `User` (first_name, last_name, username, password, email, phone, role, created_at, updated_at)"
                 + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             Connection con = DBConnection.getConnection();
@@ -54,7 +54,7 @@ public class UserDAO {
     public User getUser(String username, String password) {
         User u = null;
         String sql = "SELECT user_id, username, password, email, role "
-                + "FROM [User] u "
+                + "FROM `User` u "
                 + "WHERE username = ? AND password = ?";
         try {
             Connection con = DBConnection.getConnection();

@@ -15,11 +15,11 @@ public class AuthController extends HttpServlet {
 
     private final String AUTH = "Auth";
     private final String DASHBOARD = "view/dashboard/dashboard.jsp";
-    private final String LOGIN_VIEW = "view/account/login.jsp";
     private final String FORGET_PASSWORD_VIEW = "view/account/forgetpassword.jsp";
     private final String SET_NEW_PASSWORD_VIEW = "view/account/setnewpassword.jsp";
+    private final String LOGIN_VIEW = "/view/account/login.jsp";
     private final String REGISTER_VIEW = "view/account/register.jsp";
-    private final String ROLE_SELECT_VIEW = "view/account/roleselect.jsp";
+    private final String ROLE_SELECT_VIEW = "/view/account/roleselect.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -99,6 +99,11 @@ public class AuthController extends HttpServlet {
             session.setAttribute("isLoggedIn", true);
             session.setAttribute("role", ulog.getRole());
 
+            //Debug
+            System.out.println("Login successful. Redirecting to: " + DASHBOARD);
+            System.out.println("Username in session: " + session.getAttribute("username"));
+            System.out.println("Role in session: " + session.getAttribute("role"));
+
             req.getRequestDispatcher(DASHBOARD).forward(req, resp);
 
         } else {
@@ -127,7 +132,7 @@ public class AuthController extends HttpServlet {
         String phone = req.getParameter("phone");
 
         UserDAO udao = new UserDAO();
-        User checkU = udao.getUser(username);
+        User checkU = udao.getUser(username, password);
         if (checkU != null) {
             if (checkU.getUsername().equals(username)) {
                 req.setAttribute("dupUser", "This username already exists, try another username");
