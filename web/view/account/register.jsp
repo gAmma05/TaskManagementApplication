@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>Register</h1>
-        
+
         <c:if test="${not empty passDup}">
             <p style="color: red;">${passDup}</p>
         </c:if>
@@ -17,7 +17,11 @@
             <p style="color: red;">${dupUser}</p>
         </c:if>
 
-        <form action="Auth" method="POST">
+        <c:if test="${not empty regexPass}">
+            <p style="color: red;">${regexPass}</p>
+        </c:if>
+
+        <form action="${pageContext.request.contextPath}/Auth" method="POST">
             <fieldset>
                 <legend>Account Information</legend>
                 <label>Username:</label>
@@ -31,8 +35,6 @@
                 <label>Confirm Password:</label>
                 <input type="password" name="confirm-password" required>
             </fieldset>
-
-
             <br>
 
             <fieldset>
@@ -61,7 +63,7 @@
 
         <br>
 
-        <form action="Auth" method="GET" style="display:inline;">
+        <form action="${pageContext.request.contextPath}/Auth" method="GET" style="display:inline;">
             <button type="submit">Back</button>
         </form>
 

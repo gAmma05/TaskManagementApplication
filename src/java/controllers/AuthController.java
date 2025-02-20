@@ -23,6 +23,7 @@ public class AuthController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         String action = request.getParameter("action");
         HttpSession session = request.getSession(false);
         if (action != null) {
@@ -138,14 +139,22 @@ public class AuthController extends HttpServlet {
                 req.setAttribute("passDup", "Passwords do not match. Try again!");
                 req.getRequestDispatcher(REGISTER_VIEW).forward(req, resp);
             } else {
-                req.setAttribute("username", username);
-                req.setAttribute("password", password);
-                req.setAttribute("firstName", firstName);
-                req.setAttribute("lastName", lastName);
-                req.setAttribute("email", email);
-                req.setAttribute("phone", phone);
+                if (password.length() <= 6) {
+                    req.setAttribute("regexPass", "The password length must be longer than 6 characters");
+                    req.getRequestDispatcher(REGISTER_VIEW).forward(req, resp);
+                } else if (!password.matches(".*[A-Z].*") || !password.matches(".*[!@#$%^&*(),.?\":{}|<>].*")) {
+                    req.setAttribute("regexPass", "Password must contain at least one uppercase letter and one special character");
+                    req.getRequestDispatcher(REGISTER_VIEW).forward(req, resp);
+                } else {
+                    req.setAttribute("username", username);
+                    req.setAttribute("password", password);
+                    req.setAttribute("firstName", firstName);
+                    req.setAttribute("lastName", lastName);
+                    req.setAttribute("email", email);
+                    req.setAttribute("phone", phone);
 
-                req.getRequestDispatcher(ROLE_SELECT_VIEW).forward(req, resp);
+                    req.getRequestDispatcher(ROLE_SELECT_VIEW).forward(req, resp);
+                }
             }
         }
     }
@@ -221,12 +230,24 @@ public class AuthController extends HttpServlet {
             req.setAttribute("dupPass", "Passwords do not match. Try again");
             req.getRequestDispatcher(SET_NEW_PASSWORD_VIEW).forward(req, resp);
         } else {
-            if (udao.setNewPass(username, newPassword)) {
-                req.setAttribute("loginGood", "New password has been set successfully");
+            if (newPassword.length() <= 6) {
+                req.setAttribute("email", email);
+                req.setAttribute("username", username);
+                req.setAttribute("regexPass", "The password length must be longer than 6 characters");
+                req.getRequestDispatcher(SET_NEW_PASSWORD_VIEW).forward(req, resp);
+            } else if (!newPassword.matches(".*[A-Z].*") || !newPassword.matches(".*[!@#$%^&*(),.?\":{}|<>].*")) {
+                req.setAttribute("email", email);
+                req.setAttribute("username", username);
+                req.setAttribute("regexPass", "Password must contain at least one uppercase letter and one special character");
+                req.getRequestDispatcher(SET_NEW_PASSWORD_VIEW).forward(req, resp);
             } else {
-                req.setAttribute("loginBad", "Failed to set new password");
+                if (udao.setNewPass(username, newPassword)) {
+                    req.setAttribute("loginGood", "New password has been set successfully");
+                } else {
+                    req.setAttribute("loginBad", "Failed to set new password");
+                }
+                req.getRequestDispatcher(LOGIN_VIEW).forward(req, resp);
             }
-            req.getRequestDispatcher(LOGIN_VIEW).forward(req, resp);
         }
     }
 }
