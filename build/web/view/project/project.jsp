@@ -11,15 +11,14 @@
     <body>
         <div class="container mt-5">
             <h2>My Projects</h2>
-            <c:if test="${sessionScope.isLoggedIn}">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <a href="${pageContext.request.contextPath}/projects/new" class="btn btn-primary">Create New Project</a>
-                    <a href="${pageContext.request.contextPath}/Auth?action=logout" class="btn btn-outline-danger">Logout</a>
-                </div>
-            </c:if>
-            
+    <c:if test="${not empty sessionScope.userId || sessionScope.isLoggedIn}">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <a href="${pageContext.request.contextPath}/projects/new" class="btn btn-primary">Create New Project</a>
+            <a href="${pageContext.request.contextPath}/Auth?action=logout" class="btn btn-outline-danger">Logout</a>
+        </div>
+    </c:if>
             <div class="row">
-                <c:forEach items="${projects}" var="project">
+<c:forEach items="${projects}" var="project">
                     <div class="col-md-4 mb-4">
                         <div class="card">
                             <div class="card-body">
@@ -35,7 +34,7 @@
                             </div>
                         </div>
                     </div>
-                </c:forEach>
+</c:forEach>
             </div>
         </div>
         
