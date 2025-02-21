@@ -18,7 +18,7 @@ public class ProjectDAO {
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                     
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+             PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             
             pstmt.setString(1, project.getProject_name());
             pstmt.setString(2, project.getDescription());
@@ -32,12 +32,38 @@ public class ProjectDAO {
             pstmt.setTimestamp(10, new Timestamp(project.getUpdated_at().getTime()));
             
             pstmt.executeUpdate();
+
+            // Get the generated project_id
+            ResultSet generatedKeys = pstmt.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                long projectId = generatedKeys.getLong(1);
+                project.setProject_id(projectId);
+            }
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error saving project", e);
             throw e;
         }
     }
-    
+
+    public void saveProjectWithEnrollment(Project project) throws SQLException, ClassNotFoundException {
+        saveProject(project);
+
+        String enrollSql = "INSERT INTO enroll (user_id, project_id, role, joined_at) VALUES (?, ?, ?, ?)";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(enrollSql)) {
+            
+            pstmt.setInt(1, project.getManager_id());
+            pstmt.setLong(2, project.getProject_id());
+            pstmt.setString(3, "Manager");
+            pstmt.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
+            
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error saving enrollment", e);
+            throw e;
+        }
+    }
+
     public List<Project> getUserProjects(Integer userId) throws SQLException, ClassNotFoundException {
         List<Project> projects = new ArrayList<>();
         String sql = "SELECT p.* FROM project p " +

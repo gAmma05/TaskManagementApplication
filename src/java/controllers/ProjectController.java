@@ -82,7 +82,7 @@ public class ProjectController extends HttpServlet {
             throws ServletException, IOException {
         try {
             Project project = createProjectFromRequest(request);
-            projectDAO.saveProject(project);
+            projectDAO.saveProjectWithEnrollment(project);
             response.sendRedirect(request.getContextPath() + "/projects");
         } catch (SQLException | ClassNotFoundException e) {
             LOGGER.log(Level.SEVERE, "Error creating project", e);
@@ -95,6 +95,7 @@ public class ProjectController extends HttpServlet {
         Project project = new Project();
         project.setProject_name(request.getParameter("projectName"));
         project.setDescription(request.getParameter("description"));
+
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             project.setStart_date(dateFormat.parse(request.getParameter("startDate")));
