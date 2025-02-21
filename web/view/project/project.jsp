@@ -11,21 +11,21 @@
     <body>
         <div class="container mt-5">
             <h2>My Projects</h2>
-    <c:if test="${not empty sessionScope.userId || sessionScope.isLoggedIn}">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <a href="${pageContext.request.contextPath}/projects/new" class="btn btn-primary">Create New Project</a>
-            <a href="${pageContext.request.contextPath}/Auth?action=logout" class="btn btn-outline-danger">Logout</a>
-        </div>
-    </c:if>
+            <c:if test="${not empty sessionScope.userId || sessionScope.isLoggedIn}">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <a href="${pageContext.request.contextPath}/projects/new" class="btn btn-primary">Create New Project</a>
+                    <a href="${pageContext.request.contextPath}/Auth?action=logout" class="btn btn-outline-danger">Logout</a>
+                </div>
+            </c:if>
             <div class="row">
-<c:forEach items="${projects}" var="project">
+                <c:forEach items="${projects}" var="project">
                     <div class="col-md-4 mb-4">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">${project.project_name}</h5>
                                 <p class="card-text">${project.description}</p>
-                                <p>Status: ${project.status}</p>
-                                <p>Priority: ${project.priority}</p>
+                                <p>Status: ${project.status.displayName}</p>
+                                <p>Priority: ${project.priority.displayName}</p>
                                 <p>Start Date: <fmt:formatDate value="${project.start_date}" pattern="dd/MM/yyyy"/></p>
                                 <p>End Date: <fmt:formatDate value="${project.end_date}" pattern="dd/MM/yyyy"/></p>
                                 <p>Budget: $${project.budget}</p>
@@ -34,7 +34,7 @@
                             </div>
                         </div>
                     </div>
-</c:forEach>
+                </c:forEach>
             </div>
         </div>
         

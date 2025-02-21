@@ -4,9 +4,9 @@
     Author     : asus
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,8 +17,12 @@
 <body>
     <div class="container mt-5">
         <h2>My Projects</h2>
-        <a href="${pageContext.request.contextPath}/projects/new" class="btn btn-primary mb-3">Create New Project</a>
-        
+        <c:if test="${not empty sessionScope.userId || sessionScope.isLoggedIn}">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <a href="${pageContext.request.contextPath}/projects/new" class="btn btn-primary">Create New Project</a>
+                <a href="${pageContext.request.contextPath}/Auth?action=logout" class="btn btn-outline-danger">Logout</a>
+            </div>
+        </c:if>
         <div class="row">
             <c:forEach items="${projects}" var="project">
                 <div class="col-md-4 mb-4">
