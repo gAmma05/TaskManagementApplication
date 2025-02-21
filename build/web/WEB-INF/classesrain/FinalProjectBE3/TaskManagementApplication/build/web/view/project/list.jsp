@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,13 +26,12 @@
                         <div class="card-body">
                             <h5 class="card-title">${project.project_name}</h5>
                             <p class="card-text">${project.description}</p>
-                            <p>Status: ${project.status}</p>
-                            <p>Priority: ${project.priority}</p>
+                            <p>Status: ${project.status.displayName}</p>
+                            <p>Priority: ${project.priority.displayName}</p>
                             <p>Start Date: <fmt:formatDate value="${project.start_date}" pattern="dd/MM/yyyy"/></p>
                             <p>End Date: <fmt:formatDate value="${project.end_date}" pattern="dd/MM/yyyy"/></p>
                             <p>Budget: $${project.budget}</p>
                             <a href="${pageContext.request.contextPath}/projects/tasks/${project.project_id}" class="btn btn-info">View Tasks</a>
-                            <a href="${pageContext.request.contextPath}/projects/new" class="btn btn-primary mb-3">Create New Project</a>
                         </div>
                     </div>
                 </div>

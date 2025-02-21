@@ -100,8 +100,10 @@ public class AuthController extends HttpServlet {
             session.setAttribute("isLoggedIn", true);
             session.setAttribute("role", ulog.getRole());
 
-            req.getRequestDispatcher(DASHBOARD).forward(req, resp);
+            session.setAttribute("userId", ulog.getUserId()); // Ensure userId is set in session
 
+
+            req.getRequestDispatcher(DASHBOARD).forward(req, resp);
         } else {
             req.setAttribute("error", "Wrong username or password");
             req.getRequestDispatcher(LOGIN_VIEW).forward(req, resp);

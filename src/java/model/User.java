@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 
 public class User {
 
-    private int userId;
+    private Integer userId;
     private String firstName;
     private String lastName;
     private String username;
@@ -22,7 +22,7 @@ public class User {
     private String email;
     private String phone;
     private UserRole role;
-    private int departmentId;
+    private Integer departmentId;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     
@@ -36,7 +36,7 @@ public class User {
         this.password = password;
     }
 
-    public User(String firstName, String lastName, String username, String password, String email, String phone, UserRole role, int departmentId) {
+    public User(String firstName, String lastName, String username, String password, String email, String phone, UserRole role, Integer departmentId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -49,11 +49,11 @@ public class User {
         this.updatedAt = LocalDateTime.now();
     }
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
@@ -113,11 +113,11 @@ public class User {
         this.role = role;
     }
 
-    public int getDepartmentId() {
+    public Integer getDepartmentId() {
         return departmentId;
     }
 
-    public void setDepartmentId(int departmentId) {
+    public void setDepartmentId(Integer departmentId) {
         this.departmentId = departmentId;
     }
 

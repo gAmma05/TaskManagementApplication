@@ -26,104 +26,39 @@ public class Project {
     private Status status;
     private Priority priority;
     private Double budget;
-    private Long manager_id;
+    private Integer manager_id;
     private Date created_at;
     private Date updated_at;
 
     public enum Status {
-        NOT_STARTED, IN_PROGRESS, COMPLETED, ON_HOLD, CANCELLED
+        NOT_STARTED("Not Started"),
+        IN_PROGRESS("In Progress"),
+        COMPLETED("Completed");
+
+        private final String displayName;
+
+        Status(String displayName) {
+            this.displayName = displayName;
+        }
+
+        public String getDisplayName() {
+            return displayName;
+        }
     }
 
     public enum Priority {
-        LOW, MEDIUM, HIGH
-    }
+        LOW("Low"),
+        MEDIUM("Medium"),
+        HIGH("High");
 
-    // Getters and Setters
-    public Long getProject_id() {
-        return project_id;
-    }
+        private final String displayName;
 
-    public void setProject_id(Long project_id) {
-        this.project_id = project_id;
-    }
+        Priority(String displayName) {
+            this.displayName = displayName;
+        }
 
-    public String getProject_name() {
-        return project_name;
-    }
-
-    public void setProject_name(String project_name) {
-        this.project_name = project_name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Date getStart_date() {
-        return start_date;
-    }
-
-    public void setStart_date(Date start_date) {
-        this.start_date = start_date;
-    }
-
-    public Date getEnd_date() {
-        return end_date;
-    }
-
-    public void setEnd_date(Date end_date) {
-        this.end_date = end_date;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-    public Priority getPriority() {
-        return priority;
-    }
-
-    public void setPriority(Priority priority) {
-        this.priority = priority;
-    }
-
-    public Double getBudget() {
-        return budget;
-    }
-
-    public void setBudget(Double budget) {
-        this.budget = budget;
-    }
-
-    public Long getManager_id() {
-        return manager_id;
-    }
-
-    public void setManager_id(Long manager_id) {
-        this.manager_id = manager_id;
-    }
-
-    public Date getCreated_at() {
-        return created_at;
-    }
-
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
-
-    public Date getUpdated_at() {
-        return updated_at;
-    }
-
-    public void setUpdated_at(Date updated_at) {
-        this.updated_at = updated_at;
+        public String getDisplayName() {
+            return displayName;
+        }
     }
 }

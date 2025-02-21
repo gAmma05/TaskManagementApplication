@@ -20,7 +20,7 @@
                     <p>Your role: ${sessionScope.role}</p>
                     
                     <div class="mt-4">
-                       <a href="/projects" class="btn btn-primary me-2">Go to Projects</a>
+                       <a href="${pageContext.request.contextPath}/view/project/list.jsp" class="btn btn-primary me-2">Go to Projects</a>
                         <a href="Auth?action=logout" class="btn btn-danger">Logout</a>
                     </div>
     </c:when>
