@@ -13,6 +13,7 @@
         <title>Set new password for the user</title>
     </head>
     <body>
+
         <h1>Set a new password</h1>
         <c:if test="${not empty error}">
             <p style="color:red;">${error}</p>
@@ -20,6 +21,10 @@
 
         <c:if test="${not empty dupPass}">
             <p style="color:red;">${dupPass}</p>
+        </c:if>    
+
+        <c:if test="${not empty regexPass}">
+            <p style="color:red;">${regexPass}</p>
         </c:if>    
 
         <c:if test="${not empty username}">
