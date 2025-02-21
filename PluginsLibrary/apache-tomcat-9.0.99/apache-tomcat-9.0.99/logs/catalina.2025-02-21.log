@@ -1,0 +1,931 @@
+21-Feb-2025 09:49:36.290 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.99
+21-Feb-2025 09:49:36.296 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Feb 4 2025 20:08:08 UTC
+21-Feb-2025 09:49:36.296 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.99.0
+21-Feb-2025 09:49:36.296 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 11
+21-Feb-2025 09:49:36.297 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+21-Feb-2025 09:49:36.297 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+21-Feb-2025 09:49:36.297 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-21
+21-Feb-2025 09:49:36.297 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           21.0.5+9-LTS-239
+21-Feb-2025 09:49:36.297 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+21-Feb-2025 09:49:36.297 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99
+21-Feb-2025 09:49:36.297 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99
+21-Feb-2025 09:49:36.314 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+21-Feb-2025 09:49:36.314 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+21-Feb-2025 09:49:36.314 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+21-Feb-2025 09:49:36.314 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+21-Feb-2025 09:49:36.315 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+21-Feb-2025 09:49:36.315 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\logging.properties
+21-Feb-2025 09:49:36.315 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+21-Feb-2025 09:49:36.315 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+21-Feb-2025 09:49:36.315 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+21-Feb-2025 09:49:36.315 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.io.useCanonCaches=false
+21-Feb-2025 09:49:36.315 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+21-Feb-2025 09:49:36.315 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99
+21-Feb-2025 09:49:36.315 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99
+21-Feb-2025 09:49:36.315 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\temp
+21-Feb-2025 09:49:36.322 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [C:\Program Files\Java\jdk-21\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Eclipse Adoptium\jdk-17.0.13.11-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files\Tomcat\apache-tomcat-10.1.34\bin;C:\Program Files\dotnet\;C:\Program Files\nodejs\;E:\Git\cmd;C:\Users\asus\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\asus\AppData\Local\Programs\Python\Python312\;C:\Users\asus\AppData\Local\Programs\Python\Launcher\;C:\Users\asus\AppData\Local\Microsoft\WindowsApps;C:\Users\asus\AppData\Local\Programs\nu\bin\;C:\Users\asus\AppData\Local\GitHubDesktop\bin;C:\Users\asus\JetBrains Rider 2024.3.3\bin;;C:\Users\asus\.dotnet\tools;E:\Microsoft VS Code\bin;C:\Users\asus\AppData\Roaming\npm;.]
+21-Feb-2025 09:49:36.681 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+21-Feb-2025 09:49:36.710 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [644] milliseconds
+21-Feb-2025 09:49:36.780 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+21-Feb-2025 09:49:36.780 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.99]
+21-Feb-2025 09:49:36.789 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml]
+21-Feb-2025 09:49:36.812 WARNING [main] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/TaskManagementApplication] in deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has been ignored
+21-Feb-2025 09:49:37.761 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 09:49:37.875 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has finished in [1,085] ms
+21-Feb-2025 09:49:37.875 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\webapps\docs]
+21-Feb-2025 09:49:37.929 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\webapps\docs] has finished in [53] ms
+21-Feb-2025 09:49:37.929 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\webapps\examples]
+21-Feb-2025 09:49:38.898 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\webapps\examples] has finished in [969] ms
+21-Feb-2025 09:49:38.899 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\webapps\host-manager]
+21-Feb-2025 09:49:38.944 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\webapps\host-manager] has finished in [45] ms
+21-Feb-2025 09:49:38.944 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\webapps\manager]
+21-Feb-2025 09:49:38.990 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\webapps\manager] has finished in [46] ms
+21-Feb-2025 09:49:38.992 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\webapps\ROOT]
+21-Feb-2025 09:49:39.025 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\webapps\ROOT] has finished in [35] ms
+21-Feb-2025 09:49:39.030 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+21-Feb-2025 09:49:39.069 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [2356] milliseconds
+21-Feb-2025 09:49:41.127 INFO [http-nio-8080-exec-1] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/TaskManagementApplication]
+21-Feb-2025 09:49:41.155 INFO [http-nio-8080-exec-4] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml]
+21-Feb-2025 09:49:41.156 WARNING [http-nio-8080-exec-4] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/TaskManagementApplication] in deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has been ignored
+21-Feb-2025 09:49:41.642 INFO [http-nio-8080-exec-4] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 09:49:41.663 INFO [http-nio-8080-exec-4] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has finished in [508] ms
+21-Feb-2025 09:49:41.672 INFO [http-nio-8080-exec-7] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/TaskManagementApplication]] after start() had already been called. The second call will be ignored.
+21-Feb-2025 09:53:46.218 WARNING [http-nio-8080-exec-12] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [TaskManagementApplication] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Feb-2025 09:53:46.219 WARNING [http-nio-8080-exec-12] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [TaskManagementApplication] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 09:53:46.729 INFO [http-nio-8080-exec-12] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/TaskManagementApplication]
+21-Feb-2025 09:53:46.901 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 09:53:51.397 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+21-Feb-2025 09:53:51.397 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+21-Feb-2025 09:53:51.404 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+21-Feb-2025 09:53:51.423 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+21-Feb-2025 09:53:51.435 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+21-Feb-2025 09:53:54.512 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.99
+21-Feb-2025 09:53:54.515 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Feb 4 2025 20:08:08 UTC
+21-Feb-2025 09:53:54.515 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.99.0
+21-Feb-2025 09:53:54.515 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 11
+21-Feb-2025 09:53:54.515 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+21-Feb-2025 09:53:54.515 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+21-Feb-2025 09:53:54.516 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-21
+21-Feb-2025 09:53:54.516 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           21.0.5+9-LTS-239
+21-Feb-2025 09:53:54.516 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+21-Feb-2025 09:53:54.516 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99
+21-Feb-2025 09:53:54.516 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99
+21-Feb-2025 09:53:54.526 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+21-Feb-2025 09:53:54.526 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+21-Feb-2025 09:53:54.526 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+21-Feb-2025 09:53:54.526 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+21-Feb-2025 09:53:54.526 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+21-Feb-2025 09:53:54.526 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\logging.properties
+21-Feb-2025 09:53:54.526 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+21-Feb-2025 09:53:54.526 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+21-Feb-2025 09:53:54.526 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+21-Feb-2025 09:53:54.526 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.io.useCanonCaches=false
+21-Feb-2025 09:53:54.526 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -agentlib:jdwp=transport=dt_shmem,address=tomcat_shared_memory_id,server=y,suspend=n
+21-Feb-2025 09:53:54.526 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+21-Feb-2025 09:53:54.526 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99
+21-Feb-2025 09:53:54.526 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99
+21-Feb-2025 09:53:54.527 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\temp
+21-Feb-2025 09:53:54.618 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [C:\Program Files\Java\jdk-21\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Eclipse Adoptium\jdk-17.0.13.11-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files\Tomcat\apache-tomcat-10.1.34\bin;C:\Program Files\dotnet\;C:\Program Files\nodejs\;E:\Git\cmd;C:\Users\asus\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\asus\AppData\Local\Programs\Python\Python312\;C:\Users\asus\AppData\Local\Programs\Python\Launcher\;C:\Users\asus\AppData\Local\Microsoft\WindowsApps;C:\Users\asus\AppData\Local\Programs\nu\bin\;C:\Users\asus\AppData\Local\GitHubDesktop\bin;C:\Users\asus\JetBrains Rider 2024.3.3\bin;;C:\Users\asus\.dotnet\tools;E:\Microsoft VS Code\bin;C:\Users\asus\AppData\Roaming\npm;.]
+21-Feb-2025 09:53:54.995 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+21-Feb-2025 09:53:55.025 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [668] milliseconds
+21-Feb-2025 09:53:55.088 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+21-Feb-2025 09:53:55.088 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.99]
+21-Feb-2025 09:53:55.100 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\webapps\docs]
+21-Feb-2025 09:53:55.484 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\webapps\docs] has finished in [384] ms
+21-Feb-2025 09:53:55.485 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\webapps\examples]
+21-Feb-2025 09:53:55.850 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\webapps\examples] has finished in [364] ms
+21-Feb-2025 09:53:55.850 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\webapps\host-manager]
+21-Feb-2025 09:53:55.887 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\webapps\host-manager] has finished in [37] ms
+21-Feb-2025 09:53:55.887 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\webapps\manager]
+21-Feb-2025 09:53:55.924 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\webapps\manager] has finished in [36] ms
+21-Feb-2025 09:53:55.924 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\webapps\ROOT]
+21-Feb-2025 09:53:55.948 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\webapps\ROOT] has finished in [24] ms
+21-Feb-2025 09:53:55.953 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+21-Feb-2025 09:53:55.979 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [951] milliseconds
+21-Feb-2025 09:53:57.276 INFO [http-nio-8080-exec-7] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml]
+21-Feb-2025 09:53:57.277 WARNING [http-nio-8080-exec-7] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/TaskManagementApplication] in deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has been ignored
+21-Feb-2025 09:53:57.762 INFO [http-nio-8080-exec-7] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 09:53:57.791 INFO [http-nio-8080-exec-7] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has finished in [515] ms
+21-Feb-2025 09:53:57.800 INFO [http-nio-8080-exec-8] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/TaskManagementApplication]] after start() had already been called. The second call will be ignored.
+21-Feb-2025 10:15:25.188 INFO [http-nio-8080-exec-8] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 10:15:25.279 WARNING [http-nio-8080-exec-8] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [TaskManagementApplication] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Feb-2025 10:15:25.280 WARNING [http-nio-8080-exec-8] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [TaskManagementApplication] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 10:15:27.505 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 10:15:33.830 INFO [http-nio-8080-exec-8] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 10:15:33.893 INFO [http-nio-8080-exec-8] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 10:16:34.090 INFO [http-nio-8080-exec-5] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 10:16:42.085 INFO [http-nio-8080-exec-5] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 10:16:42.132 INFO [http-nio-8080-exec-5] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 10:16:42.473 INFO [http-nio-8080-exec-3] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 10:16:42.970 INFO [http-nio-8080-exec-3] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 10:16:42.993 INFO [http-nio-8080-exec-3] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 10:16:43.754 INFO [http-nio-8080-exec-14] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 10:16:44.106 INFO [http-nio-8080-exec-14] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 10:16:44.123 INFO [http-nio-8080-exec-14] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 10:46:05.444 WARNING [http-nio-8080-exec-25] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [TaskManagementApplication] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Feb-2025 10:46:05.446 WARNING [http-nio-8080-exec-25] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [TaskManagementApplication] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 10:46:05.964 INFO [http-nio-8080-exec-25] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/TaskManagementApplication]
+21-Feb-2025 10:46:06.710 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 10:47:35.913 INFO [http-nio-8080-exec-28] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml]
+21-Feb-2025 10:47:35.935 WARNING [http-nio-8080-exec-28] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/TaskManagementApplication] in deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has been ignored
+21-Feb-2025 10:47:36.708 INFO [http-nio-8080-exec-28] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 10:47:36.738 INFO [http-nio-8080-exec-28] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has finished in [818] ms
+21-Feb-2025 10:47:36.747 INFO [http-nio-8080-exec-26] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/TaskManagementApplication]] after start() had already been called. The second call will be ignored.
+21-Feb-2025 10:59:52.118 INFO [http-nio-8080-exec-28] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 10:59:52.136 WARNING [http-nio-8080-exec-28] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [TaskManagementApplication] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Feb-2025 10:59:52.137 WARNING [http-nio-8080-exec-28] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [TaskManagementApplication] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 10:59:52.284 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 10:59:52.645 INFO [http-nio-8080-exec-28] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 10:59:52.665 INFO [http-nio-8080-exec-28] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:00:07.875 INFO [http-nio-8080-exec-31] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:00:08.205 INFO [http-nio-8080-exec-31] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:00:08.214 INFO [http-nio-8080-exec-31] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:00:15.915 INFO [http-nio-8080-exec-36] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:00:16.229 INFO [http-nio-8080-exec-36] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:00:16.240 INFO [http-nio-8080-exec-36] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:00:46.984 INFO [http-nio-8080-exec-32] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:00:46.987 WARNING [http-nio-8080-exec-32] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [TaskManagementApplication] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Feb-2025 11:00:46.987 WARNING [http-nio-8080-exec-32] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [TaskManagementApplication] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 11:00:47.197 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 11:00:47.198 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 11:00:47.528 INFO [http-nio-8080-exec-32] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:00:47.544 INFO [http-nio-8080-exec-32] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:00:48.065 INFO [http-nio-8080-exec-43] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/TaskManagementApplication]
+21-Feb-2025 11:00:48.092 INFO [http-nio-8080-exec-39] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml]
+21-Feb-2025 11:00:48.093 WARNING [http-nio-8080-exec-39] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/TaskManagementApplication] in deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has been ignored
+21-Feb-2025 11:00:48.548 INFO [http-nio-8080-exec-39] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:00:48.562 INFO [http-nio-8080-exec-39] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has finished in [469] ms
+21-Feb-2025 11:00:48.568 INFO [http-nio-8080-exec-37] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/TaskManagementApplication]] after start() had already been called. The second call will be ignored.
+21-Feb-2025 11:15:09.825 INFO [http-nio-8080-exec-48] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:15:09.842 WARNING [http-nio-8080-exec-48] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [TaskManagementApplication] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Feb-2025 11:15:09.843 WARNING [http-nio-8080-exec-48] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [TaskManagementApplication] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 11:15:10.083 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 11:15:10.343 INFO [http-nio-8080-exec-48] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:15:10.355 INFO [http-nio-8080-exec-48] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:15:48.703 INFO [http-nio-8080-exec-46] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:15:49.072 INFO [http-nio-8080-exec-46] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:15:49.082 INFO [http-nio-8080-exec-46] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:15:49.424 INFO [http-nio-8080-exec-47] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:15:49.787 INFO [http-nio-8080-exec-47] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:15:49.798 INFO [http-nio-8080-exec-47] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:16:03.774 INFO [http-nio-8080-exec-49] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:16:04.081 INFO [http-nio-8080-exec-49] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:16:04.091 INFO [http-nio-8080-exec-49] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:17:42.915 INFO [http-nio-8080-exec-50] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:17:43.234 INFO [http-nio-8080-exec-50] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:17:43.244 INFO [http-nio-8080-exec-50] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:18:31.456 INFO [http-nio-8080-exec-60] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:18:31.771 INFO [http-nio-8080-exec-60] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:18:31.780 INFO [http-nio-8080-exec-60] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:18:33.437 INFO [http-nio-8080-exec-45] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:18:33.764 INFO [http-nio-8080-exec-45] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:18:33.774 INFO [http-nio-8080-exec-45] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:18:38.065 INFO [http-nio-8080-exec-59] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:18:38.401 INFO [http-nio-8080-exec-59] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:18:38.413 INFO [http-nio-8080-exec-59] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:19:16.577 INFO [http-nio-8080-exec-49] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:19:16.879 INFO [http-nio-8080-exec-49] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:19:16.888 INFO [http-nio-8080-exec-49] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:19:17.932 INFO [http-nio-8080-exec-60] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:19:18.289 INFO [http-nio-8080-exec-60] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:19:18.298 INFO [http-nio-8080-exec-60] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:19:37.585 INFO [http-nio-8080-exec-59] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:19:38.009 INFO [http-nio-8080-exec-59] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:19:38.021 INFO [http-nio-8080-exec-59] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:19:39.442 INFO [http-nio-8080-exec-61] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:19:39.899 INFO [http-nio-8080-exec-61] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:19:39.917 INFO [http-nio-8080-exec-61] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:19:46.425 INFO [http-nio-8080-exec-56] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/TaskManagementApplication]
+21-Feb-2025 11:19:46.448 INFO [http-nio-8080-exec-55] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml]
+21-Feb-2025 11:19:46.450 WARNING [http-nio-8080-exec-55] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/TaskManagementApplication] in deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has been ignored
+21-Feb-2025 11:19:46.832 INFO [http-nio-8080-exec-55] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:19:46.844 INFO [http-nio-8080-exec-55] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has finished in [395] ms
+21-Feb-2025 11:19:46.854 INFO [http-nio-8080-exec-59] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/TaskManagementApplication]] after start() had already been called. The second call will be ignored.
+21-Feb-2025 11:21:35.661 INFO [http-nio-8080-exec-71] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:21:35.664 WARNING [http-nio-8080-exec-71] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [TaskManagementApplication] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Feb-2025 11:21:35.664 WARNING [http-nio-8080-exec-71] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [TaskManagementApplication] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 11:21:35.972 INFO [http-nio-8080-exec-71] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:21:35.981 INFO [http-nio-8080-exec-71] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:21:39.846 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 11:21:44.753 INFO [http-nio-8080-exec-71] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:21:45.056 INFO [http-nio-8080-exec-71] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:21:45.065 INFO [http-nio-8080-exec-71] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:21:53.372 INFO [http-nio-8080-exec-78] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:21:53.665 INFO [http-nio-8080-exec-78] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:21:53.674 INFO [http-nio-8080-exec-78] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:21:55.457 INFO [http-nio-8080-exec-75] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:21:55.776 INFO [http-nio-8080-exec-75] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:21:55.785 INFO [http-nio-8080-exec-75] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:22:04.851 INFO [http-nio-8080-exec-81] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:22:05.163 INFO [http-nio-8080-exec-81] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:22:05.172 INFO [http-nio-8080-exec-81] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:22:05.503 INFO [http-nio-8080-exec-83] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:22:05.827 INFO [http-nio-8080-exec-83] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:22:05.836 INFO [http-nio-8080-exec-83] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:22:11.313 INFO [http-nio-8080-exec-82] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:22:11.621 INFO [http-nio-8080-exec-82] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:22:11.629 INFO [http-nio-8080-exec-82] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:26:52.679 INFO [http-nio-8080-exec-90] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:26:52.976 INFO [http-nio-8080-exec-90] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:26:52.985 INFO [http-nio-8080-exec-90] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:27:05.563 INFO [http-nio-8080-exec-88] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:27:05.863 INFO [http-nio-8080-exec-88] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:27:05.871 INFO [http-nio-8080-exec-88] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:27:21.754 INFO [http-nio-8080-exec-90] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:27:22.053 INFO [http-nio-8080-exec-90] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:27:22.061 INFO [http-nio-8080-exec-90] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:27:40.986 INFO [http-nio-8080-exec-73] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:27:41.290 INFO [http-nio-8080-exec-73] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:27:41.300 INFO [http-nio-8080-exec-73] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:27:47.244 INFO [http-nio-8080-exec-89] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:27:47.549 INFO [http-nio-8080-exec-89] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:27:47.558 INFO [http-nio-8080-exec-89] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:27:55.473 INFO [http-nio-8080-exec-90] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:27:55.770 INFO [http-nio-8080-exec-90] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:27:55.779 INFO [http-nio-8080-exec-90] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:28:06.838 INFO [http-nio-8080-exec-82] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/TaskManagementApplication]
+21-Feb-2025 11:28:06.855 INFO [http-nio-8080-exec-73] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml]
+21-Feb-2025 11:28:06.855 WARNING [http-nio-8080-exec-73] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/TaskManagementApplication] in deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has been ignored
+21-Feb-2025 11:28:07.141 INFO [http-nio-8080-exec-73] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:28:07.149 INFO [http-nio-8080-exec-73] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has finished in [294] ms
+21-Feb-2025 11:28:07.154 INFO [http-nio-8080-exec-92] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/TaskManagementApplication]] after start() had already been called. The second call will be ignored.
+21-Feb-2025 11:28:55.340 INFO [http-nio-8080-exec-92] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:28:55.342 WARNING [http-nio-8080-exec-92] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [TaskManagementApplication] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Feb-2025 11:28:55.343 WARNING [http-nio-8080-exec-92] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [TaskManagementApplication] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 11:28:55.353 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 11:28:55.699 INFO [http-nio-8080-exec-92] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:28:55.708 INFO [http-nio-8080-exec-92] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:29:18.937 INFO [http-nio-8080-exec-92] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:29:19.235 INFO [http-nio-8080-exec-92] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:29:19.244 INFO [http-nio-8080-exec-92] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:29:28.423 INFO [http-nio-8080-exec-102] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:29:28.766 INFO [http-nio-8080-exec-102] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:29:28.774 INFO [http-nio-8080-exec-102] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:29:29.106 INFO [http-nio-8080-exec-99] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:29:29.436 INFO [http-nio-8080-exec-99] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:29:29.445 INFO [http-nio-8080-exec-99] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:29:43.927 INFO [http-nio-8080-exec-106] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:29:43.930 WARNING [http-nio-8080-exec-106] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [TaskManagementApplication] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Feb-2025 11:29:43.930 WARNING [http-nio-8080-exec-106] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [TaskManagementApplication] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 11:29:44.028 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 11:29:44.237 INFO [http-nio-8080-exec-106] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:29:44.245 INFO [http-nio-8080-exec-106] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:30:04.223 INFO [http-nio-8080-exec-105] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:30:04.563 INFO [http-nio-8080-exec-105] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:30:04.573 INFO [http-nio-8080-exec-105] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:30:04.899 INFO [http-nio-8080-exec-70] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:30:05.204 INFO [http-nio-8080-exec-70] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:30:05.214 INFO [http-nio-8080-exec-70] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:30:12.553 INFO [http-nio-8080-exec-100] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 11:30:12.859 INFO [http-nio-8080-exec-100] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:30:12.869 INFO [http-nio-8080-exec-100] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 11:32:18.232 WARNING [http-nio-8080-exec-115] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [TaskManagementApplication] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Feb-2025 11:32:18.233 WARNING [http-nio-8080-exec-115] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [TaskManagementApplication] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 11:32:18.742 INFO [http-nio-8080-exec-115] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/TaskManagementApplication]
+21-Feb-2025 11:32:18.760 INFO [http-nio-8080-exec-120] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml]
+21-Feb-2025 11:32:18.761 WARNING [http-nio-8080-exec-120] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/TaskManagementApplication] in deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has been ignored
+21-Feb-2025 11:32:18.984 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 11:32:18.985 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 11:32:18.985 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 11:32:18.985 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 11:32:19.022 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 11:32:19.022 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 11:32:19.078 INFO [http-nio-8080-exec-120] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 11:32:19.087 INFO [http-nio-8080-exec-120] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has finished in [327] ms
+21-Feb-2025 11:32:19.093 INFO [http-nio-8080-exec-116] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/TaskManagementApplication]] after start() had already been called. The second call will be ignored.
+21-Feb-2025 12:36:50.657 INFO [http-nio-8080-exec-131] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:36:50.980 WARNING [http-nio-8080-exec-131] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [TaskManagementApplication] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Feb-2025 12:36:50.994 WARNING [http-nio-8080-exec-131] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [TaskManagementApplication] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 12:36:53.576 INFO [http-nio-8080-exec-131] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:36:53.598 INFO [http-nio-8080-exec-131] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:36:54.077 INFO [http-nio-8080-exec-125] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:36:54.638 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 12:36:54.639 INFO [http-nio-8080-exec-125] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:36:54.650 INFO [http-nio-8080-exec-125] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:36:55.041 INFO [http-nio-8080-exec-124] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:36:55.840 INFO [http-nio-8080-exec-124] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:36:55.873 INFO [http-nio-8080-exec-124] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:36:56.611 INFO [http-nio-8080-exec-128] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:36:57.293 INFO [http-nio-8080-exec-128] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:36:57.314 INFO [http-nio-8080-exec-128] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:37:00.022 INFO [http-nio-8080-exec-127] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:37:00.490 INFO [http-nio-8080-exec-127] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:37:00.501 INFO [http-nio-8080-exec-127] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:37:01.840 INFO [http-nio-8080-exec-133] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:37:02.239 INFO [http-nio-8080-exec-133] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:37:02.247 INFO [http-nio-8080-exec-133] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:37:23.032 INFO [http-nio-8080-exec-135] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:37:23.737 INFO [http-nio-8080-exec-135] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:37:23.749 INFO [http-nio-8080-exec-135] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:37:31.961 INFO [http-nio-8080-exec-122] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:37:32.543 INFO [http-nio-8080-exec-122] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:37:32.555 INFO [http-nio-8080-exec-122] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:37:34.165 INFO [http-nio-8080-exec-139] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:37:34.966 INFO [http-nio-8080-exec-139] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:37:34.983 INFO [http-nio-8080-exec-139] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:37:35.362 INFO [http-nio-8080-exec-140] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:37:36.101 INFO [http-nio-8080-exec-140] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:37:36.115 INFO [http-nio-8080-exec-140] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:37:36.247 INFO [http-nio-8080-exec-133] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:37:36.970 INFO [http-nio-8080-exec-133] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:37:36.983 INFO [http-nio-8080-exec-133] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:37:37.335 INFO [http-nio-8080-exec-140] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:37:37.856 INFO [http-nio-8080-exec-140] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:37:37.872 INFO [http-nio-8080-exec-140] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:37:39.812 INFO [http-nio-8080-exec-127] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:37:40.259 INFO [http-nio-8080-exec-127] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:37:40.269 INFO [http-nio-8080-exec-127] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:39:21.754 INFO [http-nio-8080-exec-127] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:39:22.662 INFO [http-nio-8080-exec-127] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:39:22.690 INFO [http-nio-8080-exec-127] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:39:26.460 INFO [http-nio-8080-exec-144] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/TaskManagementApplication]
+21-Feb-2025 12:39:26.497 INFO [http-nio-8080-exec-140] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml]
+21-Feb-2025 12:39:26.506 WARNING [http-nio-8080-exec-140] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/TaskManagementApplication] in deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has been ignored
+21-Feb-2025 12:39:27.067 INFO [http-nio-8080-exec-140] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:39:27.084 INFO [http-nio-8080-exec-140] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has finished in [586] ms
+21-Feb-2025 12:39:27.100 INFO [http-nio-8080-exec-143] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/TaskManagementApplication]] after start() had already been called. The second call will be ignored.
+21-Feb-2025 12:57:29.094 INFO [http-nio-8080-exec-154] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:57:29.552 WARNING [http-nio-8080-exec-154] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [TaskManagementApplication] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Feb-2025 12:57:29.565 WARNING [http-nio-8080-exec-154] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [TaskManagementApplication] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 12:57:30.564 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 12:57:31.975 INFO [http-nio-8080-exec-154] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:57:32.202 INFO [http-nio-8080-exec-154] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:57:32.948 INFO [http-nio-8080-exec-153] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:57:34.571 INFO [http-nio-8080-exec-153] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:57:34.601 INFO [http-nio-8080-exec-153] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:57:35.005 INFO [http-nio-8080-exec-158] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:57:35.738 INFO [http-nio-8080-exec-158] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:57:35.766 INFO [http-nio-8080-exec-158] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:57:46.830 INFO [http-nio-8080-exec-149] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:57:47.796 INFO [http-nio-8080-exec-149] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:57:47.824 INFO [http-nio-8080-exec-149] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:57:51.145 INFO [http-nio-8080-exec-152] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:57:52.430 INFO [http-nio-8080-exec-152] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:57:52.463 INFO [http-nio-8080-exec-152] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:57:55.327 INFO [http-nio-8080-exec-162] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:57:56.188 INFO [http-nio-8080-exec-162] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:57:56.229 INFO [http-nio-8080-exec-162] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:57:58.221 INFO [http-nio-8080-exec-165] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:57:59.273 INFO [http-nio-8080-exec-165] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:57:59.308 INFO [http-nio-8080-exec-165] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:57:59.463 INFO [http-nio-8080-exec-155] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:58:00.254 INFO [http-nio-8080-exec-155] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:58:00.276 INFO [http-nio-8080-exec-155] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:58:26.245 INFO [http-nio-8080-exec-169] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:58:26.780 INFO [http-nio-8080-exec-169] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:58:26.795 INFO [http-nio-8080-exec-169] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 12:59:19.318 INFO [http-nio-8080-exec-170] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 12:59:20.737 INFO [http-nio-8080-exec-170] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 12:59:20.815 INFO [http-nio-8080-exec-170] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 13:18:30.439 INFO [http-nio-8080-exec-174] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 13:18:33.852 INFO [http-nio-8080-exec-174] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 13:18:33.879 INFO [http-nio-8080-exec-174] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 13:18:34.401 INFO [http-nio-8080-exec-176] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 13:18:35.396 INFO [http-nio-8080-exec-176] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 13:18:35.418 INFO [http-nio-8080-exec-176] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 13:18:35.835 INFO [http-nio-8080-exec-180] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 13:18:37.010 INFO [http-nio-8080-exec-180] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 13:18:37.046 INFO [http-nio-8080-exec-180] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 13:19:26.324 INFO [http-nio-8080-exec-182] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/TaskManagementApplication]
+21-Feb-2025 13:19:26.380 INFO [http-nio-8080-exec-185] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml]
+21-Feb-2025 13:19:26.384 WARNING [http-nio-8080-exec-185] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/TaskManagementApplication] in deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has been ignored
+21-Feb-2025 13:19:27.152 INFO [http-nio-8080-exec-185] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 13:19:27.169 INFO [http-nio-8080-exec-185] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has finished in [788] ms
+21-Feb-2025 13:19:27.182 INFO [http-nio-8080-exec-186] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/TaskManagementApplication]] after start() had already been called. The second call will be ignored.
+21-Feb-2025 13:50:13.559 INFO [http-nio-8080-exec-192] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 13:50:13.674 WARNING [http-nio-8080-exec-192] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [TaskManagementApplication] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Feb-2025 13:50:13.684 WARNING [http-nio-8080-exec-192] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [TaskManagementApplication] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 13:50:14.467 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 13:50:14.480 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 13:50:14.480 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 13:50:16.275 INFO [http-nio-8080-exec-192] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 13:50:16.308 INFO [http-nio-8080-exec-192] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 13:50:29.291 INFO [http-nio-8080-exec-193] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 13:50:29.775 INFO [http-nio-8080-exec-193] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 13:50:29.786 INFO [http-nio-8080-exec-193] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 14:05:57.177 INFO [http-nio-8080-exec-199] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 14:05:58.489 INFO [http-nio-8080-exec-199] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 14:05:58.503 INFO [http-nio-8080-exec-199] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 14:05:58.767 INFO [http-nio-8080-exec-208] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 14:05:59.119 INFO [http-nio-8080-exec-208] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 14:05:59.127 INFO [http-nio-8080-exec-208] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 14:06:14.980 INFO [http-nio-8080-exec-205] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/TaskManagementApplication]
+21-Feb-2025 14:06:15.008 INFO [http-nio-8080-exec-204] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml]
+21-Feb-2025 14:06:15.013 WARNING [http-nio-8080-exec-204] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/TaskManagementApplication] in deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has been ignored
+21-Feb-2025 14:06:15.352 INFO [http-nio-8080-exec-204] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 14:06:15.363 INFO [http-nio-8080-exec-204] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has finished in [352] ms
+21-Feb-2025 14:06:15.369 INFO [http-nio-8080-exec-200] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/TaskManagementApplication]] after start() had already been called. The second call will be ignored.
+21-Feb-2025 14:30:13.510 INFO [http-nio-8080-exec-218] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 14:30:13.832 WARNING [http-nio-8080-exec-218] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [TaskManagementApplication] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Feb-2025 14:30:13.844 WARNING [http-nio-8080-exec-218] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [TaskManagementApplication] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 14:30:14.788 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 14:30:14.798 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 14:30:14.798 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 14:30:14.799 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 14:30:14.888 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 14:30:14.891 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 14:30:14.891 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 14:30:14.891 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 14:30:15.033 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 14:30:15.034 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 14:30:15.314 INFO [http-nio-8080-exec-218] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 14:30:15.400 INFO [http-nio-8080-exec-218] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 14:44:47.937 INFO [http-nio-8080-exec-224] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 14:44:49.405 INFO [http-nio-8080-exec-224] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 14:44:49.528 INFO [http-nio-8080-exec-224] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 14:44:49.979 INFO [http-nio-8080-exec-230] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 14:44:50.524 INFO [http-nio-8080-exec-230] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 14:44:50.542 INFO [http-nio-8080-exec-230] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 14:45:16.978 INFO [http-nio-8080-exec-221] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 14:45:17.746 INFO [http-nio-8080-exec-221] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 14:45:17.757 INFO [http-nio-8080-exec-221] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 14:46:48.237 INFO [http-nio-8080-exec-228] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/TaskManagementApplication]
+21-Feb-2025 14:46:48.277 INFO [http-nio-8080-exec-227] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml]
+21-Feb-2025 14:46:48.281 WARNING [http-nio-8080-exec-227] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/TaskManagementApplication] in deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has been ignored
+21-Feb-2025 14:46:48.801 INFO [http-nio-8080-exec-227] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 14:46:48.821 INFO [http-nio-8080-exec-227] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [E:\Code\JavaTrain\Plugins\apache-tomcat-9.0.99\apache-tomcat-9.0.99\conf\Catalina\localhost\TaskManagementApplication.xml] has finished in [538] ms
+21-Feb-2025 14:46:48.831 INFO [http-nio-8080-exec-231] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/TaskManagementApplication]] after start() had already been called. The second call will be ignored.
+21-Feb-2025 14:54:20.598 INFO [http-nio-8080-exec-246] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 14:54:20.779 WARNING [http-nio-8080-exec-246] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [TaskManagementApplication] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Feb-2025 14:54:20.793 WARNING [http-nio-8080-exec-246] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [TaskManagementApplication] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 14:54:21.221 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 14:54:21.231 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 14:54:21.232 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 14:54:21.233 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 14:54:21.278 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Feb-2025 14:54:22.249 INFO [http-nio-8080-exec-246] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 14:54:22.279 INFO [http-nio-8080-exec-246] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 14:54:22.642 INFO [http-nio-8080-exec-250] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 14:54:23.299 INFO [http-nio-8080-exec-250] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 14:54:23.319 INFO [http-nio-8080-exec-250] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 14:54:28.415 INFO [http-nio-8080-exec-251] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 14:54:28.884 INFO [http-nio-8080-exec-251] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 14:54:28.895 INFO [http-nio-8080-exec-251] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 14:54:30.148 INFO [http-nio-8080-exec-244] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 14:54:30.695 INFO [http-nio-8080-exec-244] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 14:54:30.704 INFO [http-nio-8080-exec-244] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 14:54:31.839 INFO [http-nio-8080-exec-247] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 14:54:32.261 INFO [http-nio-8080-exec-247] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 14:54:32.274 INFO [http-nio-8080-exec-247] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 14:54:38.819 INFO [http-nio-8080-exec-251] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 14:54:39.417 INFO [http-nio-8080-exec-251] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 14:54:39.431 INFO [http-nio-8080-exec-251] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 14:54:40.462 INFO [http-nio-8080-exec-254] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 14:54:40.984 INFO [http-nio-8080-exec-254] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 14:54:40.998 INFO [http-nio-8080-exec-254] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 14:54:42.169 INFO [http-nio-8080-exec-241] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 14:54:42.620 INFO [http-nio-8080-exec-241] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 14:54:42.630 INFO [http-nio-8080-exec-241] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 14:54:43.872 INFO [http-nio-8080-exec-244] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 14:54:44.351 INFO [http-nio-8080-exec-244] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 14:54:44.366 INFO [http-nio-8080-exec-244] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 14:54:45.517 INFO [http-nio-8080-exec-251] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 14:54:45.855 INFO [http-nio-8080-exec-251] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 14:54:45.864 INFO [http-nio-8080-exec-251] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 14:55:12.414 INFO [http-nio-8080-exec-241] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 14:55:12.933 INFO [http-nio-8080-exec-241] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 14:55:12.945 INFO [http-nio-8080-exec-241] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 14:58:28.602 INFO [http-nio-8080-exec-265] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 14:58:29.222 INFO [http-nio-8080-exec-265] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 14:58:29.235 INFO [http-nio-8080-exec-265] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
+21-Feb-2025 15:01:09.971 INFO [http-nio-8080-exec-263] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] has started
+21-Feb-2025 15:01:10.347 INFO [http-nio-8080-exec-263] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Feb-2025 15:01:10.355 INFO [http-nio-8080-exec-263] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/TaskManagementApplication] is completed
