@@ -16,9 +16,9 @@ public class RegisterValidator {
     }
 
     public boolean invalidName(String firstName, String lastName) {
-        return firstName.matches(".*[^a-zA-Z].*") || lastName.matches(".*[^a-zA-Z].*");
+        return firstName.matches("[a-zA-Z ]+") && lastName.matches("[a-zA-Z ]+");
     }
-    
+
     public boolean duplicatedUser(String username, String dupUsername) {
         return username.equals(dupUsername);
     }

@@ -133,24 +133,26 @@ public class AuthController extends HttpServlet {
         UserDAO udao = new UserDAO();
         User checkU = udao.getUserByEmail(email);
 
-        boolean isDuplicatedUser = rv.duplicatedUser(username, checkU.getUsername());
+        if (checkU != null) {
+            boolean isDuplicatedUser = rv.duplicatedUser(username, checkU.getUsername());
 
-        if (isDuplicatedUser) {
-            req.setAttribute("userDup", "This username already exists, try another username");
-            req.getRequestDispatcher(REGISTER_VIEW).forward(req, resp);
-            return;
+            if (isDuplicatedUser) {
+                req.setAttribute("userDup", "This username already exists, try another username");
+                req.getRequestDispatcher(REGISTER_VIEW).forward(req, resp);
+                return;
+            }
         }
 
         boolean isInvalidFormat = !rv.regexPass(password);
         boolean isInvalidPassLength = !rv.passLength(password);
-        boolean isInvalidName = rv.invalidName(firstName, lastName);
+        boolean isInvalidName = !rv.invalidName(firstName, lastName);
         boolean isMismatched = !rv.duplicatedPass(password, confirmPassword);
         boolean isInvalidNameLength = !rv.usernameLength(username);
 
         if (isInvalidName) {
             req.setAttribute("invalidName", "Invalid first name or last name (Must only contain alphabetic character).");
         } else if (isInvalidNameLength) {
-            req.setAttribute("nameLength", "Username length is invalid (The length must be more than 5 characters");
+            req.setAttribute("nameLength", "Username length is invalid (The length must be more than 5 characters)");
         } else if (isMismatched) {
             req.setAttribute("passDup", "Passwords do not match. Try again!");
         } else if (isInvalidPassLength) {
