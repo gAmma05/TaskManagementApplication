@@ -131,9 +131,11 @@ public class AuthController extends HttpServlet {
 
         RegisterValidator rv = new RegisterValidator();
         UserDAO udao = new UserDAO();
-        User checkU = udao.getUserByEmail(username);
+        User checkU = udao.getUserByEmail(email);
 
-        if (checkU != null) {
+        boolean isDuplicatedUser = rv.duplicatedUser(username, checkU.getUsername());
+
+        if (isDuplicatedUser) {
             req.setAttribute("userDup", "This username already exists, try another username");
             req.getRequestDispatcher(REGISTER_VIEW).forward(req, resp);
             return;
