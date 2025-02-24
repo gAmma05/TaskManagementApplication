@@ -9,12 +9,24 @@
     <body>
         <h1>Register</h1>
 
+        <c:if test="${not empty userDup}">
+            <p style="color: red;">${dupUser}</p>
+        </c:if>
+
+        <c:if test="${not empty invalidName}">
+            <p style="color: red;">${invalidName}</p>
+        </c:if>
+
+        <c:if test="${not empty nameLength}">
+            <p style="color: red;">${nameLength}</p>
+        </c:if>
+
         <c:if test="${not empty passDup}">
             <p style="color: red;">${passDup}</p>
         </c:if>
 
-        <c:if test="${not empty dupUser}">
-            <p style="color: red;">${dupUser}</p>
+        <c:if test="${not empty passLength}">
+            <p style="color: red;">${passLength}</p>
         </c:if>
 
         <c:if test="${not empty regexPass}">

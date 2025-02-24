@@ -13,7 +13,11 @@
         <title>Forget Password</title>
     </head>
     <body>
+
         <h1>Forget Password</h1>
+        <c:if test="${not empty emailDup}">
+            <p style="color:red;">${emailDup}</p>
+        </c:if>
         <form action="${pageContext.request.contextPath}/Auth" method="POST">
             <fieldset>
                 <legend>Insert your email to set a new password</legend>
@@ -33,8 +37,6 @@
         <form action="${pageContext.request.contextPath}/Auth" method="GET" style="display:inline;">
             <button type="submit">Back</button>
         </form>
-        <c:if test="${not empty error}">
-            <p style="color:red;">${error}</p>
-        </c:if>
+
     </body>
 </html>
