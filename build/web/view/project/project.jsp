@@ -15,7 +15,7 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <a href="${pageContext.request.contextPath}/projects/new" class="btn btn-primary">Create New Project</a>
                     <a href="${pageContext.request.contextPath}/Auth?action=logout" class="btn btn-outline-danger">Logout</a>
-                </div>
+                </div>  
             </c:if>
             <div class="row">
                 <c:forEach items="${projects}" var="project">

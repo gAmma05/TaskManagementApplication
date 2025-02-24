@@ -27,6 +27,7 @@ public class DBConnection {
 //        conn = DriverManager.getConnection(url, DB_USER_NAME, DB_PASSWORD);
 //        return conn;
 //    }
+    
     //connect mysql
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
         Connection conn = null;

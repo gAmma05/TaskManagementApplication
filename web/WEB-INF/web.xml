@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-
     <!-- Auth Servlet Configuration -->
     <servlet>
         <servlet-name>AuthController</servlet-name>
         <servlet-class>controllers.AuthController</servlet-class>
     </servlet>
+    <filter>
+        <filter-name>CustomFilter</filter-name>
+        <filter-class>filters.CustomFilter</filter-class>
+    </filter>
     <servlet-mapping>
         <servlet-name>AuthController</servlet-name>
         <url-pattern>/Auth</url-pattern>
     </servlet-mapping>
-
     <!-- Project Servlet Configuration -->
     <servlet>
         <servlet-name>ProjectController</servlet-name>
@@ -20,7 +22,6 @@
         <servlet-name>ProjectController</servlet-name>
         <url-pattern>/projects/*</url-pattern>
     </servlet-mapping>
-
     <!-- Task Servlet Configuration -->
     <servlet>
         <servlet-name>TaskController</servlet-name>
@@ -30,12 +31,14 @@
         <servlet-name>TaskController</servlet-name>
         <url-pattern>/Task</url-pattern>
     </servlet-mapping>
-
     <!-- Session Configuration -->
+    <filter-mapping>
+        <filter-name>CustomFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
-
     <!-- Welcome File Configuration -->
     <welcome-file-list>
         <welcome-file>Auth</welcome-file>

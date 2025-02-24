@@ -29,11 +29,13 @@ public class Project {
     private Integer manager_id;
     private Date created_at;
     private Date updated_at;
+    private Date deleted_at;
 
     public enum Status {
         NOT_STARTED("Not Started"),
         IN_PROGRESS("In Progress"),
-        COMPLETED("Completed");
+        COMPLETED("Completed"), 
+        CLOSED("Closed");
 
         private final String displayName;
 
