@@ -6,6 +6,7 @@
 package validator;
 
 import dao.UserDAO;
+import model.User;
 
 /**
  *
@@ -14,7 +15,7 @@ import dao.UserDAO;
 public class LoginValidator {
     UserDAO udao = new UserDAO();
     
-    public boolean validAccount(String username, String password){
-        
+    public boolean validAccount(User u){
+        return u != null;
     }
 }
