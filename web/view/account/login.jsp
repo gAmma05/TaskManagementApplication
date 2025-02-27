@@ -19,8 +19,12 @@
                 <p style="color: red;">${loginBad}</p>
             </c:if>
 
-            <c:if test="${not empty error}">
-                <p style="color: red;">${error}</p>
+            <c:if test="${not empty errorList}">
+                <ul>
+                    <c:forEach var="error" items="${errorList}">
+                        <li><font color="red">${error}</font></li>
+                        </c:forEach>
+                </ul>
             </c:if>
 
             <form action="Auth" method="POST">
@@ -28,7 +32,7 @@
                     <legend>Login Credentials</legend>
 
                     <label>Username:</label>
-                    <input type="text" name="username" required>
+                    <input type="text" name="username" value="${param.username}"required>
                     <br><br>
 
                     <label>Password:</label>
