@@ -15,13 +15,7 @@
     </head>
     <body>
 
-        <c:if test="${not empty errorList}">
-            <ul>
-                <c:forEach var="error" items="${errorList}">
-                    <li><font color="red">${error}</font></li>
-                    </c:forEach>
-            </ul>
-        </c:if>
+
 
 
         <div class="container mt-5">
