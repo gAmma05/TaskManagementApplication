@@ -15,7 +15,6 @@
     </head>
     <body>
 
-
         <c:if test="${not empty errorList}">
             <ul>
                 <c:forEach var="error" items="${errorList}">
@@ -24,11 +23,20 @@
             </ul>
         </c:if>
 
+
         <div class="container mt-5">
 
             <c:if test="${not empty username}">
                 <p>Welcome:</p>
                 <p style="color:blue">${username}</p>
+            </c:if>
+
+            <c:if test="${not empty errorList}">
+                <ul>
+                    <c:forEach var="error" items="${errorList}">
+                        <li><font color="red">${error}</font></li>
+                        </c:forEach>
+                </ul>
             </c:if>
 
             <c:choose>
@@ -38,7 +46,7 @@
                 </c:when>
                 <c:otherwise>
                     <h1>Set a new password</h1>
-                    <form action="${pageContext.request.contextPath}/Auth" method="POST">
+                    <form action="${pageContext.request.contextPath}/ForgetPassword" method="POST">
 
                         <fieldset>
                             <label>New password:</label>
