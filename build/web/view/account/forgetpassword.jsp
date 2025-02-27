@@ -11,30 +11,35 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Forget Password</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
-        <h1>Forget Password</h1>
-        <form action="${pageContext.request.contextPath}/Auth" method="POST">
-            <fieldset>
-                <legend>Insert your email to set a new password</legend>
+        <div class="container mt-5">
+            <h1>Forget Password</h1>
+            <c:if test="${not empty emailDup}">
+                <p style="color:red;">${emailDup}</p>
+            </c:if>
+            <form action="${pageContext.request.contextPath}/Auth" method="POST">
+                <fieldset>
+                    <legend>Insert your email to set a new password</legend>
 
-                <label>Email:</label>
-                <input type="email" name="email" required>
+                    <label>Email:</label>
+                    <input type="email" name="email" required>
+                    <br>
+
+                </fieldset>
+
                 <br>
-
-            </fieldset>
-
-            <input type="hidden" name="action" value="fp-confirm-email">
-            <input type="submit" name="Confirm">
+                <input type="hidden" name="action" value="fp-confirm-email">
+                <input type="submit" name="Confirm">
 
 
-        </form>
+            </form>
 
-        <form action="${pageContext.request.contextPath}/Auth" method="GET" style="display:inline;">
-            <button type="submit">Back</button>
-        </form>
-        <c:if test="${not empty error}">
-            <p style="color:red;">${error}</p>
-        </c:if>
+            <br>
+            <form action="${pageContext.request.contextPath}/Auth" method="GET" style="display:inline;">
+                <button type="submit">Back</button>
+            </form>
+        </div>
     </body>
 </html>

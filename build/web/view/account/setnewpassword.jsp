@@ -11,9 +11,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Set new password for the user</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
-        <h1>Set a new password</h1>
+
+
         <c:if test="${not empty error}">
             <p style="color:red;">${error}</p>
         </c:if>
@@ -22,32 +24,52 @@
             <p style="color:red;">${dupPass}</p>
         </c:if>    
 
-        <c:if test="${not empty username}">
-            <p>Welcome:</p>
-            <p style="color:blue">${username}</p>
+        <c:if test="${not empty regexPass}">
+            <p style="color:red;">${regexPass}</p>
+        </c:if>    
+
+        <c:if test="${not empty passLength}">
+            <p style="color:red;">${regexPass}</p>
         </c:if>
 
-        <form action="${pageContext.request.contextPath}/Auth" method="POST">
+        <div class="container mt-5">
 
-            <fieldset>
-                <label>New password:</label>
-                <input type="password" name="new-password" required>
+            <c:if test="${not empty username}">
+                <p>Welcome:</p>
+                <p style="color:blue">${username}</p>
+            </c:if>
 
-                <br><br>
+            <c:choose>
+                <c:when test="${empty email}">
+                    <h1>You haven't entered the required input into field. Try again.</h1>
+                    <a href="${pageContext.request.contextPath}/Auth" class="btn btn-primary">Return to login</a>
+                </c:when>
+                <c:otherwise>
+                    <h1>Set a new password</h1>
+                    <form action="${pageContext.request.contextPath}/Auth" method="POST">
 
-                <label>Confirm new password:</label>
-                <input type="password" name="confirm-new-password" required>
-            </fieldset>
+                        <fieldset>
+                            <label>New password:</label>
+                            <input type="password" name="new-password" required>
 
-            <input type="hidden" name="username" value="${username}">
-            <input type="hidden" name="email" value="${email}">
-            <input type="hidden" name="action" value="confirm-forget-password">
-            <input type="submit" name="Confirm">
-        </form>
+                            <br><br>
 
-        <form action="${pageContext.request.contextPath}/Auth" method="GET" style="display:inline;">
-            <button type="submit">Back</button>
-        </form>
+                            <label>Confirm new password:</label>
+                            <input type="password" name="confirm-new-password" required>
+                        </fieldset>
 
+                        <input type="hidden" name="username" value="${username}">
+                        <input type="hidden" name="email" value="${email}">
+                        <input type="hidden" name="action" value="confirm-forget-password">
+                        <input type="submit" name="Confirm">
+                    </form>
+
+                    <form action="${pageContext.request.contextPath}/Auth" method="GET" style="display:inline;">
+                        <button type="submit">Back</button>
+                    </form>
+
+                </c:otherwise>
+            </c:choose>
+        </div>
     </body>
 </html>
