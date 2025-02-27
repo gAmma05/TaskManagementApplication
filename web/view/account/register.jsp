@@ -23,7 +23,7 @@
                 <fieldset>
                     <legend>Account Information</legend>
                     <label>Username:</label>
-                    <input type="text" name="username" required>
+                    <input type="text" name="username" value="${param.username}" required>
                     <br><br>
 
                     <label>Password:</label>
@@ -38,19 +38,19 @@
                 <fieldset>
                     <legend>Personal Information</legend>
                     <label>First Name:</label>
-                    <input type="text" name="firstName">
+                    <input type="text" name="firstName" value="${param.firstName}">
                     <br><br>
 
                     <label>Last Name:</label>
-                    <input type="text" name="lastName">
+                    <input type="text" name="lastName" value="${param.lastName}">
                     <br><br>
 
                     <label>Email:</label>
-                    <input type="email" name="email">
+                    <input type="email" name="email" value="${param.email}">
                     <br><br>
 
                     <label>Phone Number:</label>
-                    <input type="tel" name="phone">
+                    <input type="tel" name="phone" value="${param.phone}">
                 </fieldset>
 
                 <br>

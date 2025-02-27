@@ -32,7 +32,7 @@
                     <legend>Login Credentials</legend>
 
                     <label>Username:</label>
-                    <input type="text" name="username" required>
+                    <input type="text" name="username" value="${param.username}"required>
                     <br><br>
 
                     <label>Password:</label>
