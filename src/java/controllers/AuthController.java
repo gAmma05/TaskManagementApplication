@@ -9,7 +9,11 @@ import javax.servlet.http.HttpSession;
 
 import dao.UserDAO;
 import enums.UserRole;
+import java.util.ArrayList;
+import java.util.List;
 import model.User;
+import validator.ForgetPasswordValidator;
+import validator.RegisterValidator;
 
 public class AuthController extends HttpServlet {
     // personal information must be used POST
@@ -19,7 +23,7 @@ public class AuthController extends HttpServlet {
     private final String FORGET_PASSWORD_VIEW = "view/account/forgetpassword.jsp";
     private final String SET_NEW_PASSWORD_VIEW = "view/account/setnewpassword.jsp";
     private final String REGISTER_VIEW = "view/account/register.jsp";
-    private final String ROLE_SELECT_VIEW = "view/account/roleselect.jsp";
+//    private final String ROLE_SELECT_VIEW = "view/account/roleselect.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -48,12 +52,8 @@ public class AuthController extends HttpServlet {
                     response.sendRedirect(REGISTER_VIEW);
                     break;
 
-                case "role-selection":
-                    roleSelection(request, response);
-                    break;
-
-                case "confirm-register":
-                    register(request, response);
+                case "pre-register":
+                    preRegister(request, response);
                     break;
 
                 case "logout":
@@ -88,6 +88,8 @@ public class AuthController extends HttpServlet {
     }
 
     private void login(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        List<String> errorList = new ArrayList<>();
+
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         UserDAO ud = new UserDAO();
@@ -100,12 +102,11 @@ public class AuthController extends HttpServlet {
             session.setAttribute("isLoggedIn", true);
             session.setAttribute("role", ulog.getRole());
 
-            session.setAttribute("userId", ulog.getUserId()); // Ensure userId is set in session
-
-
             req.getRequestDispatcher(DASHBOARD).forward(req, resp);
+
         } else {
-            req.setAttribute("error", "Wrong username or password");
+            errorList.add("Wrong username or password");
+            req.setAttribute("errorList", errorList);
             req.getRequestDispatcher(LOGIN_VIEW).forward(req, resp);
         }
     }
@@ -118,7 +119,9 @@ public class AuthController extends HttpServlet {
         resp.sendRedirect(AUTH);
     }
 
-    private void roleSelection(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+    private void preRegister(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+
+        List<String> errorList = new ArrayList<>();
 
         String password = req.getParameter("password");
         String confirmPassword = req.getParameter("confirm-password");
@@ -129,36 +132,67 @@ public class AuthController extends HttpServlet {
         String email = req.getParameter("email");
         String phone = req.getParameter("phone");
 
+        RegisterValidator rv = new RegisterValidator();
         UserDAO udao = new UserDAO();
-        User checkU = udao.getUserByEmail(username);
+        User checkU = udao.getUserByUsername(username);
+
         if (checkU != null) {
-            if (checkU.getUsername().equals(username)) {
-                req.setAttribute("dupUser", "This username already exists, try another username");
-                req.getRequestDispatcher(REGISTER_VIEW).forward(req, resp);
+            boolean isDuplicatedUser = rv.duplicatedUser(username, checkU.getUsername());
+            if (isDuplicatedUser) {
+                errorList.add("This username already exists, try another username");
             }
         } else {
-            if (!password.equals(confirmPassword)) {
-                req.setAttribute("passDup", "Passwords do not match. Try again!");
-                req.getRequestDispatcher(REGISTER_VIEW).forward(req, resp);
-            } else {
-                if (password.length() <= 6) {
-                    req.setAttribute("regexPass", "The password length must be longer than 6 characters");
-                    req.getRequestDispatcher(REGISTER_VIEW).forward(req, resp);
-                } else if (!password.matches(".*[A-Z].*") || !password.matches(".*[!@#$%^&*(),.?\":{}|<>].*")) {
-                    req.setAttribute("regexPass", "Password must contain at least one uppercase letter and one special character");
-                    req.getRequestDispatcher(REGISTER_VIEW).forward(req, resp);
-                } else {
-                    req.setAttribute("username", username);
-                    req.setAttribute("password", password);
-                    req.setAttribute("firstName", firstName);
-                    req.setAttribute("lastName", lastName);
-                    req.setAttribute("email", email);
-                    req.setAttribute("phone", phone);
-
-                    req.getRequestDispatcher(ROLE_SELECT_VIEW).forward(req, resp);
-                }
+            boolean isDuplicatedEmail = rv.duplicatedEmail(email);
+            boolean isDuplicatedPhoneNumber = rv.duplicatedPhoneNumber(phone);
+            if (isDuplicatedEmail) {
+                errorList.add("This email already exists");
+            } else if (isDuplicatedPhoneNumber) {
+                errorList.add("This phone number already exists");
             }
         }
+
+        if (!errorList.isEmpty()) {
+            req.setAttribute("errorList", errorList);
+            req.getRequestDispatcher(REGISTER_VIEW).forward(req, resp);
+            return;
+        }
+
+        boolean isInvalidFormat = !rv.regexPass(password);
+        boolean isShortPass = !rv.passLength(password);
+        boolean isInvalidName = !rv.invalidName(firstName, lastName);
+        boolean isMismatched = !rv.duplicatedPass(password, confirmPassword);
+        boolean isShortName = !rv.usernameLength(username);
+
+        if (isInvalidName) {
+            errorList.add("Invalid first name or last name (Must only contain alphabetic character)");
+        }
+        if (isShortName) {
+            errorList.add("Username length is invalid (The length must be more than 5 characters)");
+        }
+        if (isMismatched) {
+            errorList.add("Passwords do not match. Try again!");
+        }
+        if (isShortPass) {
+            errorList.add("The password length must be longer than 6 characters");
+        }
+        if (isInvalidFormat) {
+            errorList.add("Password must contain at least one uppercase letter and one special character");
+        }
+
+        if (!errorList.isEmpty()) {
+            req.setAttribute("errorList", errorList);
+            req.getRequestDispatcher(REGISTER_VIEW).forward(req, resp);
+            return;
+        }
+        req.setAttribute("username", username);
+        req.setAttribute("password", password);
+        req.setAttribute("firstName", firstName);
+        req.setAttribute("lastName", lastName);
+        req.setAttribute("email", email);
+        req.setAttribute("phone", phone);
+
+        register(req, resp);
+
     }
 
     private void register(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
@@ -170,21 +204,20 @@ public class AuthController extends HttpServlet {
         String phone = req.getParameter("phone");
 //        String departmentName = req.getParameter("department");
 
-        String roleString = req.getParameter("selected");
-        int role = 0;
-        if (roleString != null) {
-            if (roleString.equalsIgnoreCase("manager")) {
-                role = 1;
-            } else if (roleString.equalsIgnoreCase("member")) {
-                role = 0;
-            }
-        } else {
-            return;
-        }
-
+//        String roleString = req.getParameter("selected");
+//        int role = 0;
+//        if (roleString != null) {
+//            if (roleString.equalsIgnoreCase("manager")) {
+//                role = 1;
+//            } else if (roleString.equalsIgnoreCase("member")) {
+//                role = 0;
+//            }
+//        } else {
+//            return;
+//        }
         UserDAO udao = new UserDAO();
 
-        User u = new User(firstName, lastName, username, password, email, phone, role == 1 ? UserRole.MANAGER : UserRole.MEMBER, 0);
+        User u = new User(firstName, lastName, username, password, email, phone, UserRole.NONE, -1);
         if (udao.create(u)) {
             req.setAttribute("loginGood", "Login successfully");
         } else {
@@ -196,6 +229,7 @@ public class AuthController extends HttpServlet {
     }
 
     private void confirmEmail(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+
         String email = req.getParameter("email");
 
         UserDAO udao = new UserDAO();
@@ -207,12 +241,14 @@ public class AuthController extends HttpServlet {
 
             req.getRequestDispatcher(SET_NEW_PASSWORD_VIEW).forward(req, resp);
         } else {
-            req.setAttribute("error", "Account not found by email. Try again!");
-            resp.sendRedirect(FORGET_PASSWORD_VIEW);
+            req.setAttribute("emailDup", "Account not found by email. Try again!");
+            req.getRequestDispatcher(FORGET_PASSWORD_VIEW).forward(req, resp);
         }
     }
 
     private void forgetPassword(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        List<String> errorList = new ArrayList<>();
+
         String email = req.getParameter("email");
         String username = req.getParameter("username");
         String newPassword = req.getParameter("new-password");
@@ -221,35 +257,35 @@ public class AuthController extends HttpServlet {
         UserDAO udao = new UserDAO();
         User u = udao.getUserByEmail(email);
 
-        if (newPassword.equals(confirmNewPassword) && newPassword.equals(u.getPassword())) {
-            req.setAttribute("email", email);
-            req.setAttribute("username", username);
-            req.setAttribute("dupPass", "You are using the old password. Try again");
-            req.getRequestDispatcher(SET_NEW_PASSWORD_VIEW).forward(req, resp);
-        } else if (!newPassword.equals(confirmNewPassword)) {
-            req.setAttribute("email", email);
-            req.setAttribute("username", username);
-            req.setAttribute("dupPass", "Passwords do not match. Try again");
-            req.getRequestDispatcher(SET_NEW_PASSWORD_VIEW).forward(req, resp);
+        ForgetPasswordValidator fpv = new ForgetPasswordValidator();
+
+        boolean isDuplicateWithOldPass = fpv.duplicatedPass(newPassword, u.getPassword());
+        boolean isMismatchedPass = !fpv.duplicatedPass(newPassword, confirmNewPassword);
+        boolean isShortPass = !fpv.passLength(newPassword);
+        boolean isInvalidFormat = !fpv.regexPass(newPassword);
+
+        req.setAttribute("email", email);
+        req.setAttribute("username", username);
+
+        if (isDuplicateWithOldPass) {
+            errorList.add("You are using the old password. Try again");
+        } else if (isMismatchedPass) {
+            errorList.add("Passwords do not match. Try again");
+        } else if (isShortPass) {
+            errorList.add("The password length must be longer than 6 characters");
+        } else if (isInvalidFormat) {
+            errorList.add("Password must contain at least one uppercase letter and one special character");
+        }
+
+        if (errorList.isEmpty()) {
+            boolean isPasswordUpdated = udao.setNewPass(username, newPassword);
+            req.setAttribute(isPasswordUpdated ? "loginGood" : "loginBad",
+                    isPasswordUpdated ? "New password has been set successfully" : "Failed to set new password");
+
+            req.getRequestDispatcher(LOGIN_VIEW).forward(req, resp);
         } else {
-            if (newPassword.length() <= 6) {
-                req.setAttribute("email", email);
-                req.setAttribute("username", username);
-                req.setAttribute("regexPass", "The password length must be longer than 6 characters");
-                req.getRequestDispatcher(SET_NEW_PASSWORD_VIEW).forward(req, resp);
-            } else if (!newPassword.matches(".*[A-Z].*") || !newPassword.matches(".*[!@#$%^&*(),.?\":{}|<>].*")) {
-                req.setAttribute("email", email);
-                req.setAttribute("username", username);
-                req.setAttribute("regexPass", "Password must contain at least one uppercase letter and one special character");
-                req.getRequestDispatcher(SET_NEW_PASSWORD_VIEW).forward(req, resp);
-            } else {
-                if (udao.setNewPass(username, newPassword)) {
-                    req.setAttribute("loginGood", "New password has been set successfully");
-                } else {
-                    req.setAttribute("loginBad", "Failed to set new password");
-                }
-                req.getRequestDispatcher(LOGIN_VIEW).forward(req, resp);
-            }
+            req.setAttribute("errorList", errorList);
+            req.getRequestDispatcher(SET_NEW_PASSWORD_VIEW).forward(req, resp);
         }
     }
 }
