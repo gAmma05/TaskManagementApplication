@@ -17,7 +17,6 @@
             <c:choose>
                 <c:when test="${sessionScope.isLoggedIn}">
                     <h1>Welcome, ${sessionScope.username}!</h1>
-                    <p>Your role: ${sessionScope.role}</p>
 
                     <div class="mt-4">
                         <a href="/projects" class="btn btn-primary me-2">Go to Projects</a>
