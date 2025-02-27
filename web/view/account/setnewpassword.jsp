@@ -16,20 +16,12 @@
     <body>
 
 
-        <c:if test="${not empty error}">
-            <p style="color:red;">${error}</p>
-        </c:if>
-
-        <c:if test="${not empty dupPass}">
-            <p style="color:red;">${dupPass}</p>
-        </c:if>    
-
-        <c:if test="${not empty regexPass}">
-            <p style="color:red;">${regexPass}</p>
-        </c:if>    
-
-        <c:if test="${not empty passLength}">
-            <p style="color:red;">${regexPass}</p>
+        <c:if test="${not empty errorList}">
+            <ul>
+                <c:forEach var="error" items="${errorList}">
+                    <li><font color="red">${error}</font></li>
+                    </c:forEach>
+            </ul>
         </c:if>
 
         <div class="container mt-5">

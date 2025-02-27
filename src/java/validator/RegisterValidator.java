@@ -5,11 +5,15 @@
  */
 package validator;
 
+import dao.UserDAO;
+
 /**
  *
  * @author gAmma
  */
 public class RegisterValidator {
+    
+    UserDAO udao = new UserDAO();
 
     public boolean usernameLength(String username) {
         return username.length() > 5;
@@ -25,6 +29,14 @@ public class RegisterValidator {
 
     public boolean duplicatedPass(String pass, String conPass) {
         return pass.equals(conPass);
+    }
+    
+    public boolean duplicatedEmail(String email){
+        return udao.isEmailTaken(email);
+    }
+    
+    public boolean duplicatedPhoneNumber(String pn){
+        return udao.isPhoneTaken(pn);
     }
 
     public boolean regexPass(String pass) {

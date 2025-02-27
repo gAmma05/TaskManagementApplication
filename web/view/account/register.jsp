@@ -11,28 +11,12 @@
         <div class="container mt-5">
             <h1>Register</h1>
 
-            <c:if test="${not empty userDup}">
-                <p style="color: red;">${userDup}</p>
-            </c:if>
-
-            <c:if test="${not empty invalidName}">
-                <p style="color: red;">${invalidName}</p>
-            </c:if>
-
-            <c:if test="${not empty nameLength}">
-                <p style="color: red;">${nameLength}</p>
-            </c:if>
-
-            <c:if test="${not empty passDup}">
-                <p style="color: red;">${passDup}</p>
-            </c:if>
-
-            <c:if test="${not empty passLength}">
-                <p style="color: red;">${passLength}</p>
-            </c:if>
-
-            <c:if test="${not empty regexPass}">
-                <p style="color: red;">${regexPass}</p>
+            <c:if test="${not empty errorList}">
+                <ul>
+                    <c:forEach var="error" items="${errorList}">
+                        <li><font color="red">${error}</font></li>
+                        </c:forEach>
+                </ul>
             </c:if>
 
             <form action="${pageContext.request.contextPath}/Auth" method="POST">
@@ -71,7 +55,7 @@
 
                 <br>
 
-                <input type="hidden" name="action" value="role-selection">
+                <input type="hidden" name="action" value="pre-register">
                 <input type="submit" value="Register">
             </form>
 

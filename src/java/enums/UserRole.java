@@ -11,7 +11,8 @@ package enums;
  */
 public enum UserRole {
     MANAGER(1),
-    MEMBER(0);
+    MEMBER(0),
+    NONE(-1);
 
     private final int value;
 
