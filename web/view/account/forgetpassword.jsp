@@ -16,10 +16,14 @@
     <body>
         <div class="container mt-5">
             <h1>Forget Password</h1>
-            <c:if test="${not empty emailDup}">
-                <p style="color:red;">${emailDup}</p>
+            <c:if test="${not empty errorList}">
+                <ul>
+                    <c:forEach var="error" items="${errorList}">
+                        <li><font color="red">${error}</font></li>
+                        </c:forEach>
+                </ul>
             </c:if>
-            <form action="${pageContext.request.contextPath}/Auth" method="POST">
+            <form action="${pageContext.request.contextPath}/ForgetPassword" method="POST">
                 <fieldset>
                     <legend>Insert your email to set a new password</legend>
 

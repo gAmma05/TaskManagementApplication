@@ -11,35 +11,19 @@
         <div class="container mt-5">
             <h1>Register</h1>
 
-            <c:if test="${not empty userDup}">
-                <p style="color: red;">${userDup}</p>
+            <c:if test="${not empty errorList}">
+                <ul>
+                    <c:forEach var="error" items="${errorList}">
+                        <li><font color="red">${error}</font></li>
+                        </c:forEach>
+                </ul>
             </c:if>
 
-            <c:if test="${not empty invalidName}">
-                <p style="color: red;">${invalidName}</p>
-            </c:if>
-
-            <c:if test="${not empty nameLength}">
-                <p style="color: red;">${nameLength}</p>
-            </c:if>
-
-            <c:if test="${not empty passDup}">
-                <p style="color: red;">${passDup}</p>
-            </c:if>
-
-            <c:if test="${not empty passLength}">
-                <p style="color: red;">${passLength}</p>
-            </c:if>
-
-            <c:if test="${not empty regexPass}">
-                <p style="color: red;">${regexPass}</p>
-            </c:if>
-
-            <form action="${pageContext.request.contextPath}/Auth" method="POST">
+            <form action="${pageContext.request.contextPath}/Register" method="POST">
                 <fieldset>
                     <legend>Account Information</legend>
                     <label>Username:</label>
-                    <input type="text" name="username" required>
+                    <input type="text" name="username" value="${param.username}" required>
                     <br><br>
 
                     <label>Password:</label>
@@ -54,24 +38,24 @@
                 <fieldset>
                     <legend>Personal Information</legend>
                     <label>First Name:</label>
-                    <input type="text" name="firstName">
+                    <input type="text" name="firstName" value="${param.firstName}">
                     <br><br>
 
                     <label>Last Name:</label>
-                    <input type="text" name="lastName">
+                    <input type="text" name="lastName" value="${param.lastName}">
                     <br><br>
 
                     <label>Email:</label>
-                    <input type="email" name="email">
+                    <input type="email" name="email" value="${param.email}">
                     <br><br>
 
                     <label>Phone Number:</label>
-                    <input type="tel" name="phone">
+                    <input type="tel" name="phone" value="${param.phone}">
                 </fieldset>
 
                 <br>
 
-                <input type="hidden" name="action" value="role-selection">
+                <input type="hidden" name="action" value="pre-register">
                 <input type="submit" value="Register">
             </form>
 
