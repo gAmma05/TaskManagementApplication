@@ -1,9 +1,5 @@
 package model;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
@@ -11,7 +7,7 @@ import java.util.Date;
 
 /**
  *
- * @author asus
+ * Author: asus
  */
 @Data
 @NoArgsConstructor
@@ -29,11 +25,22 @@ public class Project {
     private Integer manager_id;
     private Date created_at;
     private Date updated_at;
+    private int totalMembers; // New field for total members
+
+    // Getter and setter for totalMembers
+    public int getTotalMembers() {
+        return totalMembers;
+    }
+
+    public void setTotalMembers(int totalMembers) {
+        this.totalMembers = totalMembers;
+    }
 
     public enum Status {
         NOT_STARTED("Not Started"),
         IN_PROGRESS("In Progress"),
-        COMPLETED("Completed");
+        COMPLETED("Completed"),
+        CLOSED("Closed");
 
         private final String displayName;
 

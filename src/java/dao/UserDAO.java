@@ -20,9 +20,10 @@ import utils.DBConnection;
  */
 public class UserDAO {
 
+    // Method to create a new user
     public boolean create(User u) {
         boolean status = false;
-        String sql = "INSERT INTO [User] (first_name, last_name, username, password, email, phone, role, created_at, updated_at)"
+        String sql = "INSERT INTO `User` (first_name, last_name, username, password, email, phone, role, created_at, updated_at)"
                 + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -33,7 +34,7 @@ public class UserDAO {
             ps.setString(4, u.getPassword());
             ps.setString(5, u.getEmail());
             ps.setString(6, u.getPhone());
-            ps.setInt(7, u.getRole().getValue());
+            ps.setInt(7, UserRole.NONE.getValue()); // Set role as NONE by default
             ps.setTimestamp(8, Timestamp.valueOf(u.getCreatedAt()));
             ps.setTimestamp(9, null);
 
@@ -51,9 +52,10 @@ public class UserDAO {
         return status;
     }
 
+    // Method to update basic user information
     public boolean updateBasic(User u) {
         boolean status = false;
-        String sql = "UPDATE [User] SET firstName = ?, lastName = ?, email = ?, phone = ? WHERE user_id = ?";
+        String sql = "UPDATE `User` SET firstName = ?, lastName = ?, email = ?, phone = ? WHERE user_id = ?";
 
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -78,9 +80,10 @@ public class UserDAO {
         return status;
     }
 
+    // Method to delete a user by user ID
     public boolean delete(String userID) {
         boolean status = false;
-        String sql = "DELETE FROM [User] WHERE user_id = ?";
+        String sql = "DELETE FROM `User` WHERE user_id = ?";
         try (Connection con = DBConnection.getConnection()) {
 
             PreparedStatement ps = con.prepareStatement(sql);
@@ -100,9 +103,10 @@ public class UserDAO {
         return status;
     }
 
+    // Method to update user password
     public boolean updatePass(User u) {
         boolean status = false;
-        String sql = "UPDATE [User] SET password = ? WHERE user_id = ?";
+        String sql = "UPDATE `User` SET password = ? WHERE user_id = ?";
 
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -124,9 +128,10 @@ public class UserDAO {
         return status;
     }
 
+    // Method to set a new password for a user by username
     public boolean setNewPass(String username, String newPassword) {
         boolean status = false;
-        String sql = "UPDATE [User] SET password = ? WHERE username = ?";
+        String sql = "UPDATE `User` SET password = ? WHERE username = ?";
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -149,10 +154,11 @@ public class UserDAO {
         return status;
     }
 
+    // Method to get a user by username and password
     public User getUser(String username, String password) {
         User u = null;
         String sql = "SELECT user_id, username, password, email, role "
-                + "FROM [User] u "
+                + "FROM `User` u "
                 + "WHERE username = ? AND password = ?";
         try (Connection con = DBConnection.getConnection()) {
 
@@ -193,10 +199,11 @@ public class UserDAO {
         return u;
     }
 
+    // Method to get a user by username
     public User getUserByUsername(String username) {
         User u = null;
         String sql = "SELECT user_id, username, password, email "
-                + "FROM [User] u "
+                + "FROM `User` u "
                 + "WHERE username = ?";
         try (Connection con = DBConnection.getConnection()) {
 
@@ -223,10 +230,11 @@ public class UserDAO {
         return u;
     }
 
+    // Method to get a user by email
     public User getUserByEmail(String email) {
         User u = null;
         String sql = "SELECT user_id, username, password "
-                + "FROM [User] u "
+                + "FROM `User` u "
                 + "WHERE email = ?";
         try (Connection con = DBConnection.getConnection()) {
 
@@ -252,9 +260,10 @@ public class UserDAO {
         return u;
     }
 
+    // Method to check if an email is already taken
     public boolean isEmailTaken(String email) {
         boolean status = false;
-        String sql = "SELECT 1 FROM [User] u WHERE email = ?";
+        String sql = "SELECT 1 FROM `User` u WHERE email = ?";
 
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -275,9 +284,10 @@ public class UserDAO {
         return status;
     }
 
+    // Method to check if a phone number is already taken
     public boolean isPhoneTaken(String phone) {
         boolean status = false;
-        String sql = "SELECT 1 FROM [User] u WHERE phone = ?";
+        String sql = "SELECT 1 FROM `User` u WHERE phone = ?";
 
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(sql);

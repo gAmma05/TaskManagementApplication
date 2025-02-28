@@ -14,21 +14,20 @@
     </head>
     <body>
         <div class="container mt-5">
-<c:choose>
-    <c:when test="${sessionScope.isLoggedIn}">
+            <c:choose>
+                <c:when test="${sessionScope.isLoggedIn}">
                     <h1>Welcome, ${sessionScope.username}!</h1>
-                    <p>Your role: ${sessionScope.role}</p>
-                    
+
                     <div class="mt-4">
-                       <a href="${pageContext.request.contextPath}/view/project/list.jsp" class="btn btn-primary me-2">Go to Projects</a>
+                        <a href="${pageContext.request.contextPath}/projects" class="btn btn-primary me-2">Go to Projects</a>
                         <a href="Auth?action=logout" class="btn btn-danger">Logout</a>
                     </div>
-    </c:when>
-    <c:otherwise>
+                </c:when>
+                <c:otherwise>
                     <h1>You are not logged in.</h1>
-                    <a href="Auth" class="btn btn-primary">Return to login</a>
-    </c:otherwise>
-</c:choose>
+                    <a href="${pageContext.request.contextPath}/Auth" class="btn btn-primary">Return to login</a>
+                </c:otherwise>
+            </c:choose>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

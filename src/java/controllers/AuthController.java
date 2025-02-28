@@ -101,7 +101,7 @@ public class AuthController extends HttpServlet {
             session.setAttribute("username", username);
             session.setAttribute("isLoggedIn", true);
             session.setAttribute("role", ulog.getRole());
-
+            session.setAttribute("userId", ulog.getUserId());
             req.getRequestDispatcher(DASHBOARD).forward(req, resp);
 
         } else {
