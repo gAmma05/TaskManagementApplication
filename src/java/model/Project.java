@@ -25,21 +25,13 @@ public class Project {
     private Integer manager_id;
     private Date created_at;
     private Date updated_at;
-    private int totalMembers; // New field for total members
-
-    // Getter and setter for totalMembers
-    public int getTotalMembers() {
-        return totalMembers;
-    }
-
-    public void setTotalMembers(int totalMembers) {
-        this.totalMembers = totalMembers;
-    }
+    private int totalMembers; 
+    private Date deleted_at;
 
     public enum Status {
         NOT_STARTED("Not Started"),
         IN_PROGRESS("In Progress"),
-        COMPLETED("Completed"),
+        COMPLETED("Completed"), 
         CLOSED("Closed");
 
         private final String displayName;
@@ -50,6 +42,15 @@ public class Project {
 
         public String getDisplayName() {
             return displayName;
+        }
+
+        public static Status fromDisplayName(String displayName) {
+            for (Status status : Status.values()) {
+                if (status.getDisplayName().equalsIgnoreCase(displayName)) {
+                    return status;
+                }
+            }
+            throw new IllegalArgumentException("No enum constant " + Status.class.getCanonicalName() + "." + displayName);
         }
     }
 

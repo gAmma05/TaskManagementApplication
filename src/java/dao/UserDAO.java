@@ -55,7 +55,8 @@ public class UserDAO {
     // Method to update basic user information
     public boolean updateBasic(User u) {
         boolean status = false;
-        String sql = "UPDATE `User` SET firstName = ?, lastName = ?, email = ?, phone = ? WHERE user_id = ?";
+        String sql = "UPDATE `User` "
+                + "SET firstName = ?, lastName = ?, email = ?, phone = ? WHERE user_id = ?";
 
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(sql);

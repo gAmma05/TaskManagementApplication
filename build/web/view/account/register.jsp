@@ -19,7 +19,7 @@
                 </ul>
             </c:if>
 
-            <form action="${pageContext.request.contextPath}/Auth" method="POST">
+            <form action="${pageContext.request.contextPath}/Register" method="POST">
                 <fieldset>
                     <legend>Account Information</legend>
                     <label>Username:</label>

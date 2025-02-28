@@ -5,14 +5,24 @@
         <group>
             <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/web/view/project/create.jsp</file>
             <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/web/WEB-INF/web.xml</file>
+<<<<<<< HEAD
             <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/src/java/utils/DBConnection.java</file>
             <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/src/java/model/Project.java</file>
             <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/src/java/validator/RegisterValidator.java</file>
+=======
+            <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/src/java/filters/CustomFilter.java</file>
+            <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/src/java/utils/DBConnection.java</file>
+            <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/web/view/project/list.jsp</file>
+            <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/src/java/model/Project.java</file>
+>>>>>>> a2a0d630867d227d91b688ec535881c7a2cdcb55
             <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/src/java/controllers/ProjectController.java</file>
             <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/web/view/project/project.jsp</file>
             <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/web/view/dashboard/dashboard.jsp</file>
             <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/src/java/controllers/AuthController.java</file>
+<<<<<<< HEAD
             <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/src/java/constants/URLConstants.java</file>
+=======
+>>>>>>> a2a0d630867d227d91b688ec535881c7a2cdcb55
             <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/src/java/dao/ProjectDAO.java</file>
             <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/src/java/dao/UserDAO.java</file>
         </group>

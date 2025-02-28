@@ -19,7 +19,7 @@
                     <h1>Welcome, ${sessionScope.username}!</h1>
 
                     <div class="mt-4">
-                        <a href="${pageContext.request.contextPath}/projects" class="btn btn-primary me-2">Go to Projects</a>
+                       <a href="${pageContext.request.contextPath}/projects" class="btn btn-primary me-2">Go to Projects</a>
                         <a href="Auth?action=logout" class="btn btn-danger">Logout</a>
                     </div>
                 </c:when>

@@ -14,7 +14,7 @@ import model.User;
 import validator.LoginValidator;
 
 public class AuthController extends HttpServlet {
-
+    // personal information must be used POST
     private final String AUTH = "Auth";
     private final String DASHBOARD = "view/dashboard/dashboard.jsp";
     private final String LOGIN_VIEW = "view/account/login.jsp";

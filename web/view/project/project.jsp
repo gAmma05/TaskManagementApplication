@@ -42,7 +42,6 @@
                                         <p>Status: ${project.status}</p>
                                     </c:otherwise>
                                 </c:choose>
-                                
                                 <c:choose>
                                     <c:when test="${not empty project.priority.displayName}">
                                         <p>Priority: ${project.priority.displayName}</p>

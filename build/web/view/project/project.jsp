@@ -20,35 +20,6 @@
                 </c:if>
             </div>
             
-            <form method="get" action="${pageContext.request.contextPath}/projects">
-                <div class="row mb-3">
-                    <div class="col-md-3">
-                        <input type="text" name="nameFilter" class="form-control" placeholder="Project Name">
-                    </div>
-                    <div class="col-md-3">
-                        <input type="number" name="budgetFilter" class="form-control" placeholder="Max Budget">
-                    </div>
-                    <div class="col-md-3">
-                        <select name="priorityFilter" class="form-control">
-                            <option value="">Priority</option>
-                            <option value="LOW">Low</option>
-                            <option value="MEDIUM">Medium</option>
-                            <option value="HIGH">High</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <select name="statusFilter" class="form-control">
-                            <option value="">Status</option>
-                            <option value="NOT_STARTED">Not Started</option>
-                            <option value="IN_PROGRESS">In Progress</option>
-                            <option value="COMPLETED">Completed</option>
-                            <option value="CLOSED">Closed</option>
-                        </select>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Filter</button>
-            </form>
-            
             <c:if test="${not empty error}">
                 <div class="alert alert-danger">
                     ${error}
@@ -71,7 +42,6 @@
                                         <p>Status: ${project.status}</p>
                                     </c:otherwise>
                                 </c:choose>
-                                
                                 <c:choose>
                                     <c:when test="${not empty project.priority.displayName}">
                                         <p>Priority: ${project.priority.displayName}</p>
@@ -84,13 +54,8 @@
                                 <p>Start Date: <fmt:formatDate value="${project.start_date}" pattern="dd/MM/yyyy"/></p>
                                 <p>End Date: <fmt:formatDate value="${project.end_date}" pattern="dd/MM/yyyy"/></p>
                                 <p>Budget: $${project.budget}</p>
-                                <p>Total Members: ${project.totalMembers}</p> <!-- New row for total members -->
                                 <a href="${pageContext.request.contextPath}/projects/tasks/${project.project_id}" 
                                    class="btn btn-info">View Tasks</a>
-                                <c:if test="${sessionScope.userId == project.manager_id}">
-                                    <a href="${pageContext.request.contextPath}/projects/close/${project.project_id}" 
-                                       class="btn btn-danger">Close</a>
-                                </c:if>
                             </div>
                         </div>
                     </div>
