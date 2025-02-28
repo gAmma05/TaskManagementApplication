@@ -85,7 +85,8 @@ public class ForgetPasswordController extends HttpServlet {
     }// </editor-fold>
 
     private void confirmEmail(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-
+        List<String> errorList = new ArrayList<>();
+        
         String email = req.getParameter("email");
 
         UserDAO udao = new UserDAO();
@@ -97,7 +98,8 @@ public class ForgetPasswordController extends HttpServlet {
 
             req.getRequestDispatcher(SET_NEW_PASSWORD_VIEW).forward(req, resp);
         } else {
-            req.setAttribute("emailDup", "Account not found by email. Try again!");
+            errorList.add("Account not found by email. Try again!");
+            req.setAttribute("errorList", errorList);
             req.getRequestDispatcher(FORGET_PASSWORD_VIEW).forward(req, resp);
         }
     }
