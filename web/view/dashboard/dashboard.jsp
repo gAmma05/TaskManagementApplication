@@ -23,7 +23,7 @@
 
                                 <c:choose>
                                     <c:when test="${sessionScope.isLoggedIn}">
-                                        <h1 class="fw-bold mb-4 text-uppercase">Welcome, ${sessionScope.username}!</h1>
+                                        <h1 class="fw-bold mb-4 text-uppercase">Welcome, ${sessionScope.fullName}!</h1>
 
                                         <div class="mt-4">
                                             <a href="/projects" class="btn btn-outline-light btn-lg px-5 me-2">Go to Projects</a>

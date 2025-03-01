@@ -8,7 +8,6 @@ package utils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Map;
 
 /**
  *
@@ -16,22 +15,26 @@ import java.util.Map;
  */
 public class DBConnection {
 
-    public static Connection getConnection() throws ClassNotFoundException, SQLException {
-        Map<String, String> envVariables = EnvReader.readEnvFile();
+    private static final String DB_NAME = "TMA";
+    private static final String DB_USER_NAME = "root";
+    private static final String DB_PASSWORD = "1234";
 
-        String dbUrl = envVariables.get("DB_URL");
-        String dbUser = envVariables.get("DB_USER");
-        String dbPassword = envVariables.get("DB_PASSWORD");
-
-        return DriverManager.getConnection(dbUrl, dbUser, dbPassword);
-    }
-
-//    public static void main(String[] args) throws ClassNotFoundException, SQLException {
-//        Connection c = DBConnection.getConnection();
-//        if (c != null) {
-//            System.out.println("Susscess");
-//        } else {
-//            System.out.println("fail");
-//        }
+    //connect ssms
+//    public static Connection getConnection() throws ClassNotFoundException, SQLException {
+//        Connection conn = null;
+//        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+//        String url = "jdbc:sqlserver://localhost:1433;databaseName=" + DB_NAME + ";encrypt=true;trustServerCertificate=true";
+//        conn = DriverManager.getConnection(url, DB_USER_NAME, DB_PASSWORD);
+//        return conn;
 //    }
+    //connect mysql
+    public static Connection getConnection() throws ClassNotFoundException, SQLException {
+        Connection conn = null;
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        String url = "jdbc:mysql://localhost:3306/" + DB_NAME + "?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
+        conn = DriverManager.getConnection(url, DB_USER_NAME, DB_PASSWORD);
+        return conn;
+    }
+    
+    
 }

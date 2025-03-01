@@ -5,10 +5,9 @@
  */
 package controllers;
 
-import dao.implementations.UserDAO;
+import dao.UserDAO;
 import enums.UserRole;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -27,8 +26,6 @@ import validator.RegisterValidator;
 public class RegisterController extends HttpServlet {
     
     private final String LOGIN_VIEW = "view/account/login.jsp";
-    private final String FORGET_PASSWORD_VIEW = "view/account/forgetpassword.jsp";
-    private final String SET_NEW_PASSWORD_VIEW = "view/account/setnewpassword.jsp";
     private final String REGISTER_VIEW = "view/account/register.jsp";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -87,8 +84,8 @@ public class RegisterController extends HttpServlet {
         String confirmPassword = req.getParameter("confirm-password");
 
         String username = req.getParameter("username");
-        String firstName = req.getParameter("firstName");
-        String lastName = req.getParameter("lastName");
+        String fullName = req.getParameter("full-name");
+        
         String email = req.getParameter("email");
         String phone = req.getParameter("phone");
 
@@ -119,12 +116,12 @@ public class RegisterController extends HttpServlet {
 
         boolean isInvalidFormat = !rv.regexPass(password);
         boolean isShortPass = !rv.passLength(password);
-        boolean isInvalidName = !rv.invalidName(firstName, lastName);
+        boolean isInvalidName = !rv.invalidName(fullName);
         boolean isMismatched = !rv.duplicatedPass(password, confirmPassword);
         boolean isShortName = !rv.usernameLength(username);
 
         if (isInvalidName) {
-            errorList.add("Invalid first name or last name (Must only contain alphabetic character)");
+            errorList.add("Invalid full name (Must only contain alphabetic character)");
         }
         if (isShortName) {
             errorList.add("Username length is invalid (The length must be more than 5 characters)");
@@ -141,8 +138,8 @@ public class RegisterController extends HttpServlet {
 
         req.setAttribute("username", username);
         req.setAttribute("password", password);
-        req.setAttribute("firstName", firstName);
-        req.setAttribute("lastName", lastName);
+        req.setAttribute("full-name", fullName);
+        
         req.setAttribute("email", email);
         req.setAttribute("phone", phone);
 
@@ -159,14 +156,15 @@ public class RegisterController extends HttpServlet {
     private void confirmRegister(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        String firstName = req.getParameter("firstName");
-        String lastName = req.getParameter("lastName");
+        String fullName = req.getParameter("full-name");
         String email = req.getParameter("email");
         String phone = req.getParameter("phone");
 
         UserDAO udao = new UserDAO();
+        
+        
 
-        User u = new User(firstName, lastName, username, password, email, phone, UserRole.NONE, -1);
+        User u = new User(fullName, username, password, email, phone, UserRole.NONE);
         if (udao.create(u)) {
             req.setAttribute("loginGood", "Login successfully");
         } else {
