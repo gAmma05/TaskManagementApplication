@@ -5,7 +5,7 @@
  */
 package controllers;
 
-import dao.UserDAO;
+import dao.implementations.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;

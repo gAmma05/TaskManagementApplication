@@ -1,7 +1,7 @@
 package controllers;
 
 import constants.URLConstants;
-import dao.ProjectDAO;
+import dao.implementations.ProjectDAO;
 import model.Project;
 
 import javax.servlet.ServletException;
