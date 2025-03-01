@@ -7,14 +7,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
 
-import dao.implementations.UserDAO;
+import dao.UserDAO;
 import java.util.ArrayList;
 import java.util.List;
-import model.User;
 import validator.LoginValidator;
 
 public class AuthController extends HttpServlet {
-    // personal information must be used POST
+
     private final String AUTH = "Auth";
     private final String DASHBOARD = "view/dashboard/dashboard.jsp";
     private final String LOGIN_VIEW = "view/account/login.jsp";
@@ -85,9 +84,9 @@ public class AuthController extends HttpServlet {
             session.setAttribute("username", username);
             session.setAttribute("isLoggedIn", true);
             session.setAttribute("role", ud.getUser(username, password).getRole());
+            session.setAttribute("fullName", ud.getUser(username, password).getFullName());
 
             req.getRequestDispatcher(DASHBOARD).forward(req, resp);
-
         } else {
 
             errorList.add("Wrong username or password");

@@ -5,7 +5,7 @@
  */
 package validator;
 
-import dao.implementations.UserDAO;
+import dao.UserDAO;
 
 /**
  *
@@ -19,8 +19,8 @@ public class RegisterValidator {
         return username.length() > 5;
     }
 
-    public boolean invalidName(String firstName, String lastName) {
-        return firstName.matches("[a-zA-Z ]+") && lastName.matches("[a-zA-Z ]+");
+    public boolean invalidName(String fullName) {
+        return fullName.matches("[a-zA-Z ]+");
     }
 
     public boolean duplicatedUser(String username, String dupUsername) {

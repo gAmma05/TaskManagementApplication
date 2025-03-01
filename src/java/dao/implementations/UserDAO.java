@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao.implementations;
+package dao;
 
 import enums.UserRole;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import model.User;
 import utils.DBConnection;
 
@@ -18,53 +17,48 @@ import utils.DBConnection;
  *
  * @author gAmma
  */
-public class UserDAO {
+public class UserDAO implements IUserDAO {
 
-    // Method to create a new user
+    @Override
     public boolean create(User u) {
         boolean status = false;
-        String sql = "INSERT INTO `User` (first_name, last_name, username, password, email, phone, role, created_at, updated_at)"
-                + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO User (user_id, full_name, username, password, email, phone_number, role) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(sql);
 
-            ps.setString(1, u.getFirstName());
-            ps.setString(2, u.getLastName());
+            ps.setString(1, u.getUserId());
+            ps.setString(2, u.getFullName());
             ps.setString(3, u.getUsername());
+
             ps.setString(4, u.getPassword());
             ps.setString(5, u.getEmail());
             ps.setString(6, u.getPhone());
-            ps.setInt(7, UserRole.NONE.getValue()); // Set role as NONE by default
-            ps.setTimestamp(8, Timestamp.valueOf(u.getCreatedAt()));
-            ps.setTimestamp(9, null);
+            ps.setString(7, u.getRole().getValue());
 
             int rows = ps.executeUpdate();
-            if (rows > 0) {
-                status = true;
-            }
-            con.close();
+            status = rows > 0;
+
         } catch (ClassNotFoundException ex) {
             System.out.println("DBUtils not found.");
         } catch (SQLException ex) {
-            System.out.println("SQL Exception .Details: ");
+            System.out.println("SQL Exception. Details: ");
             ex.printStackTrace();
         }
         return status;
     }
 
-    // Method to update basic user information
+    @Override
     public boolean updateBasic(User u) {
         boolean status = false;
-        String sql = "UPDATE `User` "
-                + "SET firstName = ?, lastName = ?, email = ?, phone = ? WHERE user_id = ?";
+        String sql = "UPDATE User SET full_name = ?, email = ?, phone = ? WHERE user_id = ?";
 
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, u.getFirstName());
-            ps.setString(2, u.getLastName());
-            ps.setString(3, u.getEmail());
-            ps.setString(4, u.getPhone());
-            ps.setInt(5, u.getUserId());
+            ps.setString(1, u.getFullName());
+            ps.setString(2, u.getEmail());
+            ps.setString(3, u.getPhone());
+            ps.setString(4, u.getUserId());
 
             int rows = ps.executeUpdate();
             if (rows > 0) {
@@ -81,10 +75,10 @@ public class UserDAO {
         return status;
     }
 
-    // Method to delete a user by user ID
+    @Override
     public boolean delete(String userID) {
         boolean status = false;
-        String sql = "DELETE FROM `User` WHERE user_id = ?";
+        String sql = "DELETE FROM User WHERE user_id = ?";
         try (Connection con = DBConnection.getConnection()) {
 
             PreparedStatement ps = con.prepareStatement(sql);
@@ -104,15 +98,15 @@ public class UserDAO {
         return status;
     }
 
-    // Method to update user password
+    @Override
     public boolean updatePass(User u) {
         boolean status = false;
-        String sql = "UPDATE `User` SET password = ? WHERE user_id = ?";
+        String sql = "UPDATE User SET password = ? WHERE user_id = ?";
 
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, u.getPassword());
-            ps.setInt(2, u.getUserId());
+            ps.setString(2, u.getUserId());
 
             int rows = ps.executeUpdate();
             if (rows > 0) {
@@ -129,10 +123,10 @@ public class UserDAO {
         return status;
     }
 
-    // Method to set a new password for a user by username
+    @Override
     public boolean setNewPass(String username, String newPassword) {
         boolean status = false;
-        String sql = "UPDATE `User` SET password = ? WHERE username = ?";
+        String sql = "UPDATE User SET password = ? WHERE username = ?";
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -155,11 +149,11 @@ public class UserDAO {
         return status;
     }
 
-    // Method to get a user by username and password
+    @Override
     public User getUser(String username, String password) {
         User u = null;
-        String sql = "SELECT user_id, username, password, email, role "
-                + "FROM `User` u "
+        String sql = "SELECT user_id, full_name, username, password, email, role "
+                + "FROM User u "
                 + "WHERE username = ? AND password = ?";
         try (Connection con = DBConnection.getConnection()) {
 
@@ -171,18 +165,19 @@ public class UserDAO {
             if (rs != null) {
                 if (rs.next()) {
                     u = new User();
-                    u.setUserId(rs.getInt("user_id"));
+                    u.setUserId(rs.getString("user_id"));
+                    u.setFullName(rs.getString("full_name"));
                     u.setUsername(rs.getString("username"));
                     u.setPassword(rs.getString("password"));
                     u.setEmail(rs.getString("email"));
-                    switch (rs.getInt("role")) {
-                        case -1:
+                    switch (rs.getString("role")) {
+                        case "NONE":
                             u.setRole(UserRole.NONE);
                             break;
-                        case 0:
+                        case "MEMBER":
                             u.setRole(UserRole.MEMBER);
                             break;
-                        case 1:
+                        case "MANAGER":
                             u.setRole(UserRole.MANAGER);
                             break;
                         default:
@@ -200,28 +195,24 @@ public class UserDAO {
         return u;
     }
 
-    // Method to get a user by username
+    @Override
     public User getUserByUsername(String username) {
         User u = null;
-        String sql = "SELECT user_id, username, password, email "
-                + "FROM `User` u "
-                + "WHERE username = ?";
-        try (Connection con = DBConnection.getConnection()) {
+        String sql = "SELECT user_id, full_name, username, password, email FROM User WHERE username = ?";
 
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, username);
 
             ResultSet rs = ps.executeQuery();
-            if (rs != null) {
-                if (rs.next()) {
-                    u = new User();
-                    u.setUserId(rs.getInt("user_id"));
-                    u.setUsername(rs.getString("username"));
-                    u.setPassword(rs.getString("password"));
-                    u.setEmail(rs.getString("email"));
-                }
+            if (rs.next()) {
+                u = new User();
+                u.setUserId(rs.getString("user_id"));
+                u.setFullName(rs.getString("full_name"));
+                u.setUsername(rs.getString("username"));
+                u.setPassword(rs.getString("password"));
+                u.setEmail(rs.getString("email"));
             }
-            con.close();
         } catch (ClassNotFoundException ex) {
             System.out.println("DBUtils not found.");
         } catch (SQLException ex) {
@@ -231,11 +222,11 @@ public class UserDAO {
         return u;
     }
 
-    // Method to get a user by email
+    @Override
     public User getUserByEmail(String email) {
         User u = null;
         String sql = "SELECT user_id, username, password "
-                + "FROM `User` u "
+                + "FROM User u "
                 + "WHERE email = ?";
         try (Connection con = DBConnection.getConnection()) {
 
@@ -246,7 +237,7 @@ public class UserDAO {
             if (rs != null) {
                 if (rs.next()) {
                     u = new User();
-                    u.setUserId(rs.getInt("user_id"));
+                    u.setUserId(rs.getString("user_id"));
                     u.setUsername(rs.getString("username"));
                     u.setPassword(rs.getString("password"));
                 }
@@ -261,10 +252,10 @@ public class UserDAO {
         return u;
     }
 
-    // Method to check if an email is already taken
+    @Override
     public boolean isEmailTaken(String email) {
         boolean status = false;
-        String sql = "SELECT 1 FROM `User` u WHERE email = ?";
+        String sql = "SELECT 1 FROM User u WHERE email = ?";
 
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -285,10 +276,10 @@ public class UserDAO {
         return status;
     }
 
-    // Method to check if a phone number is already taken
+    @Override
     public boolean isPhoneTaken(String phone) {
         boolean status = false;
-        String sql = "SELECT 1 FROM `User` u WHERE phone = ?";
+        String sql = "SELECT 1 FROM User u WHERE phone_number = ?";
 
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(sql);
