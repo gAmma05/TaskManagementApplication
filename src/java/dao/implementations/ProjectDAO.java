@@ -1,4 +1,4 @@
-package dao;
+package dao.implementations;
 
 import enums.UserRole;
 import model.Project;

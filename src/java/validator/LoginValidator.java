@@ -5,7 +5,7 @@
  */
 package validator;
 
-import dao.UserDAO;
+import dao.implementations.UserDAO;
 import model.User;
 
 /**
