@@ -61,4 +61,8 @@ public class ProjectDAO {
         }
         return projects;
     }
+
+    public Project getById(String id) {
+        
+    }
 }

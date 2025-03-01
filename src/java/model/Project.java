@@ -23,42 +23,10 @@ public class Project {
     private String description;
     private Date start_date;
     private Date end_date;
-    private Status status;
-    private Priority priority;
+    private ProjectStatus status;
     private Double budget;
     private Integer manager_id;
     private Date created_at;
     private Date updated_at;
 
-    public enum Status {
-        NOT_STARTED("Not Started"),
-        IN_PROGRESS("In Progress"),
-        COMPLETED("Completed");
-
-        private final String displayName;
-
-        Status(String displayName) {
-            this.displayName = displayName;
-        }
-
-        public String getDisplayName() {
-            return displayName;
-        }
-    }
-
-    public enum Priority {
-        LOW("Low"),
-        MEDIUM("Medium"),
-        HIGH("High");
-
-        private final String displayName;
-
-        Priority(String displayName) {
-            this.displayName = displayName;
-        }
-
-        public String getDisplayName() {
-            return displayName;
-        }
-    }
 }

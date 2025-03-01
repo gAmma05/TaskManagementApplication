@@ -4,19 +4,38 @@
  */
 package controllers;
 
+import dao.implementations.ProjectDAO;
+import dao.implementations.TaskDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author thien
  */
-public class AddTask extends HttpServlet {
+public class AddTaskServlet extends HttpServlet {
+    
+    private ProjectDAO projectDAO;
+    private TaskDAO taskDAO;
 
+    @Override
+    public void init() {
+        try { 
+            projectDAO = new ProjectDAO();
+            taskDAO = new TaskDAO();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AddTaskServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AddTaskServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -56,6 +75,13 @@ public class AddTask extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String projectId = request.getParameter("projectId");
+        String memberIdString = request.getParameter("member");
+        String name = request.getParameter("name");
+        String description = request.getParameter("desc");
+        String status = request.getParameter("status");
+        String priority = request.getParameter("priority");
+        
+        Project project = projectDAO.g
     }
 
     /**

@@ -7,7 +7,7 @@
     </servlet>
     <servlet>
         <servlet-name>AddTask</servlet-name>
-        <servlet-class>controllers.AddTask</servlet-class>
+        <servlet-class>controllers.AddTaskServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AuthController</servlet-name>

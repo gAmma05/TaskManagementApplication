@@ -25,7 +25,7 @@ import utils.DatabaseUtils;
 public class TaskDAO implements ITaskDAO {
     private Connection connection;
     
-    public TaskDAO(Connection connection) throws ClassNotFoundException, SQLException {
+    public TaskDAO() throws ClassNotFoundException, SQLException {
         this.connection = DatabaseUtils.getConnection();
     }
 
