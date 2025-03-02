@@ -13,12 +13,9 @@ import enums.UserRole;
 import java.util.UUID;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-
 public class User {
     private String userId;
     private String fullName;
@@ -38,4 +35,5 @@ public class User {
         this.role = role;
         this.fullName = fullName;
     }
+    
 }
