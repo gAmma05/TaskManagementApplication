@@ -4,9 +4,10 @@
  */
 package model;
 
+import enums.TaskPriority;
 import enums.TaskStatus;
 import java.sql.Date;
-import lombok.AllArgsConstructor;
+import java.util.UUID;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,11 +17,27 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Task {
     private String taskId;
+    private String taskName;
+    private String description;
     private String projectId;
+    private TaskPriority priotity;
+    private TaskStatus status;
+    private Date deadline;
     private Date createdAt;
     private Date updatedAt;
-    private TaskStatus status;
+
+    public Task(String taskName, String description, String projectId, TaskPriority priotity, TaskStatus status, Date deadline, Date createdAt, Date updatedAt) {
+        this.taskId = UUID.randomUUID().toString();
+        this.taskName = taskName;
+        this.description = description;
+        this.projectId = projectId;
+        this.priotity = priotity;
+        this.status = status;
+        this.deadline = deadline;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+    
 }

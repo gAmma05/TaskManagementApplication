@@ -2,8 +2,8 @@ package controllers;
 
 import constants.URLConstants;
 import dao.implementations.ProjectDAO;
+import enums.ProjectStatus;
 import model.Project;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.sql.SQLException;
 import java.util.List;
 
 public class ProjectController extends HttpServlet {
@@ -45,28 +44,18 @@ public class ProjectController extends HttpServlet {
     // Method to list all projects with filtering
     private void handleListProjects(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            Boolean isLoggedIn = (Boolean) request.getSession().getAttribute("isLoggedIn");
-            if (isLoggedIn == null || !isLoggedIn) {
-                response.sendRedirect(request.getContextPath() + URLConstants.AUTH_URL);
-                return;
-            }
-
-            String nameFilter = request.getParameter("nameFilter");
-            String budgetFilter = request.getParameter("budgetFilter");
-            String priorityFilter = request.getParameter("priorityFilter");
-            String statusFilter = request.getParameter("statusFilter");
-
-            List<Project> projects = projectDAO.getFilteredProjects(nameFilter, budgetFilter, priorityFilter, statusFilter);
-            for (Project project : projects) {
-                int totalMembers = projectDAO.getTotalMembers(project.getProject_id());
-                project.setTotalMembers(totalMembers); // Add total members to the project
-            }
-            request.setAttribute("projects", projects);
-            request.getRequestDispatcher("/view/project/project.jsp").forward(request, response);
-        } catch (SQLException | ClassNotFoundException e) {
-            throw new ServletException("Database error", e);
+        Boolean isLoggedIn = (Boolean) request.getSession().getAttribute("isLoggedIn");
+        if (isLoggedIn == null || !isLoggedIn) {
+            response.sendRedirect(request.getContextPath() + URLConstants.AUTH_URL);
+            return;
         }
+        String nameFilter = request.getParameter("nameFilter");
+        String budgetFilter = request.getParameter("budgetFilter");
+        String priorityFilter = request.getParameter("priorityFilter");
+        String statusFilter = request.getParameter("statusFilter");
+        List<Project> projects = projectDAO.getFilteredProjects(nameFilter, budgetFilter, priorityFilter, statusFilter);
+        request.setAttribute("projects", projects);
+        request.getRequestDispatcher("/view/project/project.jsp").forward(request, response);
     }
 
     private void handleShowCreateForm(HttpServletRequest request, HttpServletResponse response)
@@ -106,11 +95,10 @@ public class ProjectController extends HttpServlet {
             throws ServletException, IOException {
         try {
             // Lấy project_id từ URL (/close/{project_id})
-            String projectIdStr = pathInfo.substring("/close/".length());
-            int projectId = Integer.parseInt(projectIdStr);
+            String projectId = pathInfo.substring("/close/".length());
 
             // Kiểm tra xem người dùng có quyền đóng project này không
-            Integer userId = (Integer) request.getSession().getAttribute("userId");
+            String userId = (String) request.getSession().getAttribute("userId");
             if (userId == null) {
                 response.sendRedirect(request.getContextPath() + URLConstants.AUTH_URL);
                 return;
@@ -118,7 +106,7 @@ public class ProjectController extends HttpServlet {
 
             projectDAO.closeProject(projectId, userId);
             response.sendRedirect(request.getContextPath() + "/projects");
-        } catch (NumberFormatException | SQLException | ClassNotFoundException e) {
+        } catch (NumberFormatException e) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid project ID or database error");
         }
     }
@@ -141,7 +129,7 @@ public class ProjectController extends HttpServlet {
             Project project = createProjectFromRequest(request);
             projectDAO.saveProject(project);
             response.sendRedirect(request.getContextPath() + "/projects");
-        } catch (SQLException | ParseException | ClassNotFoundException e) {
+        } catch (ParseException e) {
             request.setAttribute("error", "Error creating project: " + e.getMessage());
             request.getRequestDispatcher("/view/project/create.jsp").forward(request, response);
         }
@@ -150,27 +138,26 @@ public class ProjectController extends HttpServlet {
     private Project createProjectFromRequest(HttpServletRequest request)
             throws ParseException {
         Project project = new Project();
-        project.setProject_name(request.getParameter("projectName"));
+        project.setProjectName(request.getParameter("projectName"));
         project.setDescription(request.getParameter("description"));
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        project.setStart_date(dateFormat.parse(request.getParameter("startDate")));
-        project.setEnd_date(dateFormat.parse(request.getParameter("endDate")));
+        project.setStartDate(dateFormat.parse(request.getParameter("startDate")));
+        project.setEndDate(dateFormat.parse(request.getParameter("endDate")));
 
-        project.setPriority(Project.Priority.valueOf(request.getParameter("priority").toUpperCase()));
-        project.setStatus(Project.Status.valueOf(request.getParameter("status").toUpperCase()));
+        project.setStatus(ProjectStatus.valueOf(request.getParameter("status").toUpperCase()));
         project.setBudget(Double.valueOf(request.getParameter("budget")));
 
-        Integer userId = (Integer) request.getSession().getAttribute("userId");
+        String userId = (String) request.getSession().getAttribute("userId");
         if (userId != null) {
-            project.setManager_id(userId);
+            project.setManagerId(userId);
         } else {
             throw new IllegalStateException("User ID is not set in session");
         }
 
         Date now = new Date();
-        project.setCreated_at(now);
-        project.setUpdated_at(now);
+        project.setCreatedAt(now);
+        project.setUpdatedAt(now);
 
         return project;
     }
