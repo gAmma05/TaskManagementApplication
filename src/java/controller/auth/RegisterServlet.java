@@ -99,15 +99,14 @@ public class RegisterServlet extends HttpServlet {
                     request.setAttribute(entry.getKey() + "Error", entry.getValue());
                 }
                 // Forward back to the form with errors
-                request.getRequestDispatcher(request.getContextPath() + ViewURL.REGISTER_PAGE).forward(request, response);
+                request.getRequestDispatcher(ViewURL.REGISTER_PAGE).forward(request, response);
                 return;
             }
 
             User newUser = new User(
-                    UUID.randomUUID().toString(),
-                    fullName.trim(),
                     username.trim(),
-                    password, // Hash in production
+                    password, 
+                    fullName.trim(),
                     email.trim(),
                     phone != null ? phone.trim() : null,
                     UserRole.valueOf(role.toUpperCase())
@@ -119,24 +118,24 @@ public class RegisterServlet extends HttpServlet {
                 request.getSession().setAttribute("username", newUser.getUsername());
                 request.getSession().setAttribute("role", newUser.getRole().name());
                 request.getSession().setAttribute("full_name", newUser.getFullName());
-                if (role.equals(UserRole.MANAGER.name())) {
+                if (role.equalsIgnoreCase(UserRole.MANAGER.name())) {
                     response.sendRedirect(request.getContextPath() + ServletURL.MANAGER_DASHBOARD);
                 } 
-                else if (role.equals(UserRole.MEMBER.name())) {
+                else if (role.equalsIgnoreCase(UserRole.MEMBER.name())) {
                     response.sendRedirect(request.getContextPath() + ServletURL.MEMBER_DASHBOARD);
                 } 
                 else {
                     request.setAttribute("generalError", "You have no role to access the system.");
-                    request.getRequestDispatcher(request.getContextPath() + ViewURL.REGISTER_PAGE).forward(request, response);
+                    request.getRequestDispatcher(ViewURL.REGISTER_PAGE).forward(request, response);
                 }
             } else {
                 request.setAttribute("generalError", "Registration failed due to a server error. Please try again.");
-                request.getRequestDispatcher(request.getContextPath() + ViewURL.REGISTER_PAGE).forward(request, response);
+                request.getRequestDispatcher(ViewURL.REGISTER_PAGE).forward(request, response);
             }
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, "Registration failed", ex);
             request.setAttribute("generalError", "A server error occurred: " + ex.getMessage());
-            request.getRequestDispatcher(request.getContextPath() + ViewURL.REGISTER_PAGE).forward(request, response);
+            request.getRequestDispatcher(ViewURL.REGISTER_PAGE).forward(request, response);
         }
     }
 
