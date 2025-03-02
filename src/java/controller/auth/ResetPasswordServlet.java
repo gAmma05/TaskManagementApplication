@@ -4,7 +4,7 @@
  */
 package controller.auth;
 
-import constants.URLConstants;
+import constants.ViewURL;
 import dao.implementations.UserDAO;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -29,7 +29,7 @@ public class ResetPasswordServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Redirect to reset password page
-        request.getRequestDispatcher(URLConstants.RESET_PASSWORD_PAGE).forward(request, response);
+        request.getRequestDispatcher(ViewURL.RESET_PASSWORD_PAGE).forward(request, response);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class ResetPasswordServlet extends HttpServlet {
                 for (Map.Entry<String, String> entry : errors.entrySet()) {
                     request.setAttribute(entry.getKey() + "Error", entry.getValue());
                 }
-                request.getRequestDispatcher(request.getContextPath() + URLConstants.RESET_PASSWORD_PAGE).forward(request, response);
+                request.getRequestDispatcher(request.getContextPath() + ViewURL.RESET_PASSWORD_PAGE).forward(request, response);
                 return;
             }
 
@@ -55,21 +55,21 @@ public class ResetPasswordServlet extends HttpServlet {
 
             if (user == null) {
                 request.setAttribute("generalError", "Username does not exist.");
-                request.getRequestDispatcher(request.getContextPath() + URLConstants.RESET_PASSWORD_PAGE).forward(request, response);
+                request.getRequestDispatcher(request.getContextPath() + ViewURL.RESET_PASSWORD_PAGE).forward(request, response);
                 return;
             }
 
             boolean success = userDAO.updatePassword(user.getUserId(), newPassword.trim());
             if (success) {
-                response.sendRedirect(request.getContextPath() + URLConstants.RESET_PASSWORD_PAGE + "?success=true");
+                response.sendRedirect(request.getContextPath() + ViewURL.RESET_PASSWORD_PAGE + "?success=true");
             } else {
                 request.setAttribute("generalError", "Failed to reset password. Please try again.");
-                request.getRequestDispatcher(URLConstants.RESET_PASSWORD_PAGE).forward(request, response);
+                request.getRequestDispatcher(ViewURL.RESET_PASSWORD_PAGE).forward(request, response);
             }
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ResetPasswordServlet.class.getName()).log(Level.SEVERE, "Password reset failed", ex);
             request.setAttribute("generalError", "A server error occurred: " + ex.getMessage());
-            request.getRequestDispatcher(request.getContextPath() + URLConstants.RESET_PASSWORD_PAGE).forward(request, response);
+            request.getRequestDispatcher(request.getContextPath() + ViewURL.RESET_PASSWORD_PAGE).forward(request, response);
         }
     }
 

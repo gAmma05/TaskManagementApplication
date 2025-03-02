@@ -53,6 +53,7 @@ CREATE TABLE Enroll (
     user_id VARCHAR(50),
     project_id VARCHAR(50),
     joined_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    status ENUM('PENDING', 'ACTIVE', 'REMOVED') DEFAULT 'PENDING',
     PRIMARY KEY (user_id, project_id),
     FOREIGN KEY (user_id) REFERENCES User(user_id),
     FOREIGN KEY (project_id) REFERENCES Project(project_id)

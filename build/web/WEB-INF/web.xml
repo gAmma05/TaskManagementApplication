@@ -12,6 +12,18 @@
         <servlet-name>ResetPasswordServlet</servlet-name>
         <servlet-class>controller.auth.ResetPasswordServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MemberDashBoardServlet</servlet-name>
+        <servlet-class>controllers.user.MemberDashBoardServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManagerDashboardServlet</servlet-name>
+        <servlet-class>controllers.user.ManagerDashboardServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>controller.auth.LogoutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -23,6 +35,18 @@
     <servlet-mapping>
         <servlet-name>ResetPasswordServlet</servlet-name>
         <url-pattern>/reset-password</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MemberDashBoardServlet</servlet-name>
+        <url-pattern>/member-dashboard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerDashboardServlet</servlet-name>
+        <url-pattern>/manager-dashboard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
