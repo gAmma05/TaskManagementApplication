@@ -19,5 +19,5 @@ public interface ITaskDAO {
     public List<Task> getAllTasks();
     public List<Task> getTasksByProject(String projectId);
     public List<Task> getTasksByUserAndProject(String userId, String projectId);
-    List<Task> getTasksByAssigner(String assignerId);
+    public List<Task> getTasksByUserId(String userId);
 }

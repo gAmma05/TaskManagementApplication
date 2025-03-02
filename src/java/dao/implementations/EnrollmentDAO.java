@@ -6,6 +6,7 @@ package dao.implementations;
 
 import dao.interfaces.IEnrollmentDAO;
 import enums.EnrollmentStatus;
+import enums.UserRole;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Enrollment;
+import model.User;
 
 /**
  *
@@ -116,6 +118,28 @@ public class EnrollmentDAO implements IEnrollmentDAO {
     }
 
     @Override
+    public List<User> getUsersByProjectId(String projectId) {
+        List<User> users = new ArrayList<>();
+        String sql = "SELECT u.user_id, u.username, u.full_name, u.email, u.phone_number, u.role, e.joined_at, e.status " +
+                    "FROM Enroll e " +
+                    "JOIN User u ON e.user_id = u.user_id " +
+                    "WHERE e.project_id = ? AND e.status = 'ACTIVE'";
+        
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, projectId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    User user = mapResultSetToUser(rs);
+                    users.add(user);
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EnrollmentDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return users;
+    }
+    
+    @Override
     public boolean updateEnrollment(Enrollment enrollment) {
         String sql = "UPDATE Enroll SET joined_at = ?, status = ? WHERE user_id = ? AND project_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -142,6 +166,29 @@ public class EnrollmentDAO implements IEnrollmentDAO {
         }
         return false;
     }
+    
+    @Override
+    public Enrollment getEnrollmentByUserAndProject(String userId, String projectId) {
+        String sql = "SELECT * FROM Enroll WHERE user_id = ? AND project_id = ? LIMIT 1";
+        
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            
+            pstmt.setString(1, userId);
+            pstmt.setString(2, projectId);
+            
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    return mapResultSetToEnrollment(rs);
+                }
+                return null; // No enrollment found
+            }
+            
+        } catch (SQLException e) {
+            // In a real application, you'd want to use a proper logging framework
+            System.err.println("Error retrieving enrollment: " + e.getMessage());
+            return null;
+        }
+    }
 
     private Enrollment mapResultSetToEnrollment(ResultSet rs) throws SQLException {
         Enrollment enrollment = new Enrollment();
@@ -151,5 +198,16 @@ public class EnrollmentDAO implements IEnrollmentDAO {
         enrollment.setJoinedAt(joinedAt != null ? new Date(joinedAt.getTime()) : null);
         enrollment.setStatus(EnrollmentStatus.valueOf(rs.getString("status")));
         return enrollment;
+    }
+    
+    private User mapResultSetToUser(ResultSet rs) throws SQLException {
+        User user = new User();
+        user.setUserId(rs.getString("user_id"));
+        user.setUsername(rs.getString("username"));
+        user.setFullName(rs.getString("full_name"));
+        user.setEmail(rs.getString("email"));
+        user.setPhone(rs.getString("phone_number"));
+        user.setRole(UserRole.valueOf(rs.getString("role")));
+        return user;
     }
 }

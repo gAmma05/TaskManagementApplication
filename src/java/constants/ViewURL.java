@@ -20,6 +20,8 @@ public class ViewURL {
     
     //view/member
     public static final String MEMBER_DASHBOARD_PAGE = "/view/member/dashboard.jsp";
+    
+    //view/project
+    public static final String PROJECT_DETAILS_PAGE = "/view/project/projectDetails.jsp";
 }
-
 

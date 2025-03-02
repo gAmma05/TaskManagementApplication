@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Task {
     private String taskId;
-    private String assignerId;
+    private String memberId;
     private String taskName;
     private String description;
     private String projectId;
@@ -33,7 +33,7 @@ public class Task {
 
     public Task(String assignerId, String taskName, String description, String projectId, TaskPriority priotity, TaskStatus status, Date deadline, Date createdAt, Date updatedAt) {
         this.taskId = UUID.randomUUID().toString();
-        this.assignerId = assignerId;
+        this.memberId = assignerId;
         this.taskName = taskName;
         this.description = description;
         this.projectId = projectId;

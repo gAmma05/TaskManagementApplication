@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Task;
-import utils.DBConnection;
 
 /**
  *
@@ -34,11 +33,11 @@ public class TaskDAO implements ITaskDAO {
 
     @Override
     public boolean createTask(Task task) {
-        String sql = "INSERT INTO Task (task_id, assigner_id, task_name, description, project_id, priority, status, deadline) "
+        String sql = "INSERT INTO Task (task_id, member_id, task_name, description, project_id, priority, status, deadline) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, task.getTaskId());
-            stmt.setString(2, task.getAssignerId());
+            stmt.setString(2, task.getMemberId());
             stmt.setString(3, task.getTaskName());
             stmt.setString(4, task.getDescription());
             stmt.setString(5, task.getProjectId());
@@ -97,26 +96,9 @@ public class TaskDAO implements ITaskDAO {
                 }
             }
             // Optional: Filter tasks assigned by the user (based on assigner_id)
-            tasks.removeIf(task -> !userId.equals(task.getAssignerId()));
+            tasks.removeIf(task -> !userId.equals(task.getMemberId()));
         } catch (SQLException ex) {
             Logger.getLogger(TaskDAO.class.getName()).log(Level.SEVERE, "Error fetching tasks for user " + userId + " in project " + projectId, ex);
-        }
-        return tasks;
-    }
-
-    @Override
-    public List<Task> getTasksByAssigner(String assignerId) {
-        List<Task> tasks = new ArrayList<>();
-        String sql = "SELECT * FROM Task WHERE assigner_id = ?";
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, assignerId);
-            try (ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) {
-                    tasks.add(mapResultSetToTask(rs));
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(TaskDAO.class.getName()).log(Level.SEVERE, "Error fetching tasks by assigner ID: " + assignerId, ex);
         }
         return tasks;
     }
@@ -134,13 +116,31 @@ public class TaskDAO implements ITaskDAO {
         }
         return tasks;
     }
+    
+    @Override
+    public List<Task> getTasksByUserId(String userId) {
+        List<Task> tasks = new ArrayList<>();
+        String sql = "SELECT * FROM Task WHERE member_id = ?";
+        
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, userId); 
+            ResultSet rs = pstmt.executeQuery();
+            
+            while (rs.next()) {
+                tasks.add(mapResultSetToTask(rs));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error fetching tasks: " + e.getMessage());
+        }
+        return tasks;
+    }
 
     @Override
     public boolean updateTask(Task task) {
-        String sql = "UPDATE Task SET assigner_id = ?, task_name = ?, description = ?, project_id = ?, priority = ?, status = ?, deadline = ? "
+        String sql = "UPDATE Task SET member_id = ?, task_name = ?, description = ?, project_id = ?, priority = ?, status = ?, deadline = ? "
                 + "WHERE task_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, task.getAssignerId());
+            stmt.setString(1, task.getMemberId());
             stmt.setString(2, task.getTaskName());
             stmt.setString(3, task.getDescription());
             stmt.setString(4, task.getProjectId());
@@ -170,7 +170,7 @@ public class TaskDAO implements ITaskDAO {
     private Task mapResultSetToTask(ResultSet rs) throws SQLException {
         Task task = new Task();
         task.setTaskId(rs.getString("task_id"));
-        task.setAssignerId(rs.getString("assigner_id"));
+        task.setMemberId(rs.getString("member_id"));
         task.setTaskName(rs.getString("task_name"));
         task.setDescription(rs.getString("description"));
         task.setProjectId(rs.getString("project_id"));

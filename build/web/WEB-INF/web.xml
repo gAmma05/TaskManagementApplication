@@ -16,9 +16,57 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>controller.auth.LogoutServlet</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>DashboardServlet</servlet-name>
-        <servlet-class>controllers.user.DashboardServlet</servlet-class>
+        <servlet-class>controllers.DashboardServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateTaskStatusServlet</servlet-name>
+        <servlet-class>controllers.task.UpdateTaskStatusServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateUserServlet</servlet-name>
+        <servlet-class>controllers.user.UpdateUserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddProjectServlet</servlet-name>
+        <servlet-class>controller.project.AddProjectServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateProjectServlet</servlet-name>
+        <servlet-class>controller.project.UpdateProjectServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EnrollProjectServlet</servlet-name>
+        <servlet-class>controller.enrollment.EnrollProjectServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ApproveEnrollmentServlet</servlet-name>
+        <servlet-class>controller.enrollment.ApproveEnrollmentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProjectDetailsServlet</servlet-name>
+        <servlet-class>controller.project.ProjectDetailsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateTaskServlet</servlet-name>
+        <servlet-class>controllers.task.CreateTaskServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>KickMemberServlet</servlet-name>
+        <servlet-class>controller.enrollment.KickMemberServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteTaskServlet</servlet-name>
+        <servlet-class>controllers.task.DeleteTaskServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateTaskServlet</servlet-name>
+        <servlet-class>controllers.task.UpdateTaskServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteProjectServlet</servlet-name>
+        <servlet-class>controller.project.DeleteProjectServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -39,6 +87,54 @@
     <servlet-mapping>
         <servlet-name>DashboardServlet</servlet-name>
         <url-pattern>/dashboard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateTaskStatusServlet</servlet-name>
+        <url-pattern>/updateTaskStatus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateUserServlet</servlet-name>
+        <url-pattern>/updateUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddProjectServlet</servlet-name>
+        <url-pattern>/addProject</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateProjectServlet</servlet-name>
+        <url-pattern>/updateProject</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EnrollProjectServlet</servlet-name>
+        <url-pattern>/enrollProject</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ApproveEnrollmentServlet</servlet-name>
+        <url-pattern>/approveEnrollment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProjectDetailsServlet</servlet-name>
+        <url-pattern>/projectDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateTaskServlet</servlet-name>
+        <url-pattern>/createTask</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>KickMemberServlet</servlet-name>
+        <url-pattern>/kickMember</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteTaskServlet</servlet-name>
+        <url-pattern>/deleteTask</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateTaskServlet</servlet-name>
+        <url-pattern>/updateTask</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteProjectServlet</servlet-name>
+        <url-pattern>/deleteProject</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

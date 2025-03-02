@@ -32,10 +32,10 @@ public class User {
         this.userId = UUID.randomUUID().toString();
         this.username = username;
         this.password = password;
+        this.fullName = fullName;
         this.email = email;
         this.phone = phone;
         this.role = role;
-        this.fullName = fullName;
     }
     
 }
