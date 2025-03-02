@@ -159,9 +159,9 @@ public class UserDAO implements IUserDAO {
     private User mapResultSetToUser(ResultSet rs) throws SQLException {
         return new User(
                 rs.getString("user_id"),
-                rs.getString("full_name"),
                 rs.getString("username"),
                 rs.getString("password"),
+                rs.getString("full_name"),
                 rs.getString("email"),
                 rs.getString("phone_number"),
                 UserRole.valueOf(rs.getString("role"))

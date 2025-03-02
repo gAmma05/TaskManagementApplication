@@ -16,9 +16,33 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>controller.auth.LogoutServlet</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>DashboardServlet</servlet-name>
         <servlet-class>controllers.user.DashboardServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateTaskStatusServlet</servlet-name>
+        <servlet-class>controllers.task.UpdateTaskStatusServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EnrollProjectServlet</servlet-name>
+        <servlet-class>controller.project.EnrollProjectServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateUserServlet</servlet-name>
+        <servlet-class>controllers.user.UpdateUserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddProjectServlet</servlet-name>
+        <servlet-class>controller.project.AddProjectServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteProjectServlet</servlet-name>
+        <servlet-class>controller.project.DeleteProjectServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateProjectServlet</servlet-name>
+        <servlet-class>controller.project.UpdateProjectServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -39,6 +63,30 @@
     <servlet-mapping>
         <servlet-name>DashboardServlet</servlet-name>
         <url-pattern>/dashboard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateTaskStatusServlet</servlet-name>
+        <url-pattern>/updateTaskStatus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EnrollProjectServlet</servlet-name>
+        <url-pattern>/enrollProject</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateUserServlet</servlet-name>
+        <url-pattern>/updateUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddProjectServlet</servlet-name>
+        <url-pattern>/addProject</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteProjectServlet</servlet-name>
+        <url-pattern>/deleteProject</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateProjectServlet</servlet-name>
+        <url-pattern>/updateProject</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
