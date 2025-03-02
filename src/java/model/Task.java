@@ -8,6 +8,7 @@ import enums.TaskPriority;
 import enums.TaskStatus;
 import java.sql.Date;
 import java.util.UUID;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,6 +18,7 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Task {
     private String taskId;
     private String taskName;
