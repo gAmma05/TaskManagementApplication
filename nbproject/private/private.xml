@@ -3,28 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/web/view/project/create.jsp</file>
-            <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/web/WEB-INF/web.xml</file>
-<<<<<<< HEAD
-            <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/src/java/utils/DBConnection.java</file>
-            <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/src/java/model/Project.java</file>
-            <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/src/java/validator/RegisterValidator.java</file>
-=======
-            <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/src/java/filters/CustomFilter.java</file>
-            <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/src/java/utils/DBConnection.java</file>
-            <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/web/view/project/list.jsp</file>
-            <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/src/java/model/Project.java</file>
->>>>>>> a2a0d630867d227d91b688ec535881c7a2cdcb55
-            <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/src/java/controllers/ProjectController.java</file>
-            <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/web/view/project/project.jsp</file>
-            <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/web/view/dashboard/dashboard.jsp</file>
-            <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/src/java/controllers/AuthController.java</file>
-<<<<<<< HEAD
-            <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/src/java/constants/URLConstants.java</file>
-=======
->>>>>>> a2a0d630867d227d91b688ec535881c7a2cdcb55
-            <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/src/java/dao/ProjectDAO.java</file>
-            <file>file:/E:/Code/JavaTrain/FinalProjectBE3/TaskManagementApplication/src/java/dao/UserDAO.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/model/Task.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/dao/implementations/UserDAO.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/enums/UserRole.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/dao/implementations/TaskDAO.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/enums/ProjectStatus.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/dao/interfaces/ITaskDAO.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/dao/implementations/ProjectDAO.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/validator/UserValidator.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/web/css/auth.css</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/web/view/auth/login.jsp</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/web/view/auth/forgot-password.jsp</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/dao/interfaces/IProjectDAO.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/enums/TaskPriority.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/dao/interfaces/IUserDAO.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/model/Project.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/web/view/auth/register.jsp</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/model/User.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/web/view/user/dashboard.jsp</file>
         </group>
     </open-files>
 </project-private>

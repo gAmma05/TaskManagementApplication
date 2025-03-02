@@ -9,19 +9,15 @@ package constants;
  * @author asus
  */
 public class URLConstants {
-    public static final String AUTH_URL = "/Auth";
-    public static final String PROJECTS_URL = "/projects";
-    public static final String TASK_URL = "/Task";
     
-    // project 
-    public static final String PROJECT_CREATE_URL = "/create";
-    public static final String PROJECT_LIST_URL = "/";
+    //view/auth
+    public static final String REGISTER_PAGE = "/view/auth/register.jsp";
+    public static final String LOGIN_PAGE = "/view/auth/login.jsp";
+    public static final String RESET_PASSWORD_PAGE = "/view/auth/reset-password.jsp";
     
-    // view
-public static final String PROJECT_LIST_VIEW = "/view/project/list.jsp";
-public static final String PROJECT_CREATE_VIEW = "/view/project/project.jsp";
-public static final String DASHBOARD_VIEW = "/view/dashboard/dashboard.jsp";
-
+    //view/user
+    public static final String DASHBOARD_PAGE = "/view/user/dashboard.jsp";
+    
 }
 
 
