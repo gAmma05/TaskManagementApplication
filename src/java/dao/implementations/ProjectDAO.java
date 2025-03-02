@@ -32,7 +32,7 @@ public class ProjectDAO {
             // Set the role of the creator as Leader
             String setRoleSql = "UPDATE `User` SET role = ? WHERE user_id = ?";
             try (PreparedStatement ps = conn.prepareStatement(setRoleSql)) {
-                ps.setInt(1, UserRole.MANAGER.getValue());
+                ps.setString(1, UserRole.MANAGER.name());
                 ps.setInt(2, project.getManager_id());
                 ps.executeUpdate();
             }

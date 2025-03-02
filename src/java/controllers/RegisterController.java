@@ -5,7 +5,7 @@
  */
 package controllers;
 
-import dao.UserDAO;
+import dao.implementations.UserDAO;
 import enums.UserRole;
 import java.io.IOException;
 import java.util.ArrayList;

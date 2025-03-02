@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package dao.implementations;
 
+import dao.interfaces.IUserDAO;
 import enums.UserRole;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,7 +35,7 @@ public class UserDAO implements IUserDAO {
             ps.setString(4, u.getPassword());
             ps.setString(5, u.getEmail());
             ps.setString(6, u.getPhone());
-            ps.setString(7, u.getRole().getValue());
+            ps.setString(7, u.getRole().name());
 
             int rows = ps.executeUpdate();
             status = rows > 0;
