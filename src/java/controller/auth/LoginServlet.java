@@ -50,14 +50,15 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("user_id", user.getUserId());
                 session.setAttribute("username", user.getUsername());
+                session.setAttribute("isLoggedIn", true);
                 session.setAttribute("role", user.getRole().name());
                 session.setAttribute("full_name", user.getFullName());
 
-                if (user.getRole().equals(UserRole.NONE)) { 
+                if (user.getRole().equals(UserRole.NONE)) {
                     request.setAttribute("generalError", "You have no role to access the system.");
                     request.getRequestDispatcher(ViewURL.LOGIN_PAGE).forward(request, response);
                 } else {
-                    response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD);
+                    request.getRequestDispatcher(ServletURL.DASHBOARD).forward(request, response);
                 }
             } else {
                 request.setAttribute("generalError", "Invalid username or password.");
