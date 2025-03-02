@@ -61,6 +61,20 @@
                         <small class="text-danger">${phone_numberError}</small>
                     </c:if>
                 </div>
+                <div class="mb-3">
+                    <label class="form-label">Role</label>
+                    <div>
+                        <input type="radio" id="roleMember" name="role" value="Member" checked>
+                        <label for="roleMember">Member</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="roleManager" name="role" value="Manager">
+                        <label for="roleManager">Manager</label>
+                    </div>
+                    <c:if test="${not empty roleError}">
+                        <small class="text-danger">${roleError}</small>
+                    </c:if>
+                </div>
                 <button type="submit" class="btn btn-primary w-100">Register</button>
             </form>
 

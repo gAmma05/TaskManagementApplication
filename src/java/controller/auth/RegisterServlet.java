@@ -4,7 +4,8 @@
  */
 package controller.auth;
 
-import constants.URLConstants;
+import constants.ServletURL;
+import constants.ViewURL;
 import dao.implementations.UserDAO;
 import enums.UserRole;
 import java.io.IOException;
@@ -66,7 +67,7 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("register.jsp");
+        response.sendRedirect(request.getContextPath() + ViewURL.REGISTER_PAGE);
     }
 
     /**
@@ -86,6 +87,7 @@ public class RegisterServlet extends HttpServlet {
             String fullName = request.getParameter("fullname");
             String email = request.getParameter("email");
             String phone = request.getParameter("phone_number");
+            String role = request.getParameter("role");
 
             UserDAO userDAO = new UserDAO(DBConnection.getConnection());
             UserValidator userValidator = new UserValidator(userDAO);
@@ -97,7 +99,7 @@ public class RegisterServlet extends HttpServlet {
                     request.setAttribute(entry.getKey() + "Error", entry.getValue());
                 }
                 // Forward back to the form with errors
-                request.getRequestDispatcher(request.getContextPath() + URLConstants.REGISTER_PAGE).forward(request, response);
+                request.getRequestDispatcher(request.getContextPath() + ViewURL.REGISTER_PAGE).forward(request, response);
                 return;
             }
 
@@ -108,7 +110,7 @@ public class RegisterServlet extends HttpServlet {
                     password, // Hash in production
                     email.trim(),
                     phone != null ? phone.trim() : null,
-                    UserRole.NONE
+                    UserRole.valueOf(role.toUpperCase())
             );
 
             boolean success = userDAO.createUser(newUser);
@@ -117,15 +119,24 @@ public class RegisterServlet extends HttpServlet {
                 request.getSession().setAttribute("username", newUser.getUsername());
                 request.getSession().setAttribute("role", newUser.getRole().name());
                 request.getSession().setAttribute("full_name", newUser.getFullName());
-                response.sendRedirect(request.getContextPath() + URLConstants.DASHBOARD_PAGE);
+                if (role.equals(UserRole.MANAGER.name())) {
+                    response.sendRedirect(request.getContextPath() + ServletURL.MANAGER_DASHBOARD);
+                } 
+                else if (role.equals(UserRole.MEMBER.name())) {
+                    response.sendRedirect(request.getContextPath() + ServletURL.MEMBER_DASHBOARD);
+                } 
+                else {
+                    request.setAttribute("generalError", "You have no role to access the system.");
+                    request.getRequestDispatcher(request.getContextPath() + ViewURL.REGISTER_PAGE).forward(request, response);
+                }
             } else {
                 request.setAttribute("generalError", "Registration failed due to a server error. Please try again.");
-                request.getRequestDispatcher(request.getContextPath() + URLConstants.REGISTER_PAGE).forward(request, response);
+                request.getRequestDispatcher(request.getContextPath() + ViewURL.REGISTER_PAGE).forward(request, response);
             }
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, "Registration failed", ex);
             request.setAttribute("generalError", "A server error occurred: " + ex.getMessage());
-            request.getRequestDispatcher(request.getContextPath() + URLConstants.REGISTER_PAGE).forward(request, response);
+            request.getRequestDispatcher(request.getContextPath() + ViewURL.REGISTER_PAGE).forward(request, response);
         }
     }
 

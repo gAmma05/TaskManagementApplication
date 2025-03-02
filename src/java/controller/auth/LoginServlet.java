@@ -1,11 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package controller.auth;
 
-import constants.URLConstants;
+import constants.ServletURL;
+import constants.ViewURL;
 import dao.implementations.UserDAO;
+import enums.UserRole;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -20,16 +18,12 @@ import javax.servlet.http.HttpSession;
 import model.User;
 import utils.DBConnection;
 
-/**
- *
- * @author thien
- */
 public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("login.jsp");
+        request.getRequestDispatcher(ViewURL.LOGIN_PAGE).forward(request, response); // Changed from redirect
     }
 
     @Override
@@ -39,15 +33,13 @@ public class LoginServlet extends HttpServlet {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
 
-            // Validate inputs and store field-specific errors
             Map<String, String> errors = validateLogin(username, password);
 
             if (!errors.isEmpty()) {
-                // Set each error as a request attribute
                 for (Map.Entry<String, String> entry : errors.entrySet()) {
                     request.setAttribute(entry.getKey() + "Error", entry.getValue());
                 }
-                request.getRequestDispatcher(request.getContextPath() + URLConstants.LOGIN_PAGE).forward(request, response);
+                request.getRequestDispatcher(ViewURL.LOGIN_PAGE).forward(request, response);
                 return;
             }
 
@@ -55,36 +47,39 @@ public class LoginServlet extends HttpServlet {
             User user = userDAO.validateUser(username.trim(), password);
 
             if (user != null) {
-                // Create session and store user data
                 HttpSession session = request.getSession();
                 session.setAttribute("user_id", user.getUserId());
                 session.setAttribute("username", user.getUsername());
                 session.setAttribute("role", user.getRole().name());
                 session.setAttribute("full_name", user.getFullName());
-                response.sendRedirect(request.getContextPath() + URLConstants.DASHBOARD_PAGE);
+
+                if (user.getRole().equals(UserRole.MANAGER)) { // Compare enum directly
+                    response.sendRedirect(request.getContextPath() + ServletURL.MANAGER_DASHBOARD);
+                } else if (user.getRole().equals(UserRole.MEMBER)) {
+                    response.sendRedirect(request.getContextPath() + ServletURL.MEMBER_DASHBOARD);
+                } else {
+                    request.setAttribute("generalError", "You have no role to access the system.");
+                    request.getRequestDispatcher(ViewURL.LOGIN_PAGE).forward(request, response);
+                }
             } else {
                 request.setAttribute("generalError", "Invalid username or password.");
-                request.getRequestDispatcher(request.getContextPath() + URLConstants.LOGIN_PAGE).forward(request, response);
+                request.getRequestDispatcher(ViewURL.LOGIN_PAGE).forward(request, response);
             }
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, "Login failed", ex);
             request.setAttribute("generalError", "A server error occurred: " + ex.getMessage());
-            request.getRequestDispatcher(request.getContextPath() + URLConstants.LOGIN_PAGE).forward(request, response);
+            request.getRequestDispatcher(ViewURL.LOGIN_PAGE).forward(request, response);
         }
     }
 
-    // Validation method for login fields
     private Map<String, String> validateLogin(String username, String password) {
         Map<String, String> errors = new HashMap<>();
-
         if (username == null || username.trim().isEmpty()) {
             errors.put("username", "Username is required.");
         }
-
         if (password == null || password.trim().isEmpty()) {
             errors.put("password", "Password is required.");
         }
-
         return errors;
     }
 
