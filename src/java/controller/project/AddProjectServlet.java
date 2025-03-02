@@ -1,5 +1,7 @@
 package controller.project;
 
+import constants.ServletURL;
+import constants.ViewURL;
 import dao.implementations.ProjectDAO;
 import enums.ProjectStatus;
 import java.io.IOException;
@@ -26,7 +28,7 @@ public class AddProjectServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("user_id") == null) {
-            response.sendRedirect(request.getContextPath() + "/login");
+            response.sendRedirect(ViewURL.LOGIN_PAGE);
             return;
         }
 
@@ -62,16 +64,16 @@ public class AddProjectServlet extends HttpServlet {
                 if (!success) {
                     throw new SQLException("Failed to create project in database.");
                 }
-                response.sendRedirect(request.getContextPath() + "/dashboard");
+                response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD);
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
                 request.setAttribute("errorMessage", "Failed to add project due to a server error.");
-                request.getRequestDispatcher("/WEB-INF/views/manager/dashboard.jsp").forward(request, response);
+                request.getRequestDispatcher(request.getContextPath() + ServletURL.DASHBOARD).forward(request, response);
             }
         } catch (ParseException e) {
             e.printStackTrace();
             request.setAttribute("errorMessage", "Invalid date format.");
-            request.getRequestDispatcher("/WEB-INF/views/manager/dashboard.jsp").forward(request, response);
+            request.getRequestDispatcher(request.getContextPath() + ServletURL.DASHBOARD).forward(request, response);
         }
     }
 }

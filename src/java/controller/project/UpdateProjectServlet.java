@@ -1,5 +1,7 @@
 package controller.project;
 
+import constants.ServletURL;
+import constants.ViewURL;
 import dao.implementations.ProjectDAO;
 import java.io.IOException;
 import java.sql.Connection;
@@ -24,7 +26,7 @@ public class UpdateProjectServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("user_id") == null) {
-            response.sendRedirect(request.getContextPath() + "/login");
+            response.sendRedirect(ViewURL.LOGIN_PAGE);
             return;
         }
 
@@ -56,20 +58,20 @@ public class UpdateProjectServlet extends HttpServlet {
                     if (!success) {
                         throw new SQLException("Failed to update project in database.");
                     }
-                    response.sendRedirect(request.getContextPath() + "/dashboard");
+                    response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD);
                 } else {
                     request.setAttribute("errorMessage", "Project not found.");
-                    request.getRequestDispatcher("/WEB-INF/views/manager/dashboard.jsp").forward(request, response);
+                    request.getRequestDispatcher(ViewURL.PROJECT_DETAILS_PAGE).forward(request, response);
                 }
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
                 request.setAttribute("errorMessage", "Failed to update project due to a server error.");
-                request.getRequestDispatcher("/WEB-INF/views/manager/dashboard.jsp").forward(request, response);
+                request.getRequestDispatcher(ViewURL.PROJECT_DETAILS_PAGE).forward(request, response);
             }
         } catch (ParseException e) {
             e.printStackTrace();
             request.setAttribute("errorMessage", "Invalid date format.");
-            request.getRequestDispatcher("/WEB-INF/views/manager/dashboard.jsp").forward(request, response);
+            request.getRequestDispatcher(ViewURL.PROJECT_DETAILS_PAGE).forward(request, response);
         }
     }
 }

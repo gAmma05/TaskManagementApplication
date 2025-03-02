@@ -4,6 +4,7 @@
  */
 package controllers.task;
 
+import constants.ServletURL;
 import dao.implementations.TaskDAO;
 import enums.TaskStatus;
 import java.io.IOException;
@@ -91,7 +92,7 @@ public class UpdateTaskStatusServlet extends HttpServlet {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             request.setAttribute("errorMessage", "Failed to update task status.");
-            request.getRequestDispatcher("/WEB-INF/views/manager/dashboard.jsp").forward(request, response);
+            request.getRequestDispatcher(request.getContextPath() + ServletURL.DASHBOARD).forward(request, response);
         }
     }
 

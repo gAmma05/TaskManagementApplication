@@ -4,6 +4,7 @@
  */
 package controllers.user;
 
+import constants.ServletURL;
 import dao.implementations.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -85,11 +86,11 @@ public class UpdateUserServlet extends HttpServlet {
                 user.setEmail(email);
                 userDAO.updateUser(user); // Assuming this method exists
             }
-            response.sendRedirect(request.getContextPath() + "/dashboard");
+            response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             request.setAttribute("errorMessage", "Failed to update user information.");
-            request.getRequestDispatcher("/WEB-INF/views/manager/dashboard.jsp").forward(request, response);
+            request.getRequestDispatcher(request.getContextPath() + ServletURL.DASHBOARD).forward(request, response);
         }
     }
 

@@ -6,6 +6,7 @@ package dao.interfaces;
 
 import java.util.List;
 import model.Enrollment;
+import model.User;
 
 /**
  *
@@ -16,6 +17,8 @@ public interface IEnrollmentDAO {
     Enrollment getEnrollment(String userId, String projectId);
     List<Enrollment> getEnrollmentsByUser(String userId);
     List<Enrollment> getEnrollmentsByProject(String projectId);
+    public List<User> getUsersByProjectId(String projectId);
     boolean updateEnrollment(Enrollment enrollment);
     boolean deleteEnrollment(String userId, String projectId);
+    Enrollment getEnrollmentByUserAndProject(String userId, String projectId);
 }

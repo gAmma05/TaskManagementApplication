@@ -30,7 +30,7 @@ CREATE TABLE Project (
 -- Task Table
 CREATE TABLE Task (
     task_id VARCHAR(50) PRIMARY KEY,
-    assigner_id VARCHAR(50), -- New field for who assigned the task
+    member_id VARCHAR(50), 
     task_name VARCHAR(100) NOT NULL,
     description TEXT,
     project_id VARCHAR(50),
@@ -40,7 +40,7 @@ CREATE TABLE Task (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (project_id) REFERENCES Project(project_id),
-    FOREIGN KEY (assigner_id) REFERENCES User(user_id) -- New foreign key
+    FOREIGN KEY (member_id) REFERENCES User(user_id) -- New foreign key
 );
 
 -- Enroll Table
@@ -69,7 +69,7 @@ INSERT INTO Project (project_id, project_name, description, manager_id, budget, 
 ('P003', 'Database Migration', 'Migrate legacy DB to new system', 'U001', 30000.00, '2024-11-01 09:00:00', '2025-03-31 17:00:00', 'COMPLETED');
 
 -- Insert Fake Data into Task (with assigner_id)
-INSERT INTO Task (task_id, assigner_id, task_name, description, project_id, priority, status, deadline) VALUES
+INSERT INTO Task (task_id, member_id, task_name, description, project_id, priority, status, deadline) VALUES
 ('T001', 'U001', 'Design Homepage', 'Create UI for homepage', 'P001', 'HIGH', 'IN_PROGRESS', '2025-03-15 17:00:00'),
 ('T002', 'U001', 'Setup Backend', 'Configure server and APIs', 'P001', 'MEDIUM', 'PENDING', '2025-04-01 17:00:00'),
 ('T003', 'U005', 'App Login Module', 'Implement login functionality', 'P002', 'HIGH', 'PENDING', '2025-04-30 17:00:00'),

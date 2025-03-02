@@ -76,9 +76,37 @@
     font-size: 0.875rem;
 }
 
+tbody tr:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.tab-content {
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+}
+
+.tab-content {
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-top: none;
+}
+
+#updateButton {
+    display: none;
+}
+
 /* Glow Animation */
 @keyframes pulse {
-    0% { box-shadow: 0 0 10px #0d6efd; }
-    50% { box-shadow: 0 0 20px #0d6efd, 0 0 30px #0d6efd; }
-    100% { box-shadow: 0 0 10px #0d6efd; }
+    0% {
+        box-shadow: 0 0 10px #0d6efd;
+    }
+    50% {
+        box-shadow: 0 0 20px #0d6efd, 0 0 30px #0d6efd;
+    }
+    100% {
+        box-shadow: 0 0 10px #0d6efd;
+    }
 }
