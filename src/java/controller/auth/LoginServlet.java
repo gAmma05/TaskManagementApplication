@@ -53,13 +53,11 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("role", user.getRole().name());
                 session.setAttribute("full_name", user.getFullName());
 
-                if (user.getRole().equals(UserRole.MANAGER)) { // Compare enum directly
-                    response.sendRedirect(request.getContextPath() + ServletURL.MANAGER_DASHBOARD);
-                } else if (user.getRole().equals(UserRole.MEMBER)) {
-                    response.sendRedirect(request.getContextPath() + ServletURL.MEMBER_DASHBOARD);
-                } else {
+                if (user.getRole().equals(UserRole.NONE)) { 
                     request.setAttribute("generalError", "You have no role to access the system.");
                     request.getRequestDispatcher(ViewURL.LOGIN_PAGE).forward(request, response);
+                } else {
+                    response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD);
                 }
             } else {
                 request.setAttribute("generalError", "Invalid username or password.");

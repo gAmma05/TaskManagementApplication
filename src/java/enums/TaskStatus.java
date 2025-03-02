@@ -9,8 +9,7 @@ package enums;
  * @author thien
  */
 public enum TaskStatus {
-    TO_DO,
+    PENDING,
     IN_PROGRESS,
-    DONE,
-    CANCEL;
+    COMPLETED,
 }

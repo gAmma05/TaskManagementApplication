@@ -23,6 +23,7 @@ import model.Enrollment;
  * @author thien
  */
 public class EnrollmentDAO implements IEnrollmentDAO {
+
     private final Connection connection;
 
     public EnrollmentDAO(Connection connection) {
@@ -65,16 +66,35 @@ public class EnrollmentDAO implements IEnrollmentDAO {
     public List<Enrollment> getEnrollmentsByUser(String userId) {
         List<Enrollment> enrollments = new ArrayList<>();
         String sql = "SELECT * FROM Enroll WHERE user_id = ?";
+
+        // Log the input for debugging
+        Logger.getLogger(EnrollmentDAO.class.getName()).log(Level.INFO, "Fetching enrollments for user_id: {0}", userId);
+
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, userId);
+
+            // Log the SQL query being executed
+            Logger.getLogger(EnrollmentDAO.class.getName()).log(Level.INFO, "Executing query: {0}", stmt.toString());
+
             try (ResultSet rs = stmt.executeQuery()) {
+                if (!rs.isBeforeFirst()) {
+                    // Log if no results are found
+                    Logger.getLogger(EnrollmentDAO.class.getName()).log(Level.WARNING, "No enrollments found for user_id: {0}", userId);
+                }
                 while (rs.next()) {
-                    enrollments.add(mapResultSetToEnrollment(rs));
+                    Enrollment enrollment = mapResultSetToEnrollment(rs);
+                    enrollments.add(enrollment);
+                    // Log each retrieved enrollment for debugging
+                    Logger.getLogger(EnrollmentDAO.class.getName()).log(Level.INFO, "Found enrollment: {0}", enrollment.toString());
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(EnrollmentDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EnrollmentDAO.class.getName()).log(Level.SEVERE, "Error fetching enrollments for user_id: " + userId, ex);
         }
+
+        // Log the final result size
+        Logger.getLogger(EnrollmentDAO.class.getName()).log(Level.INFO, "Total enrollments retrieved: {0}", enrollments.size());
+
         return enrollments;
     }
 
@@ -122,7 +142,7 @@ public class EnrollmentDAO implements IEnrollmentDAO {
         }
         return false;
     }
-    
+
     private Enrollment mapResultSetToEnrollment(ResultSet rs) throws SQLException {
         Enrollment enrollment = new Enrollment();
         enrollment.setUserId(rs.getString("user_id"));

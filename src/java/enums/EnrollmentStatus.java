@@ -9,5 +9,7 @@ package enums;
  * @author thien
  */
 public enum EnrollmentStatus {
-    
+    PENDING,
+    ACTIVE,
+    REMOVED;
 }
