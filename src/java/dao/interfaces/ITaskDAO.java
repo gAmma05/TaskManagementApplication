@@ -12,9 +12,12 @@ import model.Task;
  * @author thien
  */
 public interface ITaskDAO {
-    public boolean add(Task taks);
-    public boolean delete(String id);
-    public boolean update(Task task);
-    public Task getById(String id);
-    public List<Task> getAll();
+    public boolean createTask(Task taks);
+    public boolean deleteTask(String id);
+    public boolean updateTask(Task task);
+    public Task getTaskById(String id);
+    public List<Task> getAllTasks();
+    public List<Task> getTasksByProject(String projectId);
+    public List<Task> getTasksByUserAndProject(String userId, String projectId);
+    List<Task> getTasksByAssigner(String assignerId);
 }

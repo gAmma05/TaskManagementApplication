@@ -12,12 +12,10 @@ import model.Project;
  * @author thien
  */
 public interface IProjectDAO {
-    public void saveProject(Project project);
-    public void deleteProject(String projectId, String userId);
-    public void updateProject(Project project);
-    public List<Project> getUserProjects(String userId);
-    public List<Project> getAllProjects();
-    public int getTotalMembers(String projectId);
-    public List<Project> getFilteredProjects(String nameFilter, String budgetFilter, String priorityFilter, String statusFilter);
-    public void closeProject(String projectId, String userId);
+    boolean createProject(Project project);
+    Project getProjectById(String projectId);
+    List<Project> getAllProjects();
+    List<Project> getProjectsByManager(String managerId);
+    boolean updateProject(Project project);
+    boolean deleteProject(String projectId);
 }

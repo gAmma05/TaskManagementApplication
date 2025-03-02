@@ -118,15 +118,11 @@ public class RegisterServlet extends HttpServlet {
                 request.getSession().setAttribute("username", newUser.getUsername());
                 request.getSession().setAttribute("role", newUser.getRole().name());
                 request.getSession().setAttribute("full_name", newUser.getFullName());
-                if (role.equalsIgnoreCase(UserRole.MANAGER.name())) {
-                    response.sendRedirect(request.getContextPath() + ServletURL.MANAGER_DASHBOARD);
-                } 
-                else if (role.equalsIgnoreCase(UserRole.MEMBER.name())) {
-                    response.sendRedirect(request.getContextPath() + ServletURL.MEMBER_DASHBOARD);
-                } 
-                else {
+                if (role == null || role.equalsIgnoreCase(UserRole.NONE.name())) { 
                     request.setAttribute("generalError", "You have no role to access the system.");
                     request.getRequestDispatcher(ViewURL.REGISTER_PAGE).forward(request, response);
+                } else {
+                    response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD);
                 }
             } else {
                 request.setAttribute("generalError", "Registration failed due to a server error. Please try again.");

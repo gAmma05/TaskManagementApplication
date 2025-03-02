@@ -1,230 +1,91 @@
 package dao.implementations;
 
 import dao.interfaces.IProjectDAO;
-import enums.ProjectStatus;
-import enums.UserRole;
 import model.Project;
-import utils.DBConnection;
-import java.sql.*;
+import enums.ProjectStatus;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ProjectDAO implements IProjectDAO {
+    private final Connection connection;
 
-    @Override
-    public void saveProject(Project project) {
-        String sql = "INSERT INTO Project (project_id, project_name, description, manager_id, start_date, "
-                + "end_date, status, budget, created_at, updated_at) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-        try (Connection conn = DBConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            pstmt.setString(1, project.getProjectId());
-            pstmt.setString(2, project.getProjectName());
-            pstmt.setString(3, project.getDescription());
-            pstmt.setString(4, project.getManagerId());
-            pstmt.setDate(5, new java.sql.Date(project.getStartDate().getTime()));
-            pstmt.setDate(6, new java.sql.Date(project.getEndDate().getTime()));
-            pstmt.setString(7, project.getStatus().name());
-            pstmt.setDouble(8, project.getBudget()); // Now using the budget property
-            pstmt.setTimestamp(9, new Timestamp(project.getCreatedAt().getTime()));
-            pstmt.setTimestamp(10, new Timestamp(project.getUpdatedAt().getTime()));
-
-            pstmt.executeUpdate();
-
-            // Set the role of the manager
-            String setRoleSql = "UPDATE `User` SET role = ? WHERE user_id = ?";
-            try (PreparedStatement ps = conn.prepareStatement(setRoleSql)) {
-                ps.setString(1, UserRole.MANAGER.name());
-                ps.setString(2, project.getManagerId());
-                ps.executeUpdate();
-            } catch (SQLException ex) {
-                Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public ProjectDAO(Connection connection) {
+        this.connection = connection;
     }
 
     @Override
-    public void deleteProject(String projectId, String userId) {
-        String sql = "UPDATE Project SET status = ? WHERE project_id = ? AND manager_id = ?";
-        try (Connection conn = DBConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, ProjectStatus.CANCELLED.name()); // Assuming CANCELLED exists in ProjectStatus
-            pstmt.setString(2, projectId);
-            pstmt.setString(3, userId); // Only the manager can delete their project
-            int rowsAffected = pstmt.executeUpdate();
-            if (rowsAffected == 0) {
-                throw new SQLException("Failed to delete project: No matching project found or unauthorized.");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @Override
-    public void updateProject(Project project) {
-        String sql = "UPDATE Project SET project_name = ?, description = ?, start_date = ?, end_date = ?, "
-                + "status = ?, budget = ?, updated_at = ? WHERE project_id = ? AND manager_id = ?";
-
-        try (Connection conn = DBConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, project.getProjectName());
-            pstmt.setString(2, project.getDescription());
-            pstmt.setDate(3, new java.sql.Date(project.getStartDate().getTime()));
-            pstmt.setDate(4, new java.sql.Date(project.getEndDate().getTime()));
-            pstmt.setString(5, project.getStatus().name());
-            pstmt.setDouble(6, project.getBudget()); // Now using the budget property
-            pstmt.setTimestamp(7, new Timestamp(project.getUpdatedAt().getTime()));
-            pstmt.setString(8, project.getProjectId());
-            pstmt.setString(9, project.getManagerId()); // Only the manager can update their project
-
-            int rowsAffected = pstmt.executeUpdate();
-            if (rowsAffected == 0) {
-                throw new SQLException("Failed to update project: No matching project found or unauthorized.");
-            }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+    public boolean createProject(Project project) {
+        String sql = "INSERT INTO Project (project_id, project_name, description, manager_id, budget, " +
+                    "start_date, end_date, status, created_at, updated_at) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, project.getProjectId());
+            stmt.setString(2, project.getProjectName());
+            stmt.setString(3, project.getDescription());
+            stmt.setString(4, project.getManagerId());
+            stmt.setDouble(5, project.getBudget());
+            stmt.setTimestamp(6, project.getStartDate() != null ? new Timestamp(project.getStartDate().getTime()) : null);
+            stmt.setTimestamp(7, project.getEndDate() != null ? new Timestamp(project.getEndDate().getTime()) : null);
+            stmt.setString(8, project.getStatus() != null ? project.getStatus().name() : ProjectStatus.ACTIVE.name());
+            stmt.setTimestamp(9, project.getCreatedAt() != null ? new Timestamp(project.getCreatedAt().getTime()) : new Timestamp(System.currentTimeMillis()));
+            stmt.setTimestamp(10, project.getUpdatedAt() != null ? new Timestamp(project.getUpdatedAt().getTime()) : new Timestamp(System.currentTimeMillis()));
+            return stmt.executeUpdate() > 0;
         } catch (SQLException ex) {
             Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return false;
     }
 
     @Override
-    public List<Project> getUserProjects(String userId) {
-        List<Project> projects = new ArrayList<>();
-        String sql = "SELECT p.* FROM Project p "
-                + "JOIN Enroll e ON p.project_id = e.project_id "
-                + "WHERE e.user_id = ?";
-
-        try (Connection conn = DBConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, userId);
-
-            try (ResultSet rs = pstmt.executeQuery()) {
-                while (rs.next()) {
-                    Project project = new Project();
-                    project.setProjectId(rs.getString("project_id"));
-                    project.setProjectName(rs.getString("project_name"));
-                    project.setDescription(rs.getString("description"));
-                    project.setManagerId(rs.getString("manager_id"));
-                    project.setStartDate(rs.getDate("start_date"));
-                    project.setEndDate(rs.getDate("end_date"));
-                    project.setStatus(ProjectStatus.valueOf(rs.getString("status").toUpperCase()));
-                    project.setBudget(rs.getDouble("budget")); // Now using the budget property
-                    project.setCreatedAt(rs.getTimestamp("created_at"));
-                    project.setUpdatedAt(rs.getTimestamp("updated_at"));
-
-                    projects.add(project);
+    public Project getProjectById(String projectId) {
+        String sql = "SELECT * FROM Project WHERE project_id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, projectId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return mapResultSetToProject(rs);
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return projects;
+        return null;
     }
 
     @Override
     public List<Project> getAllProjects() {
         List<Project> projects = new ArrayList<>();
         String sql = "SELECT * FROM Project";
-
-        try (Connection conn = DBConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            try (ResultSet rs = pstmt.executeQuery()) {
-                while (rs.next()) {
-                    Project project = new Project();
-                    project.setProjectId(rs.getString("project_id"));
-                    project.setProjectName(rs.getString("project_name"));
-                    project.setDescription(rs.getString("description"));
-                    project.setManagerId(rs.getString("manager_id"));
-                    project.setStartDate(rs.getDate("start_date"));
-                    project.setEndDate(rs.getDate("end_date"));
-                    project.setStatus(ProjectStatus.valueOf(rs.getString("status").toUpperCase()));
-                    project.setBudget(rs.getDouble("budget")); // Now using the budget property
-                    project.setCreatedAt(rs.getTimestamp("created_at"));
-                    project.setUpdatedAt(rs.getTimestamp("updated_at"));
-
-                    projects.add(project);
-                }
+        try (PreparedStatement stmt = connection.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                projects.add(mapResultSetToProject(rs));
             }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return projects;
     }
 
-    public int getTotalMembers(String projectId) {
-        String sql = "SELECT COUNT(*) AS total_members FROM Enroll WHERE project_id = ?";
-        try (Connection conn = DBConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, projectId);
-            try (ResultSet rs = pstmt.executeQuery()) {
-                if (rs.next()) {
-                    return rs.getInt("total_members");
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
-    }
-
     @Override
-    public List<Project> getFilteredProjects(String nameFilter, String budgetFilter, String priorityFilter, String statusFilter) {
+    public List<Project> getProjectsByManager(String managerId) {
         List<Project> projects = new ArrayList<>();
-        StringBuilder sql = new StringBuilder("SELECT * FROM Project WHERE 1=1");
-
-        if (nameFilter != null && !nameFilter.isEmpty()) {
-            sql.append(" AND project_name LIKE ?");
-        }
-        if (budgetFilter != null && !budgetFilter.isEmpty()) {
-            sql.append(" AND budget <= ?"); // Now fully functional with budget
-        }
-        if (statusFilter != null && !statusFilter.isEmpty()) {
-            sql.append(" AND status = ?");
-        }
-        // Note: Priority filter remains unused since it's not in the Project model
-
-        try (Connection conn = DBConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql.toString())) {
-            int paramIndex = 1;
-            if (nameFilter != null && !nameFilter.isEmpty()) {
-                pstmt.setString(paramIndex++, "%" + nameFilter + "%");
-            }
-            if (budgetFilter != null && !budgetFilter.isEmpty()) {
-                pstmt.setDouble(paramIndex++, Double.parseDouble(budgetFilter));
-            }
-            if (statusFilter != null && !statusFilter.isEmpty()) {
-                pstmt.setString(paramIndex++, statusFilter.toUpperCase());
-            }
-
-            try (ResultSet rs = pstmt.executeQuery()) {
+        String sql = "SELECT * FROM Project WHERE manager_id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, managerId);
+            try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-                    Project project = new Project();
-                    project.setProjectId(rs.getString("project_id"));
-                    project.setProjectName(rs.getString("project_name"));
-                    project.setDescription(rs.getString("description"));
-                    project.setManagerId(rs.getString("manager_id"));
-                    project.setStartDate(rs.getDate("start_date"));
-                    project.setEndDate(rs.getDate("end_date"));
-                    project.setStatus(ProjectStatus.valueOf(rs.getString("status").toUpperCase()));
-                    project.setBudget(rs.getDouble("budget")); // Now using the budget property
-                    project.setCreatedAt(rs.getTimestamp("created_at"));
-                    project.setUpdatedAt(rs.getTimestamp("updated_at"));
-
-                    projects.add(project);
+                    projects.add(mapResultSetToProject(rs));
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -232,17 +93,60 @@ public class ProjectDAO implements IProjectDAO {
     }
 
     @Override
-    public void closeProject(String projectId, String userId) {
-        String sql = "UPDATE Project SET status = ? WHERE project_id = ? AND manager_id = ?";
-        try (Connection conn = DBConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, ProjectStatus.COMPLETED.name()); // Assuming COMPLETED exists in ProjectStatus
-            pstmt.setString(2, projectId);
-            pstmt.setString(3, userId);
-            pstmt.executeUpdate();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+    public boolean updateProject(Project project) {
+        String sql = "UPDATE Project SET project_name = ?, description = ?, manager_id = ?, budget = ?, " +
+                    "start_date = ?, end_date = ?, status = ?, updated_at = ? WHERE project_id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, project.getProjectName());
+            stmt.setString(2, project.getDescription());
+            stmt.setString(3, project.getManagerId());
+            stmt.setDouble(4, project.getBudget());
+            stmt.setTimestamp(5, project.getStartDate() != null ? new Timestamp(project.getStartDate().getTime()) : null);
+            stmt.setTimestamp(6, project.getEndDate() != null ? new Timestamp(project.getEndDate().getTime()) : null);
+            stmt.setString(7, project.getStatus() != null ? project.getStatus().name() : ProjectStatus.ACTIVE.name());
+            stmt.setTimestamp(8, new Timestamp(System.currentTimeMillis())); // Always update timestamp
+            stmt.setString(9, project.getProjectId());
+            return stmt.executeUpdate() > 0;
         } catch (SQLException ex) {
             Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return false;
+    }
+
+    @Override
+    public boolean deleteProject(String projectId) {
+        String sql = "DELETE FROM Project WHERE project_id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, projectId);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    // Helper method to map ResultSet to Project object
+    private Project mapResultSetToProject(ResultSet rs) {
+        try {
+            Project project = new Project();
+            project.setProjectId(rs.getString("project_id"));
+            project.setProjectName(rs.getString("project_name"));
+            project.setDescription(rs.getString("description"));
+            project.setManagerId(rs.getString("manager_id"));
+            project.setBudget(rs.getDouble("budget"));
+            Timestamp startDate = rs.getTimestamp("start_date");
+            project.setStartDate(startDate != null ? new Date(startDate.getTime()) : null);
+            Timestamp endDate = rs.getTimestamp("end_date");
+            project.setEndDate(endDate != null ? new Date(endDate.getTime()) : null);
+            project.setStatus(ProjectStatus.valueOf(rs.getString("status")));
+            Timestamp createdAt = rs.getTimestamp("created_at");
+            project.setCreatedAt(createdAt != null ? new Date(createdAt.getTime()) : null);
+            Timestamp updatedAt = rs.getTimestamp("updated_at");
+            project.setUpdatedAt(updatedAt != null ? new Date(updatedAt.getTime()) : null);
+            return project;
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

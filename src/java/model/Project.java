@@ -26,16 +26,17 @@ public class Project {
     private Date createdAt;
     private Date updatedAt;
 
-    public Project(String projectName, String description, String managerId, Date startDate, Date endDate, ProjectStatus status, Date createdAt, Date updatedAt) {
+    public Project(String projectName, String description, String managerId, double budget, Date startDate, Date endDate, ProjectStatus status, Date createdAt, Date updatedAt) {
         this.projectId = UUID.randomUUID().toString();
         this.projectName = projectName;
         this.description = description;
         this.managerId = managerId;
+        this.budget = budget;
         this.startDate = startDate;
         this.endDate = endDate;
         this.status = status;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
-    
+
 }
