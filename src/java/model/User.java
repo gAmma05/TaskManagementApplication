@@ -20,15 +20,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class User {
     private String userId;
-    private String fullName;
     private String username;
     private String password;
+    private String fullName;
     private String email;
     private String phone;
     private UserRole role;
     
     
-    public User(String fullName, String username, String password, String email, String phone, UserRole role) {
+    public User(String username, String password, String fullName, String email, String phone, UserRole role) {
         this.userId = UUID.randomUUID().toString();
         this.username = username;
         this.password = password;
