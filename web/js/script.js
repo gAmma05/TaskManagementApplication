@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const updateBtn = document.getElementById('updateUserBtn');
     const fullNameInput = document.getElementById('fullNameInput');
     const emailInput = document.getElementById('emailInput');
+    const phoneInput = document.getElementById('phoneInput');
 
     if (editableCells.length && updateBtn && fullNameInput && emailInput) {
         editableCells.forEach(cell => {
@@ -14,6 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     fullNameInput.value = this.textContent.trim();
                 } else if (field === 'email') {
                     emailInput.value = this.textContent.trim();
+                } else if (field === 'phone') { // Added phone condition
+                    phoneInput.value = this.textContent.trim();
                 }
             });
         });
@@ -21,8 +24,13 @@ document.addEventListener('DOMContentLoaded', function () {
         // Initialize hidden inputs with current values
         const fullNameCell = document.querySelector('.editable-cell[data-field="fullName"]');
         const emailCell = document.querySelector('.editable-cell[data-field="email"]');
-        if (fullNameCell) fullNameInput.value = fullNameCell.textContent.trim();
-        if (emailCell) emailInput.value = emailCell.textContent.trim();
+        const phoneCell = document.querySelector('.editable-cell[data-field="phone"]');
+        if (fullNameCell)
+            fullNameInput.value = fullNameCell.textContent.trim();
+        if (emailCell)
+            emailInput.value = emailCell.textContent.trim();
+        if (phoneCell)
+            phoneInput.value = phoneCell.textContent.trim();
     } else {
         console.warn("Editable elements not found. 'My Info' tab may not be rendered.");
     }

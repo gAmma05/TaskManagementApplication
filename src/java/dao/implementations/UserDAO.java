@@ -143,9 +143,43 @@ public class UserDAO implements IUserDAO {
     }
 
     @Override
+    public boolean isEmailTaken(String email, String user_id) {
+        boolean status = false;
+        String sql = "SELECT EXISTS(SELECT 1 FROM User WHERE email = ? AND user_id != ?)";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, email);
+            stmt.setString(2, user_id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                status = rs.getBoolean(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return status;
+    }
+
+    @Override
+    public boolean isPhoneTaken(String phone, String user_id) {
+        boolean status = false;
+        String sql = "SELECT EXISTS(SELECT 1 FROM User WHERE phone_number = ? AND user_id != ?)";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, phone);
+            stmt.setString(2, user_id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                status = rs.getBoolean(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return status;
+    }
+
+    @Override
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
-        String sql = "SELECT * FROM User";
+        String sql = "SELECT 1 FROM User";
         try (PreparedStatement stmt = connection.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 users.add(mapResultSetToUser(rs));

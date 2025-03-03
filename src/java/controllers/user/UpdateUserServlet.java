@@ -77,20 +77,55 @@ public class UpdateUserServlet extends HttpServlet {
         String userId = request.getParameter("userId");
         String fullName = request.getParameter("fullName");
         String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
         String tab = request.getParameter("tab");
+
+        // Debugging: Print the received parameters
+        System.out.println("userId: " + userId);
+        System.out.println("fullName: " + fullName);
+        System.out.println("email: " + email);
+        System.out.println("phone: " + phone);
+        System.out.println("tab: " + tab);
         try {
             UserDAO userDAO = new UserDAO(DBConnection.getConnection());
             User user = userDAO.getUserById(userId);
-            if (user != null) {
-                user.setFullName(fullName);
-                user.setEmail(email);
-                userDAO.updateUser(user); // Assuming this method exists
+            if (user == null) {
+                request.setAttribute("errorMessage", "User not found.");
+                request.getRequestDispatcher(request.getContextPath() + ServletURL.DASHBOARD + "?tab=" + tab).forward(request, response);
+                return;
             }
-            response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD + "?tab=" + tab);
+
+            if (!email.equals(user.getEmail()) && userDAO.isEmailTaken(email, userId)) {
+//                request.setAttribute("errorMessage", "This email is already registered by another user.");
+//                System.out.println("This email is already registered by another user.");
+//                request.getRequestDispatcher(ServletURL.DASHBOARD + "?tab=" + tab).forward(request, response);
+                response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD + "?tab=" + tab + "&errorMessage=isEmailTaken");
+                return;
+            }
+
+            if (!phone.equals(user.getPhone()) && userDAO.isPhoneTaken(phone, userId)) {
+//                request.setAttribute("errorMessage", "This phone number is already registered by another user.");
+//                System.out.println("This phone number is already registered by another user.");
+//                request.getRequestDispatcher(ServletURL.DASHBOARD + "?tab=" + tab).forward(request, response);
+                response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD + "?tab=" + tab + "&errorMessage=isPhoneTaken");
+                return;
+            }
+
+            user.setFullName(fullName);
+            user.setEmail(email);
+            user.setPhone(phone);
+
+            if (userDAO.updateUser(user)) {
+                response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD + "?tab=" + tab);
+            } else {
+                request.setAttribute("errorMessage", "Failed to update user information due to a database error.");
+                request.getRequestDispatcher(ServletURL.DASHBOARD + "?tab=" + tab).forward(request, response);
+            }
+
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
-            request.setAttribute("errorMessage", "Failed to update user information.");
-            request.getRequestDispatcher(request.getContextPath() + ServletURL.DASHBOARD + "?tab=" + tab).forward(request, response);
+            request.setAttribute("errorMessage", "Failed to update user information due to a system error.");
+            request.getRequestDispatcher(ServletURL.DASHBOARD + "?tab=" + tab).forward(request, response);
         }
     }
 

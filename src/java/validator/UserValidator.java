@@ -8,12 +8,14 @@ import dao.interfaces.IUserDAO;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
+import model.User;
 
 /**
  *
  * @author thien
  */
 public class UserValidator {
+
     private final IUserDAO userDAO;
     private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@(.+)$"; // Basic email format
     private static final String PHONE_REGEX = "^\\d{8,15}$"; // 8-15 digits
@@ -39,6 +41,8 @@ public class UserValidator {
             errors.put("password", "Password is required.");
         } else if (password.length() < 6 || password.length() > 50) {
             errors.put("password", "Password must be between 6 and 50 characters.");
+        } else if (!(password.matches(".*[A-Z].*") && password.matches(".*[!@#$%^&*(),.?\":{}|<>].*"))) {
+            errors.put("password", "Password required at least 1 uppercase character and 1 special character.");
         }
 
         // Full Name validation
@@ -46,18 +50,27 @@ public class UserValidator {
             errors.put("fullname", "Full name is required.");
         } else if (fullName.length() < 2 || fullName.length() > 100) {
             errors.put("fullname", "Full name must be between 2 and 100 characters.");
+        } else if (!fullName.matches("[a-zA-Z ]+")) {
+            errors.put("fullname", "Full name only contains alphabetic characters.");
         }
 
         // Email validation
+        User u = userDAO.getUserByUsername(username);
         if (email == null || email.trim().isEmpty()) {
             errors.put("email", "Email is required.");
         } else if (!Pattern.matches(EMAIL_REGEX, email)) {
             errors.put("email", "Invalid email format.");
+        } else if (userDAO.isEmailTaken(email, u.getUserId())) {
+            errors.put("email", "Email is already registered.");
         }
 
         // Phone validation (optional)
-        if (phone != null && !phone.trim().isEmpty() && !Pattern.matches(PHONE_REGEX, phone)) {
-            errors.put("phone_number", "Phone number must be 8-15 digits if provided.");
+        if (phone != null && !phone.trim().isEmpty()) {
+            if (!Pattern.matches(PHONE_REGEX, phone)) {
+                errors.put("phone_number", "Phone number must be 8-15 digits if provided.");
+            } else if (userDAO.isPhoneTaken(phone, u.getUserId())) {
+                errors.put("phone_number", "This phone number is already registered.");
+            }
         }
 
         return errors;

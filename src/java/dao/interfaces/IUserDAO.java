@@ -12,12 +12,24 @@ import model.User;
  * @author thien
  */
 public interface IUserDAO {
+
     User validateUser(String username, String password);
+
     boolean createUser(User user);
+
     User getUserById(String userId);
+
     User getUserByUsername(String username);
+
     boolean updateUser(User user);
+
     boolean updatePassword(String userId, String newPassword);
+
     boolean deleteUser(String userId);
+
+    boolean isEmailTaken(String email, String user_id);
+
+    boolean isPhoneTaken(String phone, String user_id);
+
     List<User> getAllUsers();
 }
