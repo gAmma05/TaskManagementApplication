@@ -15,9 +15,9 @@ import java.sql.SQLException;
  */
 public class DBConnection {
 
-    private static final String DB_NAME = "TMA";
+    private static final String DB_NAME = "TMA1";
     private static final String DB_USER_NAME = "root";
-    private static final String DB_PASSWORD = "1234";
+    private static final String DB_PASSWORD = "start";
 
     //connect ssms
 //    public static Connection getConnection() throws ClassNotFoundException, SQLException {

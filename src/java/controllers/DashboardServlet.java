@@ -25,12 +25,12 @@ import services.interfaces.ITaskService;
 import services.interfaces.IUserService;
 
 public class DashboardServlet extends HttpServlet {
-    
+
     private static final Logger LOGGER = Logger.getLogger(DashboardServlet.class.getName());
     private final IProjectService projectService;
     private final ITaskService taskService;
     private final IUserService userService;
-    
+
     public DashboardServlet() {
         try {
             this.projectService = new ProjectService();
@@ -43,10 +43,12 @@ public class DashboardServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        
+
         String userId = (String) session.getAttribute("user_id");
         String role = (String) session.getAttribute("role");
 
@@ -64,7 +66,7 @@ public class DashboardServlet extends HttpServlet {
         if (tab == null || tab.isEmpty()) {
             tab = "myProjects";
         }
-        
+
         // Fetch project lists
         List<Project> myProjects;
         Map<String, String> managerUsernames = new HashMap<>(); // Moved outside to share scope
@@ -153,7 +155,7 @@ public class DashboardServlet extends HttpServlet {
             }
             managerUsernames.put(project.getProjectId(), managerUsername);
         }
-        
+
         // Fetch tasks and map project names
         List<Task> myTasks = taskService.getMyTasks(userId);
         Map<String, String> taskProjectNames = new HashMap<>();
@@ -209,8 +211,8 @@ public class DashboardServlet extends HttpServlet {
         }
     }
 
-    private void handleManagerTabs(HttpServletRequest request, HttpServletResponse response, 
-                                 String tab, String jspPath) 
+    private void handleManagerTabs(HttpServletRequest request, HttpServletResponse response,
+            String tab, String jspPath)
             throws ServletException, IOException {
         switch (tab) {
             case "myInfo":
@@ -226,14 +228,14 @@ public class DashboardServlet extends HttpServlet {
             case "myTasks":
             case "otherProjects":
             case "pendingProjects":
-                response.sendError(HttpServletResponse.SC_FORBIDDEN, 
+                response.sendError(HttpServletResponse.SC_FORBIDDEN,
                         "Tab not available for MANAGER role");
                 break;
         }
     }
-    
-    private void handleMemberTabs(HttpServletRequest request, HttpServletResponse response, 
-                                String tab, String jspPath) 
+
+    private void handleMemberTabs(HttpServletRequest request, HttpServletResponse response,
+            String tab, String jspPath)
             throws ServletException, IOException {
         switch (tab) {
             case "myTasks":
@@ -253,7 +255,7 @@ public class DashboardServlet extends HttpServlet {
                 request.getRequestDispatcher(jspPath + "myProjects.jsp").forward(request, response);
                 break;
             case "requesting":
-                response.sendError(HttpServletResponse.SC_FORBIDDEN, 
+                response.sendError(HttpServletResponse.SC_FORBIDDEN,
                         "Tab not available for MEMBER role");
                 break;
         }

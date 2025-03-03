@@ -28,6 +28,8 @@ public class ResetPasswordServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         // Redirect to reset password page
         request.getRequestDispatcher(ViewURL.RESET_PASSWORD_PAGE).forward(request, response);
     }
@@ -35,6 +37,8 @@ public class ResetPasswordServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         try {
             String username = request.getParameter("username");
             String newPassword = request.getParameter("newPassword");

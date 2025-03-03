@@ -19,6 +19,7 @@ import model.Task;
 import utils.DBConnection;
 
 public class CreateTaskServlet extends HttpServlet {
+
     private TaskDAO taskDAO;
 
     @Override
@@ -32,8 +33,10 @@ public class CreateTaskServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         Task task = new Task();
         task.setTaskId(UUID.randomUUID().toString());
         task.setProjectId(request.getParameter("projectId"));
@@ -41,7 +44,7 @@ public class CreateTaskServlet extends HttpServlet {
         task.setDescription(request.getParameter("description"));
         task.setMemberId(request.getParameter("memberId")); // Changed from assignerId
         task.setPriority(TaskPriority.valueOf(request.getParameter("priority")));
-        
+
         try {
             Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("deadline"));
             task.setDeadline(new java.sql.Date(utilDate.getTime()));

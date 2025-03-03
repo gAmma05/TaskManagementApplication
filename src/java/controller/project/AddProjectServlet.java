@@ -20,12 +20,15 @@ import model.Project;
 import utils.DBConnection;
 
 public class AddProjectServlet extends HttpServlet {
+
     // DATE_FORMAT is defined here as a private static field
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("user_id") == null) {
             response.sendRedirect(ViewURL.LOGIN_PAGE);
@@ -40,7 +43,7 @@ public class AddProjectServlet extends HttpServlet {
         String startDateStr = request.getParameter("startDate");
         String endDateStr = request.getParameter("endDate");
         String tab = request.getParameter("tab");
-        
+
         try {
             // DATE_FORMAT is used here to parse the date strings
             Date startDate = DATE_FORMAT.parse(startDateStr);

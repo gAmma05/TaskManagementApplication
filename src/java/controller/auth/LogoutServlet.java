@@ -21,6 +21,8 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         // Get the current session (if it exists)
         HttpSession session = request.getSession(false); // false means don't create a new session
 
@@ -36,6 +38,8 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         // Handle POST requests the same way as GET (optional, depending on your needs)
         doGet(request, response);
     }

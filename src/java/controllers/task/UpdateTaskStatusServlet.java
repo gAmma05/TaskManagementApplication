@@ -14,12 +14,14 @@ import model.Task;
 import utils.DBConnection;
 
 public class UpdateTaskStatusServlet extends HttpServlet {
-    
+
     private static final Logger LOGGER = Logger.getLogger(UpdateTaskStatusServlet.class.getName());
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         String taskId = request.getParameter("taskId");
         String status = request.getParameter("status");
         String projectId = request.getParameter("projectId");
@@ -47,7 +49,7 @@ public class UpdateTaskStatusServlet extends HttpServlet {
         } catch (SQLException | ClassNotFoundException e) {
             LOGGER.log(Level.SEVERE, "Failed to update task status", e);
             request.setAttribute("errorMessage", "Failed to update task status: " + e.getMessage());
-            
+
             // Error redirect based on source (no /error.jsp)
             if ("projectDetails".equals(source)) {
                 String redirectTab = (tab != null && !tab.isEmpty()) ? tab : "tasks";
