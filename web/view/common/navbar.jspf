@@ -1,0 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<ul class="nav nav-tabs" id="dashboardTabs" role="tablist">
+    <!-- My Projects (available for both MANAGER and MEMBER) -->
+    <li class="nav-item" role="presentation">
+        <a class="nav-link ${param.tab == 'myProjects' ? 'active' : ''}" 
+           href="${pageContext.request.contextPath}/dashboard?tab=myProjects">My Projects</a>
+    </li>
+
+    <!-- MEMBER-specific tabs -->
+    <c:if test="${sessionScope.role != null && sessionScope.role.toUpperCase() == 'MEMBER'}">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link ${param.tab == 'myTasks' ? 'active' : ''}" 
+               href="${pageContext.request.contextPath}/dashboard?tab=myTasks">My Tasks</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link ${param.tab == 'otherProjects' ? 'active' : ''}" 
+               href="${pageContext.request.contextPath}/dashboard?tab=otherProjects">Other Projects</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link ${param.tab == 'pendingProjects' ? 'active' : ''}" 
+               href="${pageContext.request.contextPath}/dashboard?tab=pendingProjects">Pending Projects</a>
+        </li>
+    </c:if>
+
+    <!-- MANAGER-specific tab -->
+    <c:if test="${sessionScope.role != null && sessionScope.role.toUpperCase() == 'MANAGER'}">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link ${param.tab == 'requesting' ? 'active' : ''}" 
+               href="${pageContext.request.contextPath}/dashboard?tab=requesting">Requesting</a>
+        </li>
+    </c:if>
+
+    <!-- My Info (available for both MANAGER and MEMBER) -->
+    <li class="nav-item" role="presentation">
+        <a class="nav-link ${param.tab == 'myInfo' ? 'active' : ''}" 
+           href="${pageContext.request.contextPath}/dashboard?tab=myInfo">My Info</a>
+    </li>
+</ul>

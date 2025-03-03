@@ -1,0 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<nav class="nav nav-tabs mb-3">
+    <a class="nav-link ${param.tab == 'description' ? 'active' : ''}" 
+       href="${pageContext.request.contextPath}/projectDetails?projectId=${project.projectId}&tab=description">Description</a>
+    <a class="nav-link ${param.tab == 'tasks' ? 'active' : ''}" 
+       href="${pageContext.request.contextPath}/projectDetails?projectId=${project.projectId}&tab=tasks">Tasks</a>
+    <c:if test="${sessionScope.role == 'MANAGER'}">
+        <a class="nav-link ${param.tab == 'members' ? 'active' : ''}" 
+           href="${pageContext.request.contextPath}/projectDetails?projectId=${project.projectId}&tab=members">Members</a>
+    </c:if>
+</nav>
