@@ -36,7 +36,16 @@ public class ProjectService implements IProjectService {
         this.projectDAO = new ProjectDAO(connection);
         this.enrollmentDAO = new EnrollmentDAO(connection);
     }
-    
+
+    @Override
+    public List<Project> getMyProjectsForManagerWithFilters(String userId, String role, String projectName, Double budget, String status) {
+        try {
+            return projectDAO.getProjectsByManagerWithFilters(userId, projectName, budget, status);
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to fetch filtered projects for manager", e);
+        }
+    }
+
     @Override
     public Project getProjectById(String projectId) {
         if (projectId == null || projectId.trim().isEmpty()) {
@@ -118,6 +127,17 @@ public class ProjectService implements IProjectService {
             }
         }
         return pendingProjects;
+    }
+
+    public List<Project> filterProjects(String projectName, Double minBudget, Double maxBudget, ProjectStatus status) {
+        List<Project> allProjects = projectDAO.getAllProjects();
+        return allProjects.stream()
+                .filter(project -> projectName == null || projectName.trim().isEmpty()
+                || project.getProjectName().toLowerCase().contains(projectName.toLowerCase()))
+                .filter(project -> minBudget == null || project.getBudget() >= minBudget)
+                .filter(project -> maxBudget == null || project.getBudget() <= maxBudget)
+                .filter(project -> status == null || project.getStatus() == status)
+                .collect(Collectors.toList());
     }
 
     @Override

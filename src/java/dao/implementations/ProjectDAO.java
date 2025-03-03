@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ProjectDAO implements IProjectDAO {
+
     private final Connection connection;
 
     public ProjectDAO(Connection connection) {
@@ -23,9 +24,9 @@ public class ProjectDAO implements IProjectDAO {
 
     @Override
     public boolean createProject(Project project) {
-        String sql = "INSERT INTO Project (project_id, project_name, description, manager_id, budget, " +
-                    "start_date, end_date, status, created_at, updated_at) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Project (project_id, project_name, description, manager_id, budget, "
+                + "start_date, end_date, status, created_at, updated_at) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, project.getProjectId());
             stmt.setString(2, project.getProjectName());
@@ -64,8 +65,7 @@ public class ProjectDAO implements IProjectDAO {
     public List<Project> getAllProjects() {
         List<Project> projects = new ArrayList<>();
         String sql = "SELECT * FROM Project";
-        try (PreparedStatement stmt = connection.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+        try (PreparedStatement stmt = connection.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 projects.add(mapResultSetToProject(rs));
             }
@@ -94,8 +94,8 @@ public class ProjectDAO implements IProjectDAO {
 
     @Override
     public boolean updateProject(Project project) {
-        String sql = "UPDATE Project SET project_name = ?, description = ?, manager_id = ?, budget = ?, " +
-                    "start_date = ?, end_date = ?, status = ?, updated_at = ? WHERE project_id = ?";
+        String sql = "UPDATE Project SET project_name = ?, description = ?, manager_id = ?, budget = ?, "
+                + "start_date = ?, end_date = ?, status = ?, updated_at = ? WHERE project_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, project.getProjectName());
             stmt.setString(2, project.getDescription());
@@ -142,6 +142,51 @@ public class ProjectDAO implements IProjectDAO {
             Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+    }
+
+    @Override
+    public List<Project> getProjectsByManagerWithFilters(String managerId, String projectName, Double budget, String status)
+                throws SQLException {
+        List<Project> projects = new ArrayList<>();
+        StringBuilder query = new StringBuilder("SELECT * FROM project WHERE manager_id = ?");
+
+        List<Object> params = new ArrayList<>();
+        params.add(managerId);
+
+        if (projectName != null && !projectName.isEmpty()) {
+            query.append(" AND project_name LIKE ?");
+            params.add("%" + projectName + "%");
+        }
+        if (budget != null) {
+            query.append(" AND budget <= ?");
+            params.add(budget);
+        }
+        if (status != null && !status.isEmpty()) {
+            query.append(" AND status = ?");
+            params.add(status);
+        }
+
+        try (PreparedStatement stmt = connection.prepareStatement(query.toString())) {
+            for (int i = 0; i < params.size(); i++) {
+                stmt.setObject(i + 1, params.get(i));
+            }
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Project project = new Project();
+                project.setProjectId(rs.getString("project_id"));
+                project.setProjectName(rs.getString("project_name"));
+                project.setDescription(rs.getString("description"));
+                project.setManagerId(rs.getString("manager_id"));
+                project.setBudget(rs.getDouble("budget"));
+                project.setStartDate(rs.getDate("start_date"));
+                project.setEndDate(rs.getDate("end_date"));
+                project.setStatus(ProjectStatus.valueOf(rs.getString("status")));
+                project.setCreatedAt(rs.getDate("created_at"));
+                project.setUpdatedAt(rs.getDate("updated_at"));
+                projects.add(project);
+            }
+        }
+        return projects;
     }
 
     // Helper method to map ResultSet to Project object

@@ -1,6 +1,8 @@
 package controllers;
 
 import constants.ViewURL;
+import dao.implementations.EnrollmentDAO;
+import enums.ProjectStatus;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +25,7 @@ import services.implementations.UserService;
 import services.interfaces.IProjectService;
 import services.interfaces.ITaskService;
 import services.interfaces.IUserService;
+import utils.DBConnection;
 
 public class DashboardServlet extends HttpServlet {
 
@@ -66,13 +69,50 @@ public class DashboardServlet extends HttpServlet {
         if (tab == null || tab.isEmpty()) {
             tab = "myProjects";
         }
+        String action = request.getParameter("action");
+        if ("viewMembers".equals(action)) {
+            String projectId = request.getParameter("projectId");
+            if (projectId != null && !projectId.trim().isEmpty()) {
+                try {
+                    Project project = projectService.getProjectById(projectId);
+                    EnrollmentDAO enrollmentDAO = new EnrollmentDAO(DBConnection.getConnection());
+                    List<User> users = enrollmentDAO.getUsersByProjectId(projectId);
+                    int totalEnrollNumber = users.isEmpty() ? 1 : users.size();
 
-        // Fetch project lists
+                    request.setAttribute("project", project);
+                    request.setAttribute("users", users);
+                    request.setAttribute("totalEnrollNumber", totalEnrollNumber);
+                    request.getRequestDispatcher("/view/project/members.jsp").forward(request, response);
+                    return;
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(DashboardServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+        // Fetch project lists with filters
         List<Project> myProjects;
-        Map<String, String> managerUsernames = new HashMap<>(); // Moved outside to share scope
+        Map<String, String> managerUsernames = new HashMap<>();
+
+        // Filter parameters (không có priority)
+        String projectName = request.getParameter("projectName");
+        String budgetStr = request.getParameter("budget");
+        String status = request.getParameter("status");
+
+        Double budget = null;
+        if (budgetStr != null && !budgetStr.isEmpty()) {
+            try {
+                budget = Double.parseDouble(budgetStr);
+            } catch (NumberFormatException e) {
+                request.setAttribute("errorMessage", "Invalid budget format");
+            }
+        }
+
         if ("MANAGER".equalsIgnoreCase(role)) {
-            myProjects = projectService.getMyProjectsForManager(userId, role);
+            // Apply filters for manager's projects
+            myProjects = projectService.getMyProjectsForManagerWithFilters(userId, role, projectName, budget, status);
             request.setAttribute("myProjects", myProjects);
+
             List<EnrollmentWithProject> requestingEnrollments = projectService.getRequestingEnrollments(userId);
             request.setAttribute("requestingEnrollments", requestingEnrollments);
 
@@ -97,7 +137,6 @@ public class DashboardServlet extends HttpServlet {
             }
             request.setAttribute("enrollmentUsers", enrollmentUsers);
 
-            // Add manager usernames for manager's projects
             for (Project project : myProjects) {
                 String managerId = project.getManagerId();
                 String managerUsername = "Unassigned";
@@ -116,10 +155,10 @@ public class DashboardServlet extends HttpServlet {
         } else {
             myProjects = projectService.getEnrolledProjects(userId);
             request.setAttribute("myProjects", myProjects);
+
             List<ProjectService.ProjectWithEnrollment> pendingProjects = projectService.getPendingProjects(userId);
             request.setAttribute("pendingProjects", pendingProjects);
 
-            // Add manager usernames for pending projects
             for (ProjectService.ProjectWithEnrollment pending : pendingProjects) {
                 String managerId = pending.getProject().getManagerId();
                 String managerUsername = "Unassigned";
@@ -136,10 +175,10 @@ public class DashboardServlet extends HttpServlet {
                 managerUsernames.put(pending.getProject().getProjectId(), managerUsername);
             }
         }
+
         List<Project> enrolledProjects = projectService.getEnrolledProjects(userId);
         request.setAttribute("enrolledProjects", enrolledProjects);
 
-        // Add manager usernames for enrolled projects
         for (Project project : enrolledProjects) {
             String managerId = project.getManagerId();
             String managerUsername = "Unassigned";
@@ -155,24 +194,24 @@ public class DashboardServlet extends HttpServlet {
             }
             managerUsernames.put(project.getProjectId(), managerUsername);
         }
+        request.setAttribute("managerUsernames", managerUsernames);
 
-        // Fetch tasks and map project names
         List<Task> myTasks = taskService.getMyTasks(userId);
         Map<String, String> taskProjectNames = new HashMap<>();
         for (Task task : myTasks) {
             String projectId = task.getProjectId();
-            String projectName = "Unknown";
+            String projectNameTask = "Unknown";
             if (projectId != null && !projectId.isEmpty()) {
                 try {
                     Project project = projectService.getProjectById(projectId);
                     if (project != null) {
-                        projectName = project.getProjectName();
+                        projectNameTask = project.getProjectName();
                     }
                 } catch (Exception e) {
                     LOGGER.log(Level.WARNING, "Failed to fetch project for projectId: " + projectId, e);
                 }
             }
-            taskProjectNames.put(task.getTaskId(), projectName);
+            taskProjectNames.put(task.getTaskId(), projectNameTask);
         }
         request.setAttribute("myTasks", myTasks);
         request.setAttribute("taskProjectNames", taskProjectNames);
@@ -181,7 +220,6 @@ public class DashboardServlet extends HttpServlet {
         request.setAttribute("unenrolledProjects", unenrolledProjects);
         request.setAttribute("myInfo", userService.getMyInfo(userId));
 
-        // Add manager usernames for unenrolled projects
         for (Project project : unenrolledProjects) {
             String managerId = project.getManagerId();
             String managerUsername = "Unassigned";
@@ -197,7 +235,6 @@ public class DashboardServlet extends HttpServlet {
             }
             managerUsernames.put(project.getProjectId(), managerUsername);
         }
-        request.setAttribute("managerUsernames", managerUsernames);
 
         String jspPath;
         if ("MANAGER".equalsIgnoreCase(role)) {

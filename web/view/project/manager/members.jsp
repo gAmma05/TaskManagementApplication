@@ -36,6 +36,7 @@
                             <th>Full Name</th>
                             <th>Phone Number</th>
                             <th>Email</th>
+                            <th>Total Enrolled</th> <!-- New column -->
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -47,6 +48,7 @@
                                 <td>${user.fullName}</td>
                                 <td>${user.phone}</td>
                                 <td>${user.email}</td>
+                                <td>${totalEnrollNumber}</td> <!-- Display totalEnrollNumber -->
                                 <td>
                                     <button class="btn btn-danger btn-sm" data-bs-toggle="modal" 
                                             data-bs-target="#kickMemberModal_${user.userId}">Kick</button>
@@ -54,31 +56,31 @@
                             </tr>
 
                             <!-- Kick Member Modal -->
-                        <div class="modal fade" id="kickMemberModal_${user.userId}" tabindex="-1" 
-                             aria-labelledby="kickMemberModalLabel_${user.userId}" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="kickMemberModalLabel_${user.userId}">Kick Member</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Are you sure you want to kick "${user.username}" from the project?</p>
-                                        <form action="${pageContext.request.contextPath}/kickMember" method="post">
-                                            <input type="hidden" name="projectId" value="${project.projectId}">
-                                            <input type="hidden" name="userId" value="${user.userId}">
-                                            <input type="hidden" name="tab" value="members"> <!-- Preserve tab -->
-                                            <button type="submit" class="btn btn-danger">Confirm Kick</button>
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        </form>
+                            <div class="modal fade" id="kickMemberModal_${user.userId}" tabindex="-1" 
+                                 aria-labelledby="kickMemberModalLabel_${user.userId}" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="kickMemberModalLabel_${user.userId}">Kick Member</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Are you sure you want to kick "${user.username}" from the project?</p>
+                                            <form action="${pageContext.request.contextPath}/kickMember" method="post">
+                                                <input type="hidden" name="projectId" value="${project.projectId}">
+                                                <input type="hidden" name="userId" value="${user.userId}">
+                                                <input type="hidden" name="tab" value="members">
+                                                <button type="submit" class="btn btn-danger">Confirm Kick</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </c:forEach>
-                    <c:if test="${empty users}">
-                        <tr><td colspan="6">No member is enrolled.</td></tr>
-                    </c:if>
+                        </c:forEach>
+                        <c:if test="${empty users}">
+                            <tr><td colspan="7">No member is enrolled.</td></tr> <!-- Adjusted colspan -->
+                        </c:if>
                     </tbody>
                 </table>
             </div>

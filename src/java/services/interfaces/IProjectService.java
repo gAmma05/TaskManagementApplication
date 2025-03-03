@@ -4,6 +4,7 @@
  */
 package services.interfaces;
 
+import enums.ProjectStatus;
 import java.util.List;
 import model.Project;
 import services.implementations.ProjectService.EnrollmentWithProject;
@@ -20,4 +21,5 @@ public interface IProjectService {
     List<ProjectWithEnrollment> getPendingProjects(String userId);
     List<EnrollmentWithProject> getRequestingEnrollments(String managerId);
     public Project getProjectById(String projectId);
+    List<Project> getMyProjectsForManagerWithFilters(String userId, String role, String projectName, Double budget, String status);
 }

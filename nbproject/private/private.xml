@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/E:/JavaTrain/BE3/TaskManagementApplication/src/java/services/interfaces/IProjectService.java</file>
+            <file>file:/E:/JavaTrain/BE3/TaskManagementApplication/src/java/controllers/project/ProjectDetailsServlet.java</file>
+            <file>file:/E:/JavaTrain/BE3/TaskManagementApplication/src/java/services/implementations/ProjectService.java</file>
+            <file>file:/E:/JavaTrain/BE3/TaskManagementApplication/src/java/controllers/DashboardServlet.java</file>
+            <file>file:/E:/JavaTrain/BE3/TaskManagementApplication/web/WEB-INF/web.xml</file>
+            <file>file:/E:/JavaTrain/BE3/TaskManagementApplication/web/view/project/manager/members.jsp</file>
+        </group>
     </open-files>
 </project-private>

@@ -4,6 +4,7 @@
  */
 package dao.interfaces;
 
+import java.sql.SQLException;
 import java.util.List;
 import model.Project;
 
@@ -18,4 +19,5 @@ public interface IProjectDAO {
     List<Project> getProjectsByManager(String managerId);
     boolean updateProject(Project project);
     boolean deleteProject(String projectId);
+    public List<Project> getProjectsByManagerWithFilters(String managerId, String projectName, Double budget, String status) throws SQLException;
 }
