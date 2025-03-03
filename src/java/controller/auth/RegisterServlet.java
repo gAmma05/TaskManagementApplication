@@ -4,15 +4,16 @@
  */
 package controller.auth;
 
-import constants.ServletURL;
+
 import constants.ViewURL;
 import dao.implementations.UserDAO;
 import enums.UserRole;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+
 import java.util.Map;
-import java.util.UUID;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -82,6 +83,7 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            Map<String, String> errors;
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             String fullName = request.getParameter("fullname");
@@ -92,7 +94,7 @@ public class RegisterServlet extends HttpServlet {
             UserDAO userDAO = new UserDAO(DBConnection.getConnection());
             UserValidator userValidator = new UserValidator(userDAO);
 
-            Map<String, String> errors = userValidator.validate(username, password, fullName, email, phone);
+            errors = userValidator.validate(username, password, fullName, email, phone);
             if (!errors.isEmpty()) {
                 // Set each error as a separate request attribute
                 for (Map.Entry<String, String> entry : errors.entrySet()) {
@@ -105,7 +107,7 @@ public class RegisterServlet extends HttpServlet {
 
             User newUser = new User(
                     username.trim(),
-                    password, 
+                    password,
                     fullName.trim(),
                     email.trim(),
                     phone != null ? phone.trim() : null,
@@ -118,12 +120,9 @@ public class RegisterServlet extends HttpServlet {
                 request.getSession().setAttribute("username", newUser.getUsername());
                 request.getSession().setAttribute("role", newUser.getRole().name());
                 request.getSession().setAttribute("full_name", newUser.getFullName());
-                if (role == null || role.equalsIgnoreCase(UserRole.NONE.name())) { 
-                    request.setAttribute("generalError", "You have no role to access the system.");
-                    request.getRequestDispatcher(ViewURL.REGISTER_PAGE).forward(request, response);
-                } else {
-                    response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD);
-                }
+                
+                request.setAttribute("success", "Login successfully");
+                request.getRequestDispatcher(ViewURL.LOGIN_PAGE).forward(request, response);
             } else {
                 request.setAttribute("generalError", "Registration failed due to a server error. Please try again.");
                 request.getRequestDispatcher(ViewURL.REGISTER_PAGE).forward(request, response);

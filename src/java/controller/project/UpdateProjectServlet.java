@@ -58,7 +58,7 @@ public class UpdateProjectServlet extends HttpServlet {
                     if (!success) {
                         throw new SQLException("Failed to update project in database.");
                     }
-                    response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD);
+                    response.sendRedirect(ServletURL.DASHBOARD);
                 } else {
                     request.setAttribute("errorMessage", "Project not found.");
                     request.getRequestDispatcher(ViewURL.PROJECT_DETAILS_PAGE).forward(request, response);

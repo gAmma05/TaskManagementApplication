@@ -16,12 +16,12 @@ public class ViewURL {
     public static final String RESET_PASSWORD_PAGE = "/view/auth/reset-password.jsp";
     
     //view/manager
-    public static final String MANAGER_DASHBOARD_PAGE = "/view/manager/dashboard.jsp";
+    public static final String MANAGER_DASHBOARD_PAGE = "/view/manager/myInfo.jsp";
     
     //view/member
-    public static final String MEMBER_DASHBOARD_PAGE = "/view/member/dashboard.jsp";
+    public static final String MEMBER_DASHBOARD_PAGE = "/view/member/myInfo.jsp";
     
     //view/project
-    public static final String PROJECT_DETAILS_PAGE = "/view/project/projectDetails.jsp";
+    public static final String PROJECT_DETAILS_PAGE = "/view/project/description.jsp";
 }
 
