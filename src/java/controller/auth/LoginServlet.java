@@ -23,15 +23,12 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         request.getRequestDispatcher(ViewURL.LOGIN_PAGE).forward(request, response); // Changed from redirect
-
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         try {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
@@ -53,16 +50,14 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("user_id", user.getUserId());
                 session.setAttribute("username", user.getUsername());
-                session.setAttribute("isLoggedIn", true);
                 session.setAttribute("role", user.getRole().name());
                 session.setAttribute("full_name", user.getFullName());
 
-                if (user.getRole().equals(UserRole.NONE)) {
+                if (user.getRole().equals(UserRole.NONE)) { 
                     request.setAttribute("generalError", "You have no role to access the system.");
                     request.getRequestDispatcher(ViewURL.LOGIN_PAGE).forward(request, response);
                 } else {
-                    request.getRequestDispatcher(ServletURL.DASHBOARD).forward(request, response);
-                    
+                    response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD);
                 }
             } else {
                 request.setAttribute("generalError", "Invalid username or password.");

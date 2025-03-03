@@ -81,7 +81,7 @@ public class DeleteProjectServlet extends HttpServlet {
             response.sendRedirect(ViewURL.LOGIN_PAGE);
             return;
         }
-
+        
         String projectId = request.getParameter("projectId");
 
         try (Connection conn = DBConnection.getConnection()) {
@@ -90,7 +90,7 @@ public class DeleteProjectServlet extends HttpServlet {
             if (!success) {
                 throw new SQLException("Failed to delete project from database.");
             }
-            response.sendRedirect(ServletURL.DASHBOARD);
+            response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             request.setAttribute("errorMessage", "Failed to delete project due to a server error.");

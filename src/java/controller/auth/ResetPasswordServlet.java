@@ -46,7 +46,7 @@ public class ResetPasswordServlet extends HttpServlet {
                 for (Map.Entry<String, String> entry : errors.entrySet()) {
                     request.setAttribute(entry.getKey() + "Error", entry.getValue());
                 }
-                request.getRequestDispatcher(ViewURL.RESET_PASSWORD_PAGE).forward(request, response);
+                request.getRequestDispatcher(request.getContextPath() + ViewURL.RESET_PASSWORD_PAGE).forward(request, response);
                 return;
             }
 
@@ -55,7 +55,7 @@ public class ResetPasswordServlet extends HttpServlet {
 
             if (user == null) {
                 request.setAttribute("generalError", "Username does not exist.");
-                request.getRequestDispatcher(ViewURL.RESET_PASSWORD_PAGE).forward(request, response);
+                request.getRequestDispatcher(request.getContextPath() + ViewURL.RESET_PASSWORD_PAGE).forward(request, response);
                 return;
             }
 
@@ -69,7 +69,7 @@ public class ResetPasswordServlet extends HttpServlet {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ResetPasswordServlet.class.getName()).log(Level.SEVERE, "Password reset failed", ex);
             request.setAttribute("generalError", "A server error occurred: " + ex.getMessage());
-            request.getRequestDispatcher(ViewURL.RESET_PASSWORD_PAGE).forward(request, response);
+            request.getRequestDispatcher(request.getContextPath() + ViewURL.RESET_PASSWORD_PAGE).forward(request, response);
         }
     }
 

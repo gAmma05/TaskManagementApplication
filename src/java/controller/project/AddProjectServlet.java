@@ -64,7 +64,7 @@ public class AddProjectServlet extends HttpServlet {
                 if (!success) {
                     throw new SQLException("Failed to create project in database.");
                 }
-                response.sendRedirect(ServletURL.DASHBOARD);
+                response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD);
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
                 request.setAttribute("errorMessage", "Failed to add project due to a server error.");

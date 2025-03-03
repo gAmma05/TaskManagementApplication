@@ -110,7 +110,7 @@ public class EnrollProjectServlet extends HttpServlet {
                             EnrollmentStatus.PENDING));
 
             if (success) {
-                response.sendRedirect(ServletURL.DASHBOARD);
+                response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD);
             } else {
                 response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
                         "Failed to enroll in project");

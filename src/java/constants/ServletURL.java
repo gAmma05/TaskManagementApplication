@@ -11,5 +11,5 @@ package constants;
 public class ServletURL {
 //    public static final String MY_PROJECTS = "/my-projects";
 //    public static final String MY_TASKS = "/my-tasks";
-    public static final String DASHBOARD = "view/dashboard/dashboard.jsp";
+    public static final String DASHBOARD = "/dashboard";
 }
