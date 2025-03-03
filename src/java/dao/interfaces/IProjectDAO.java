@@ -16,6 +16,7 @@ public interface IProjectDAO {
     Project getProjectById(String projectId);
     List<Project> getAllProjects();
     List<Project> getProjectsByManager(String managerId);
+    public List<Project> getNotManagerProject(String managerId);
     boolean updateProject(Project project);
     boolean deleteProject(String projectId);
 }

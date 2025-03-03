@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
         <style>
             .offcanvas-wide {
-                width: 50% !important; /* Custom width */
+                width: 35% !important; /* Custom width */
             }
         </style>
     </head>
@@ -71,119 +71,115 @@
                             </tr>
 
                             <!-- Task Details Offcanvas -->
-                            <div class="offcanvas offcanvas-end offcanvas-wide" tabindex="-1" 
-                                 id="taskDetailsOffcanvas_${task.taskId}" 
-                                 aria-labelledby="taskDetailsOffcanvasLabel_${task.taskId}">
-                                <div class="offcanvas-header">
-                                    <h5 class="offcanvas-title" id="taskDetailsOffcanvasLabel_${task.taskId}">
-                                        Task Details - ${task.taskName}
-                                    </h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                </div>
-                                <div class="offcanvas-body">
-                                    <form action="${pageContext.request.contextPath}/updateTask" method="post" 
-                                          id="updateForm_${task.taskId}">
-                                        <input type="hidden" name="taskId" value="${task.taskId}">
-                                        <input type="hidden" name="projectId" value="${project.projectId}">
-                                        <input type="hidden" name="tab" value="tasks">
-                                        <input type="hidden" name="source" value="projectDetails">
-                                        <div class="row mb-3">
-                                            <label for="taskName_${task.taskId}" class="col-sm-4 col-form-label">Name</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="taskName_${task.taskId}" 
-                                                       name="taskName" value="${task.taskName}" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="description_${task.taskId}" class="col-sm-4 col-form-label">Description</label>
-                                            <div class="col-sm-8">
-                                                <textarea class="form-control" id="description_${task.taskId}" 
-                                                          name="description">${task.description}</textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="memberId_${task.taskId}" class="col-sm-4 col-form-label">Assignee</label>
-                                            <div class="col-sm-8">
-                                                <select class="form-control" id="memberId_${task.taskId}" 
-                                                        name="memberId" required>
-                                                    <c:forEach var="user" items="${users}">
-                                                        <option value="${user.userId}" 
-                                                                ${user.userId eq task.memberId ? 'selected' : ''}>
-                                                            ${user.username}
-                                                        </option>
-                                                    </c:forEach>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="priority_${task.taskId}" class="col-sm-4 col-form-label">Priority</label>
-                                            <div class="col-sm-8">
-                                                <select class="form-control" id="priority_${task.taskId}" 
-                                                        name="priority" required>
-                                                    <option value="LOW" ${task.priority.name() == 'LOW' ? 'selected' : ''}>Low</option>
-                                                    <option value="MEDIUM" ${task.priority.name() == 'MEDIUM' ? 'selected' : ''}>Medium</option>
-                                                    <option value="HIGH" ${task.priority.name() == 'HIGH' ? 'selected' : ''}>High</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="status_${task.taskId}" class="col-sm-4 col-form-label">Status</label>
-                                            <div class="col-sm-8">
-                                                <select class="form-control" id="status_${task.taskId}" 
-                                                        name="status" required>
-                                                    <option value="PENDING" ${task.status.name() == 'PENDING' ? 'selected' : ''}>Pending</option>
-                                                    <option value="IN_PROGRESS" ${task.status.name() == 'IN_PROGRESS' ? 'selected' : ''}>In Progress</option>
-                                                    <option value="COMPLETED" ${task.status.name() == 'COMPLETED' ? 'selected' : ''}>Completed</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="deadline_${task.taskId}" class="col-sm-4 col-form-label">Deadline</label>
-                                            <div class="col-sm-8">
-                                                <input type="date" class="form-control" id="deadline_${task.taskId}" 
-                                                       name="deadline" value="<fmt:formatDate value='${task.deadline}' pattern='yyyy-MM-dd'/>" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="createdAt_${task.taskId}" class="col-sm-4 col-form-label">Created At</label>
-                                            <div class="col-sm-8">
-                                                <input type="datetime-local" class="form-control" id="createdAt_${task.taskId}" 
-                                                       name="createdAt" value="<fmt:formatDate value='${task.createdAt}' pattern='yyyy-MM-dd\'T\'HH:mm'/>" readonly>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="updatedAt_${task.taskId}" class="col-sm-4 col-form-label">Updated At</label>
-                                            <div class="col-sm-8">
-                                                <input type="datetime-local" class="form-control" id="updatedAt_${task.taskId}" 
-                                                       name="updatedAt" value="<fmt:formatDate value='${task.updatedAt}' pattern='yyyy-MM-dd\'T\'HH:mm'/>" readonly>
-                                            </div>
-                                        </div>
-
-                                        <div class="d-flex justify-content-between">
-                                            <button type="submit" class="btn btn-primary" 
-                                                    id="updateBtn_${task.taskId}">Update</button>
-                                            <form action="${pageContext.request.contextPath}/deleteTask" method="post">
-                                                <input type="hidden" name="taskId" value="${task.taskId}">
-                                                <input type="hidden" name="projectId" value="${project.projectId}">
-                                                <input type="hidden" name="tab" value="tasks">
-                                                <input type="hidden" name="source" value="projectDetails">
-                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                            </form>
-                                        </div>
-                                    </form>
-                                </div>
+                        <div class="offcanvas offcanvas-end offcanvas-wide" tabindex="-1" 
+                             id="taskDetailsOffcanvas_${task.taskId}" 
+                             aria-labelledby="taskDetailsOffcanvasLabel_${task.taskId}">
+                            <div class="offcanvas-header">
+                                <h5 class="offcanvas-title" id="taskDetailsOffcanvasLabel_${task.taskId}">
+                                    Task Details - ${task.taskName}
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
-                        </c:forEach>
-                        <c:if test="${empty tasks}">
-                            <tr><td colspan="6">No task is assigned.</td></tr>
-                        </c:if>
+                            <div class="offcanvas-body">
+                                <form action="${pageContext.request.contextPath}/updateTask" method="post" 
+                                      id="updateForm_${task.taskId}">
+                                    <input type="hidden" name="taskId" value="${task.taskId}">
+                                    <input type="hidden" name="projectId" value="${project.projectId}">
+                                    <input type="hidden" name="tab" value="tasks">
+                                    <input type="hidden" name="source" value="projectDetails">
+                                    <div class="row mb-3">
+                                        <label for="taskName_${task.taskId}" class="col-sm-4 col-form-label">Name</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="taskName_${task.taskId}" 
+                                                   name="taskName" value="${task.taskName}" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="description_${task.taskId}" class="col-sm-4 col-form-label">Description</label>
+                                        <div class="col-sm-8">
+                                            <textarea class="form-control" id="description_${task.taskId}" 
+                                                      name="description">${task.description}</textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="memberId_${task.taskId}" class="col-sm-4 col-form-label">Assignee</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="memberId_${task.taskId}" 
+                                                    name="memberId" required>
+                                                <option value="">Select Assignee</option>
+                                                <c:forEach var="user" items="${users}">
+                                                    <option value="${user.userId}" 
+                                                            ${user.userId eq task.memberId ? 'selected' : ''}>
+                                                        ${user.username}
+                                                    </option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="priority_${task.taskId}" class="col-sm-4 col-form-label">Priority</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="priority_${task.taskId}" 
+                                                    name="priority" required>
+                                                <option value="LOW" ${task.priority == 'LOW' ? 'selected' : ''}>Low</option>
+                                                <option value="MEDIUM" ${task.priority == 'MEDIUM' ? 'selected' : ''}>Medium</option>
+                                                <option value="HIGH" ${task.priority == 'HIGH' ? 'selected' : ''}>High</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="status_${task.taskId}" class="col-sm-4 col-form-label">Status</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="status_${task.taskId}" 
+                                                    name="status" required>
+                                                <option value="PENDING" ${task.status == 'PENDING' ? 'selected' : ''}>Pending</option>
+                                                <option value="IN_PROGRESS" ${task.status == 'IN_PROGRESS' ? 'selected' : ''}>In Progress</option>
+                                                <option value="COMPLETED" ${task.status == 'COMPLETED' ? 'selected' : ''}>Completed</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="deadline_${task.taskId}" class="col-sm-4 col-form-label">Deadline</label>
+                                        <div class="col-sm-8">
+                                            <input type="date" class="form-control" id="deadline_${task.taskId}" 
+                                                   name="deadline" 
+                                                   value="<fmt:formatDate value='${task.deadline}' pattern='yyyy-MM-dd'/>" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="createdAt_${task.taskId}" class="col-sm-4 col-form-label">Created At</label>
+                                        <div class="col-sm-8">
+                                            <input type="datetime-local" class="form-control" id="createdAt_${task.taskId}" 
+                                                   value="<fmt:formatDate value='${task.createdAt}' pattern='yyyy-MM-dd\'T\'HH:mm'/>" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="updatedAt_${task.taskId}" class="col-sm-4 col-form-label">Updated At</label>
+                                        <div class="col-sm-8">
+                                            <input type="datetime-local" class="form-control" id="updatedAt_${task.taskId}" 
+                                                   value="<fmt:formatDate value='${task.updatedAt}' pattern='yyyy-MM-dd\'T\'HH:mm'/>" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between">
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" 
+                                                data-bs-target="#deleteTaskModal_${task.taskId}">Delete</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </c:forEach>
+                    <c:if test="${empty tasks}">
+                        <tr><td colspan="6">No task is assigned.</td></tr>
+                    </c:if>
                     </tbody>
                 </table>
                 <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#createTaskModal">Create Task</button>
@@ -213,6 +209,7 @@
                                 <div class="mb-3">
                                     <label for="memberId" class="form-label">Assigned To</label>
                                     <select class="form-control" id="memberId" name="memberId" required>
+                                        <option value="">Select Assignee</option>
                                         <c:forEach var="user" items="${users}">
                                             <option value="${user.userId}">${user.username}</option>
                                         </c:forEach>
@@ -236,8 +233,40 @@
                     </div>
                 </div>
             </div>
+                                    
+            <div class="modal fade" id="deleteTaskModal_${task.taskId}" tabindex="-1" 
+                 aria-labelledby="deleteTaskModal_${task.taskId}" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteTaskModal_${task.taskId}">Kick Member</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure to delete this task from the project?</p>
+                            <form action="${pageContext.request.contextPath}/deleteTask" method="post">
+                                <input type="hidden" name="taskId" value="${task.taskId}">
+                                <input type="hidden" name="projectId" value="${task.projectId}">
+                                <input type="hidden" name="tab" value="tasks"> <!-- Preserve tab -->
+                                <button type="submit" class="btn btn-danger">Confirm Kick</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            // Ensure forms submit correctly within offcanvas
+            document.addEventListener('DOMContentLoaded', function () {
+                // Prevent Bootstrap from interfering with form submission
+                document.querySelectorAll('.offcanvas form').forEach(form => {
+                    form.addEventListener('submit', function (e) {
+                        e.stopPropagation(); // Prevent Bootstrap from blocking submission
+                    });
+                });
+            });
+        </script>
     </body>
 </html>

@@ -36,7 +36,7 @@ public class ProjectService implements IProjectService {
         this.projectDAO = new ProjectDAO(connection);
         this.enrollmentDAO = new EnrollmentDAO(connection);
     }
-    
+
     @Override
     public Project getProjectById(String projectId) {
         if (projectId == null || projectId.trim().isEmpty()) {
@@ -137,6 +137,11 @@ public class ProjectService implements IProjectService {
             }
         }
         return requesting;
+    }
+
+    @Override
+    public List<Project> getNotManagerProject(String managerId) {
+        return projectDAO.getNotManagerProject(managerId);
     }
 
     public static class ProjectWithEnrollment {

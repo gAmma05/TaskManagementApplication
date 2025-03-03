@@ -31,7 +31,6 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Member ID</th>
                             <th>Username</th>
                             <th>Full Name</th>
                             <th>Phone Number</th>
@@ -42,7 +41,6 @@
                     <tbody>
                         <c:forEach var="user" items="${users}">
                             <tr>
-                                <td>${user.userId}</td>
                                 <td>${user.username}</td>
                                 <td>${user.fullName}</td>
                                 <td>${user.phone}</td>
