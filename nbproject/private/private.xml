@@ -2,41 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/model/Task.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/services/implementations/ProjectService.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/services/implementations/UserService.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/model/Enrollment.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/web/css/dashboard.css</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/web/view/member/myProjects.jsp</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/web/js/dashboard.js</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/controllers/task/UpdateTaskStatusServlet.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/controller/project/AddProjectServlet.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/dao/interfaces/IProjectDAO.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/controller/project/DeleteProjectServlet.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/controller/project/UpdateProjectServlet.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/web/view/manager/otherProjects.jsp</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/services/implementations/TaskService.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/controller/auth/LogoutServlet.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/dao/implementations/TaskDAO.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/dao/implementations/EnrollmentDAO.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/web/view/manager/myTasks.jsp</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/constants/ViewURL.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/web/view/manager/myProjects.jsp</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/dao/interfaces/ITaskDAO.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/dao/implementations/ProjectDAO.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/dao/interfaces/IEnrollmentDAO.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/services/interfaces/IUserService.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/controller/project/EnrollProjectServlet.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/model/Project.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/services/interfaces/IProjectService.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/services/interfaces/ITaskService.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/controller/auth/LoginServlet.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/web/view/manager/myInfo.jsp</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/model/User.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/controllers/DashboardServlet.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/controllers/user/UpdateUserServlet.java</file>
-            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/constants/ServletURL.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

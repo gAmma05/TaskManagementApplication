@@ -77,7 +77,7 @@ public class UpdateUserServlet extends HttpServlet {
         String userId = request.getParameter("userId");
         String fullName = request.getParameter("fullName");
         String email = request.getParameter("email");
-
+        String tab = request.getParameter("tab");
         try {
             UserDAO userDAO = new UserDAO(DBConnection.getConnection());
             User user = userDAO.getUserById(userId);
@@ -86,11 +86,11 @@ public class UpdateUserServlet extends HttpServlet {
                 user.setEmail(email);
                 userDAO.updateUser(user); // Assuming this method exists
             }
-            response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD);
+            response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD + "?tab=" + tab);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             request.setAttribute("errorMessage", "Failed to update user information.");
-            request.getRequestDispatcher(request.getContextPath() + ServletURL.DASHBOARD).forward(request, response);
+            request.getRequestDispatcher(request.getContextPath() + ServletURL.DASHBOARD + "?tab=" + tab).forward(request, response);
         }
     }
 

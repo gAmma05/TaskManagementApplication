@@ -87,9 +87,9 @@ public class KickMemberServlet extends HttpServlet {
             throws ServletException, IOException {
         String projectId = request.getParameter("projectId");
         String userId = request.getParameter("userId");
-
+        String tab = request.getParameter("tab");
         enrollmentDAO.deleteEnrollment(userId, projectId); // Add this method to EnrollmentDAO
-        response.sendRedirect(request.getContextPath() + "/projectDetails?projectId=" + projectId);
+        response.sendRedirect(request.getContextPath() + "/projectDetails?projectId=" + projectId + "&tab=" + tab);
     }
 
     /**

@@ -89,7 +89,8 @@ public class DeleteTaskServlet extends HttpServlet {
         String projectId = request.getParameter("projectId");
 
         taskDAO.deleteTask(taskId); // Implement this in TaskDAO
-        response.sendRedirect(request.getContextPath() + "/projectDetails?projectId=" + projectId);
+        String tab = request.getParameter("tab");
+        response.sendRedirect(request.getContextPath() + "/projectDetails?projectId=" + projectId + "&tab=" + tab);
     }
 
     /**
