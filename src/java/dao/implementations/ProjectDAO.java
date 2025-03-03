@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ProjectDAO implements IProjectDAO {
+
     private final Connection connection;
 
     public ProjectDAO(Connection connection) {
@@ -23,9 +24,9 @@ public class ProjectDAO implements IProjectDAO {
 
     @Override
     public boolean createProject(Project project) {
-        String sql = "INSERT INTO Project (project_id, project_name, description, manager_id, budget, " +
-                    "start_date, end_date, status, created_at, updated_at) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Project (project_id, project_name, description, manager_id, budget, "
+                + "start_date, end_date, status, created_at, updated_at) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, project.getProjectId());
             stmt.setString(2, project.getProjectName());
@@ -64,8 +65,7 @@ public class ProjectDAO implements IProjectDAO {
     public List<Project> getAllProjects() {
         List<Project> projects = new ArrayList<>();
         String sql = "SELECT * FROM Project";
-        try (PreparedStatement stmt = connection.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+        try (PreparedStatement stmt = connection.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 projects.add(mapResultSetToProject(rs));
             }
@@ -93,9 +93,31 @@ public class ProjectDAO implements IProjectDAO {
     }
 
     @Override
+    public List<Project> getNotManagerProject(String managerId) {
+        List<Project> projects = new ArrayList<>();
+        String sql = "SELECT * FROM Project WHERE manager_id != ? OR manager_id IS NULL";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+            stmt.setString(1, managerId);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    projects.add(mapResultSetToProject(rs));
+                }
+            }
+        } catch (SQLException e) {
+            // Handle the exception appropriately (logging, rethrowing, etc.)
+            throw new RuntimeException("Error retrieving projects not managed by managerId: " + managerId, e);
+        }
+
+        return projects;
+    }
+
+    @Override
     public boolean updateProject(Project project) {
-        String sql = "UPDATE Project SET project_name = ?, description = ?, manager_id = ?, budget = ?, " +
-                    "start_date = ?, end_date = ?, status = ?, updated_at = ? WHERE project_id = ?";
+        String sql = "UPDATE Project SET project_name = ?, description = ?, manager_id = ?, budget = ?, "
+                + "start_date = ?, end_date = ?, status = ?, updated_at = ? WHERE project_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, project.getProjectName());
             stmt.setString(2, project.getDescription());

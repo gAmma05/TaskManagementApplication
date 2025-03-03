@@ -20,4 +20,5 @@ public interface IProjectService {
     List<ProjectWithEnrollment> getPendingProjects(String userId);
     List<EnrollmentWithProject> getRequestingEnrollments(String managerId);
     public Project getProjectById(String projectId);
+    public List<Project> getNotManagerProject(String managerId);
 }

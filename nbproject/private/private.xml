@@ -2,6 +2,28 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/controllers/task/CreateTaskServlet.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/controller/enrollment/EnrollProjectServlet.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/services/implementations/ProjectService.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/controller/enrollment/ApproveEnrollmentServlet.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/dao/implementations/TaskDAO.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/services/implementations/UserService.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/controllers/task/UpdateTaskServlet.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/controllers/task/DeleteTaskServlet.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/validator/UserValidator.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/dao/implementations/ProjectDAO.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/controller/enrollment/KickMemberServlet.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/controllers/task/UpdateTaskStatusServlet.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/controller/project/ProjectDetailsServlet.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/controller/project/AddProjectServlet.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/dao/interfaces/IProjectDAO.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/controller/project/DeleteProjectServlet.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/controller/project/UpdateProjectServlet.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/services/interfaces/IProjectService.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/model/User.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/controllers/DashboardServlet.java</file>
+            <file>file:/C:/Users/thien/Documents/Programming/Code/BE3_FCode/TaskManagementApplication/src/java/controllers/user/UpdateUserServlet.java</file>
+        </group>
     </open-files>
 </project-private>

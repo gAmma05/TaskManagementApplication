@@ -6,16 +6,16 @@
         <a class="nav-link ${param.tab == 'myProjects' ? 'active' : ''}" 
            href="${pageContext.request.contextPath}/dashboard?tab=myProjects">My Projects</a>
     </li>
-
+    <li class="nav-item" role="presentation">
+        <a class="nav-link ${param.tab == 'otherProjects' ? 'active' : ''}" 
+           href="${pageContext.request.contextPath}/dashboard?tab=otherProjects">Other Projects</a>
+    </li>
+    
     <!-- MEMBER-specific tabs -->
     <c:if test="${sessionScope.role != null && sessionScope.role.toUpperCase() == 'MEMBER'}">
         <li class="nav-item" role="presentation">
             <a class="nav-link ${param.tab == 'myTasks' ? 'active' : ''}" 
                href="${pageContext.request.contextPath}/dashboard?tab=myTasks">My Tasks</a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link ${param.tab == 'otherProjects' ? 'active' : ''}" 
-               href="${pageContext.request.contextPath}/dashboard?tab=otherProjects">Other Projects</a>
         </li>
         <li class="nav-item" role="presentation">
             <a class="nav-link ${param.tab == 'pendingProjects' ? 'active' : ''}" 

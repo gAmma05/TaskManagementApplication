@@ -1,6 +1,0 @@
-127.0.0.1 - - [14/Feb/2025:03:19:53 +0700] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
-127.0.0.1 - kiet [14/Feb/2025:03:19:54 +0700] "GET /manager/text/ HTTP/1.1" 200 39
-127.0.0.1 - - [14/Feb/2025:03:19:54 +0700] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
-127.0.0.1 - kiet [14/Feb/2025:03:19:54 +0700] "GET /manager/text/ HTTP/1.1" 200 39
-127.0.0.1 - - [14/Feb/2025:03:19:54 +0700] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
-127.0.0.1 - kiet [14/Feb/2025:03:19:54 +0700] "GET /manager/text/ HTTP/1.1" 200 39
