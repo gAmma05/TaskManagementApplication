@@ -3,10 +3,12 @@ package controller.project;
 import dao.implementations.EnrollmentDAO;
 import dao.implementations.ProjectDAO;
 import dao.implementations.TaskDAO;
+import dao.implementations.UserDAO; // Added UserDAO import
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -22,6 +24,7 @@ public class ProjectDetailsServlet extends HttpServlet {
     private ProjectDAO projectDAO;
     private TaskDAO taskDAO;
     private EnrollmentDAO enrollmentDAO;
+    private UserDAO userDAO; // Added UserDAO field
 
     @Override
     public void init() throws ServletException {
@@ -30,6 +33,7 @@ public class ProjectDetailsServlet extends HttpServlet {
             projectDAO = new ProjectDAO(connection);
             taskDAO = new TaskDAO(connection);
             enrollmentDAO = new EnrollmentDAO(connection);
+            userDAO = new UserDAO(connection); // Initialize UserDAO
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ProjectDetailsServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -38,6 +42,20 @@ public class ProjectDetailsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("user_id") == null) {
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
+        }
+
+        // Get user role from session (assuming it's stored as a String or ENUM)
+        String userRole = (String) session.getAttribute("role");
+        if (userRole == null) {
+            request.setAttribute("errorMessage", "User role not found in session");
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
+            return;
+        }
+
         String projectId = request.getParameter("projectId");
         String tab = request.getParameter("tab");
 
@@ -57,33 +75,56 @@ public class ProjectDetailsServlet extends HttpServlet {
         // Always fetch project data
         request.setAttribute("project", project);
 
+        // Fetch manager username based on managerId
+        String managerUsername = "Unassigned"; // Default value
+        if (project.getManagerId() != null && !project.getManagerId().isEmpty()) {
+            User manager = userDAO.getUserById(project.getManagerId());
+            if (manager != null) {
+                managerUsername = manager.getUsername();
+            }
+        }
+        request.setAttribute("managerUsername", managerUsername);
+
+        // Base path based on user role
+        String basePath;
+        switch (userRole.toUpperCase()) {
+            case "MANAGER":
+                basePath = "/view/project/manager/";
+                break;
+            case "MEMBER":
+                basePath = "/view/project/member/";
+                break;
+            case "NONE":
+            default:
+                basePath = "/view/project/"; // Fallback for unassigned roles or guests
+                break;
+        }
+
         // Determine which tab to display
         String jspPath;
-        if (null == tab) {
-            jspPath = "/view/project/description.jsp";
-        } else switch (tab) {
-            case "description":
-                jspPath = "/view/project/description.jsp";
-                break;
-            case "tasks":
-                {
+        if (tab == null) {
+            jspPath = basePath + "description.jsp";
+        } else {
+            switch (tab) {
+                case "description":
+                    jspPath = basePath + "description.jsp";
+                    break;
+                case "tasks":
                     List<Task> tasks = taskDAO.getTasksByProject(projectId);
                     request.setAttribute("tasks", tasks);
                     List<User> users = enrollmentDAO.getUsersByProjectId(projectId);
-                    request.setAttribute("users", users); // For assignee dropdown
-                    jspPath = "/view/project/tasks.jsp";
+                    request.setAttribute("users", users); 
+                    jspPath = basePath + "tasks.jsp";
                     break;
-                }
-            case "members":
-                {
-                    List<User> users = enrollmentDAO.getUsersByProjectId(projectId);
-                    request.setAttribute("users", users);
-                    jspPath = "/view/project/members.jsp";
+                case "members":
+                    List<User> members = enrollmentDAO.getUsersByProjectId(projectId);
+                    request.setAttribute("users", members);
+                    jspPath = basePath + "members.jsp";
                     break;
-                }
-            default:
-                jspPath = "/view/project/description.jsp"; // Default to description
-                break;
+                default:
+                    jspPath = basePath + "description.jsp"; // Default to description
+                    break;
+            }
         }
 
         request.setAttribute("tab", tab); // For navbar active state

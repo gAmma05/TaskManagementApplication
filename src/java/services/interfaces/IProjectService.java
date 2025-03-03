@@ -5,7 +5,6 @@
 package services.interfaces;
 
 import java.util.List;
-import model.Enrollment;
 import model.Project;
 import services.implementations.ProjectService.EnrollmentWithProject;
 import services.implementations.ProjectService.ProjectWithEnrollment;
@@ -20,4 +19,5 @@ public interface IProjectService {
     public List<Project> getMyProjectsForManager(String userId, String role);
     List<ProjectWithEnrollment> getPendingProjects(String userId);
     List<EnrollmentWithProject> getRequestingEnrollments(String managerId);
+    public Project getProjectById(String projectId);
 }

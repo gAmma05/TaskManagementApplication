@@ -37,6 +37,7 @@ public class UpdateProjectServlet extends HttpServlet {
         double budget = budgetStr != null && !budgetStr.isEmpty() ? Double.parseDouble(budgetStr) : 0.0;
         String startDateStr = request.getParameter("startDate");
         String endDateStr = request.getParameter("endDate");
+        String tab = request.getParameter("tab");
 
         try {
             // DATE_FORMAT is used here to parse the date strings
@@ -58,20 +59,20 @@ public class UpdateProjectServlet extends HttpServlet {
                     if (!success) {
                         throw new SQLException("Failed to update project in database.");
                     }
-                    response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD);
+                    response.sendRedirect(request.getContextPath() + "/projectDetails?projectId=" + projectId + "&tab=" + tab);
                 } else {
                     request.setAttribute("errorMessage", "Project not found.");
-                    request.getRequestDispatcher(ViewURL.PROJECT_DETAILS_PAGE).forward(request, response);
+                    request.getRequestDispatcher(request.getContextPath() + "/projectDetails?projectId=" + projectId + "&tab=" + tab).forward(request, response);
                 }
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
                 request.setAttribute("errorMessage", "Failed to update project due to a server error.");
-                request.getRequestDispatcher(ViewURL.PROJECT_DETAILS_PAGE).forward(request, response);
+                request.getRequestDispatcher(request.getContextPath() + "/projectDetails?projectId=" + projectId + "&tab=" + tab).forward(request, response);
             }
         } catch (ParseException e) {
             e.printStackTrace();
             request.setAttribute("errorMessage", "Invalid date format.");
-            request.getRequestDispatcher(ViewURL.PROJECT_DETAILS_PAGE).forward(request, response);
+            request.getRequestDispatcher(request.getContextPath() + "/projectDetails?projectId=" + projectId + "&tab=" + tab).forward(request, response);
         }
     }
 }

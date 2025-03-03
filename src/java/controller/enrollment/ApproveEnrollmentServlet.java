@@ -1,5 +1,6 @@
 package controller.enrollment;
 
+import constants.ServletURL;
 import dao.implementations.EnrollmentDAO;
 import dao.interfaces.IEnrollmentDAO;
 import enums.EnrollmentStatus;
@@ -28,7 +29,7 @@ public class ApproveEnrollmentServlet extends HttpServlet {
         String managerId = request.getSession().getAttribute("user_id") != null 
                 ? request.getSession().getAttribute("user_id").toString() 
                 : null;
-        
+        String tab = request.getParameter("tab");
         if (managerId == null) {
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Manager not logged in");
             return;
@@ -52,7 +53,7 @@ public class ApproveEnrollmentServlet extends HttpServlet {
         boolean success = enrollmentDAO.updateEnrollment(enrollment);
         
         if (success) {
-            response.sendRedirect(request.getContextPath() + "/dashboard?tab=requesting");
+            response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD + "?tab=" + tab);
         } else {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Failed to approve enrollment");
         }

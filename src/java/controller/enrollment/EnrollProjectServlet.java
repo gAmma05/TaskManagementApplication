@@ -86,6 +86,7 @@ public class EnrollProjectServlet extends HttpServlet {
                 response.sendRedirect(ViewURL.LOGIN_PAGE);
                 return;
             }
+            String tab = request.getParameter("tab");
             String userId = (String) session.getAttribute("user_id");
             String projectId = request.getParameter("projectId");
             if (projectId == null || projectId.trim().isEmpty()) {
@@ -110,7 +111,7 @@ public class EnrollProjectServlet extends HttpServlet {
                             EnrollmentStatus.PENDING));
 
             if (success) {
-                response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD);
+                response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD + "?tab=" + tab);
             } else {
                 response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
                         "Failed to enroll in project");

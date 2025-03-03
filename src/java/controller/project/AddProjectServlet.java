@@ -39,7 +39,8 @@ public class AddProjectServlet extends HttpServlet {
         double budget = budgetStr != null && !budgetStr.isEmpty() ? Double.parseDouble(budgetStr) : 0.0;
         String startDateStr = request.getParameter("startDate");
         String endDateStr = request.getParameter("endDate");
-
+        String tab = request.getParameter("tab");
+        
         try {
             // DATE_FORMAT is used here to parse the date strings
             Date startDate = DATE_FORMAT.parse(startDateStr);
@@ -64,16 +65,16 @@ public class AddProjectServlet extends HttpServlet {
                 if (!success) {
                     throw new SQLException("Failed to create project in database.");
                 }
-                response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD);
+                response.sendRedirect(request.getContextPath() + ServletURL.DASHBOARD + "?tab=" + tab);
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
                 request.setAttribute("errorMessage", "Failed to add project due to a server error.");
-                request.getRequestDispatcher(request.getContextPath() + ServletURL.DASHBOARD).forward(request, response);
+                request.getRequestDispatcher(request.getContextPath() + ServletURL.DASHBOARD + "?tab=" + tab).forward(request, response);
             }
         } catch (ParseException e) {
             e.printStackTrace();
             request.setAttribute("errorMessage", "Invalid date format.");
-            request.getRequestDispatcher(request.getContextPath() + ServletURL.DASHBOARD).forward(request, response);
+            request.getRequestDispatcher(request.getContextPath() + ServletURL.DASHBOARD + "?tab=" + tab).forward(request, response);
         }
     }
 }

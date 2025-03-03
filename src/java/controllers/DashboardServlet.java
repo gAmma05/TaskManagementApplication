@@ -8,9 +8,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Project;
+import model.Task;
+import model.User;
 import services.implementations.ProjectService;
+import services.implementations.ProjectService.EnrollmentWithProject;
 import services.implementations.TaskService;
 import services.implementations.UserService;
 import services.interfaces.IProjectService;
@@ -58,24 +65,144 @@ public class DashboardServlet extends HttpServlet {
             tab = "myProjects";
         }
         
+        // Fetch project lists
+        List<Project> myProjects;
+        Map<String, String> managerUsernames = new HashMap<>(); // Moved outside to share scope
         if ("MANAGER".equalsIgnoreCase(role)) {
-            request.setAttribute("myProjects", projectService.getMyProjectsForManager(userId, role));
-            request.setAttribute("requestingEnrollments", projectService.getRequestingEnrollments(userId));
+            myProjects = projectService.getMyProjectsForManager(userId, role);
+            request.setAttribute("myProjects", myProjects);
+            List<EnrollmentWithProject> requestingEnrollments = projectService.getRequestingEnrollments(userId);
+            request.setAttribute("requestingEnrollments", requestingEnrollments);
+
+            Map<String, User> enrollmentUsers = new HashMap<>();
+            for (EnrollmentWithProject req : requestingEnrollments) {
+                String requestingUserId = req.getEnrollment().getUserId();
+                User user = null;
+                if (requestingUserId != null && !requestingUserId.isEmpty()) {
+                    try {
+                        user = userService.getMyInfo(requestingUserId);
+                        if (user == null) {
+                            user = new User();
+                            user.setUsername("Unknown");
+                        }
+                    } catch (Exception e) {
+                        LOGGER.log(Level.WARNING, "Failed to fetch user for userId: " + requestingUserId, e);
+                        user = new User();
+                        user.setUsername("Unknown");
+                    }
+                }
+                enrollmentUsers.put(requestingUserId, user);
+            }
+            request.setAttribute("enrollmentUsers", enrollmentUsers);
+
+            // Add manager usernames for manager's projects
+            for (Project project : myProjects) {
+                String managerId = project.getManagerId();
+                String managerUsername = "Unassigned";
+                if (managerId != null && !managerId.isEmpty()) {
+                    try {
+                        managerUsername = userService.getUsername(managerId);
+                        if (managerUsername == null) {
+                            managerUsername = "Unassigned";
+                        }
+                    } catch (Exception e) {
+                        LOGGER.log(Level.WARNING, "Failed to fetch username for managerId: " + managerId, e);
+                    }
+                }
+                managerUsernames.put(project.getProjectId(), managerUsername);
+            }
         } else {
-            request.setAttribute("myProjects", projectService.getEnrolledProjects(userId));
-            request.setAttribute("pendingProjects", projectService.getPendingProjects(userId));
+            myProjects = projectService.getEnrolledProjects(userId);
+            request.setAttribute("myProjects", myProjects);
+            List<ProjectService.ProjectWithEnrollment> pendingProjects = projectService.getPendingProjects(userId);
+            request.setAttribute("pendingProjects", pendingProjects);
+
+            // Add manager usernames for pending projects
+            for (ProjectService.ProjectWithEnrollment pending : pendingProjects) {
+                String managerId = pending.getProject().getManagerId();
+                String managerUsername = "Unassigned";
+                if (managerId != null && !managerId.isEmpty()) {
+                    try {
+                        managerUsername = userService.getUsername(managerId);
+                        if (managerUsername == null) {
+                            managerUsername = "Unassigned";
+                        }
+                    } catch (Exception e) {
+                        LOGGER.log(Level.WARNING, "Failed to fetch username for managerId: " + managerId, e);
+                    }
+                }
+                managerUsernames.put(pending.getProject().getProjectId(), managerUsername);
+            }
         }
-        request.setAttribute("enrolledProjects", projectService.getEnrolledProjects(userId));
-        request.setAttribute("myTasks", taskService.getMyTasks(userId));
-        request.setAttribute("unenrolledProjects", projectService.getUnenrolledProjects(userId));
+        List<Project> enrolledProjects = projectService.getEnrolledProjects(userId);
+        request.setAttribute("enrolledProjects", enrolledProjects);
+
+        // Add manager usernames for enrolled projects
+        for (Project project : enrolledProjects) {
+            String managerId = project.getManagerId();
+            String managerUsername = "Unassigned";
+            if (managerId != null && !managerId.isEmpty()) {
+                try {
+                    managerUsername = userService.getUsername(managerId);
+                    if (managerUsername == null) {
+                        managerUsername = "Unassigned";
+                    }
+                } catch (Exception e) {
+                    LOGGER.log(Level.WARNING, "Failed to fetch username for managerId: " + managerId, e);
+                }
+            }
+            managerUsernames.put(project.getProjectId(), managerUsername);
+        }
+        
+        // Fetch tasks and map project names
+        List<Task> myTasks = taskService.getMyTasks(userId);
+        Map<String, String> taskProjectNames = new HashMap<>();
+        for (Task task : myTasks) {
+            String projectId = task.getProjectId();
+            String projectName = "Unknown";
+            if (projectId != null && !projectId.isEmpty()) {
+                try {
+                    Project project = projectService.getProjectById(projectId);
+                    if (project != null) {
+                        projectName = project.getProjectName();
+                    }
+                } catch (Exception e) {
+                    LOGGER.log(Level.WARNING, "Failed to fetch project for projectId: " + projectId, e);
+                }
+            }
+            taskProjectNames.put(task.getTaskId(), projectName);
+        }
+        request.setAttribute("myTasks", myTasks);
+        request.setAttribute("taskProjectNames", taskProjectNames);
+
+        List<Project> unenrolledProjects = projectService.getUnenrolledProjects(userId);
+        request.setAttribute("unenrolledProjects", unenrolledProjects);
         request.setAttribute("myInfo", userService.getMyInfo(userId));
+
+        // Add manager usernames for unenrolled projects
+        for (Project project : unenrolledProjects) {
+            String managerId = project.getManagerId();
+            String managerUsername = "Unassigned";
+            if (managerId != null && !managerId.isEmpty()) {
+                try {
+                    managerUsername = userService.getUsername(managerId);
+                    if (managerUsername == null) {
+                        managerUsername = "Unassigned";
+                    }
+                } catch (Exception e) {
+                    LOGGER.log(Level.WARNING, "Failed to fetch username for managerId: " + managerId, e);
+                }
+            }
+            managerUsernames.put(project.getProjectId(), managerUsername);
+        }
+        request.setAttribute("managerUsernames", managerUsernames);
 
         String jspPath;
         if ("MANAGER".equalsIgnoreCase(role)) {
-            jspPath = "/view/manager/";
+            jspPath = "/view/dashboard/manager/";
             handleManagerTabs(request, response, tab, jspPath);
         } else if ("MEMBER".equalsIgnoreCase(role)) {
-            jspPath = "/view/member/";
+            jspPath = "/view/dashboard/member/";
             handleMemberTabs(request, response, tab, jspPath);
         } else {
             response.sendError(HttpServletResponse.SC_FORBIDDEN, "Invalid user role: " + role);
@@ -131,5 +258,4 @@ public class DashboardServlet extends HttpServlet {
                 break;
         }
     }
-
 }

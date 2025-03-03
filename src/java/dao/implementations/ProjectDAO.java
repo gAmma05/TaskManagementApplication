@@ -115,10 +115,29 @@ public class ProjectDAO implements IProjectDAO {
 
     @Override
     public boolean deleteProject(String projectId) {
-        String sql = "DELETE FROM Project WHERE project_id = ?";
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+        String deleteEnrollSQL = "DELETE FROM Enroll WHERE project_id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(deleteEnrollSQL)) {
             stmt.setString(1, projectId);
-            return stmt.executeUpdate() > 0;
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // Then, delete related tasks (if needed)
+        String deleteTasksSQL = "DELETE FROM Task WHERE project_id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(deleteTasksSQL)) {
+            stmt.setString(1, projectId);
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // Finally, delete the project
+        String deleteProjectSQL = "DELETE FROM Project WHERE project_id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(deleteProjectSQL)) {
+            stmt.setString(1, projectId);
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
         } catch (SQLException ex) {
             Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

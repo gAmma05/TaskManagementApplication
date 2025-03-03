@@ -4,7 +4,6 @@
  */
 package services.interfaces;
 
-import java.util.List;
 import model.User;
 
 /**
